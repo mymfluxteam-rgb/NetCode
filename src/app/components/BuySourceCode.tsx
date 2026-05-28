@@ -19,6 +19,7 @@ import samFwFrpToolImage from "../../imports/samfw-frp-tool.png";
 import universalActivatorImage from "../../imports/universal-activator.png";
 import ispProgrammerImage from "../../imports/isp-programmer-tool.png";
 import xiaomiFireToolImage from "../../imports/xiaomi-fire-tool.png";
+import androidSamFrpImage from "../../imports/android-samfrp-tool.png";
 
 interface SourceCodeItem {
   id: number;
@@ -214,6 +215,26 @@ export function BuySourceCode() {
         "Script Management - Load and execute flash scripts with real-time multi-device progress tracking",
         "MTK Features - Scatter file, DA file, Auth file support, and ROM info management",
         "Utilities - Driver wizard, debug/info/warn/error logging, USB event watcher, auto-flash mode, multi-language support"
+      ]
+    },
+    {
+      id: 14,
+      name: "Android SamFrp Tool",
+      description: "Lightweight Samsung FRP bypass and ADB enabler tool. Detects Samsung modem ports, sends AT command sequences to enable USB debugging, resets FRP lock via ADB, and reads full device information.",
+      price: 100,
+      category: "Desktop Application",
+      rating: 4.6,
+      downloads: 3180,
+      tags: ["C#", "Samsung", "ADB", "FRP"],
+      image: androidSamFrpImage,
+      features: [
+        "Enable ADB - Detects Samsung Mobile USB Modem port and sends AT command sequence to enable USB debugging",
+        "AT Commands - Sends AT+DEVCONINFO, AT+KSTRINGB, AT+DUMPCTRL, AT+DEBUGLVC, AT+SWATD, AT+ACTIVATE in sequence",
+        "FRP Reset - Bypasses FRP lock via ADB: inserts user_setup_complete, starts Google login activity, pushes frp.bin, reboots",
+        "Read Device Info - Retrieves serial, brand, model, Android version, security patch, hardware, build number, PDA/BOOT/CSC versions",
+        "Extended Info - Reads CPU ABI, country code, vendor GSM state, fingerprint, build date, and baseband version",
+        "Device Detection - Auto-detects Samsung modem ports with refresh button to re-scan connected devices",
+        "ADB Server Management - Automatically starts ADB server on application load"
       ]
     },
     {
