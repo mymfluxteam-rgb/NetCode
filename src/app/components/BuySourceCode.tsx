@@ -16,6 +16,7 @@ import mifixProImage from "../../imports/image.png";
 import qualcommToolImage from "../../imports/image-1.png";
 import mtkAuthToolImage from "../../imports/mtk-auth-tool.png";
 import samFwFrpToolImage from "../../imports/samfw-frp-tool.png";
+import universalActivatorImage from "../../imports/universal-activator.png";
 
 interface SourceCodeItem {
   id: number;
@@ -131,6 +132,32 @@ export function BuySourceCode() {
         "Read Device Information - Retrieves model, CSC, version, IMEI, serial number, lock status via AT+DEVCONINFO",
         "Reboot Device - Reboots device using AT+CFUN command",
         "API Integration - Checks for updates from samfw.com and sends job status reports to samfw.com API"
+      ]
+    },
+    {
+      id: 11,
+      name: "Universal Activator MEID/GSM Full Signal",
+      description: "Premium iOS activation bypass tool supporting MEID and GSM models on iOS 12–17. Detects connected devices, displays full device info, and performs iCloud activation lock bypass using SSH, jailbreak tools, and server-side API communication.",
+      price: 400,
+      category: "Desktop Application",
+      rating: 4.7,
+      downloads: 1105,
+      tags: ["C#", "iOS", "iCloud Bypass", "SSH"],
+      image: universalActivatorImage,
+      features: [
+        "iOS Device Detection - Detects connected devices using Apple's Mobile Device drivers with full info display",
+        "Device Info Display - Shows Product Type, iOS Version, UDID, IMEI, Serial Number, and Activation State",
+        "Device Image Preview - Displays model image for iPhone 6 through iPhone X",
+        "Activation Bypass (MEID) - iCloud activation lock bypass for MEID model iPhones",
+        "Activation Bypass (GSM) - iCloud activation lock bypass for GSM model iPhones",
+        "iOS 12–14 Support - Full activation bypass support for iOS versions 12 to 14",
+        "iOS 15–17 Support - Full activation bypass support for iOS versions 15 to 17",
+        "External Tool Integration - Uses ideviceinfo.exe, ideviceactivation.exe, iproxy.exe, curl.exe from lib directory",
+        "SSH/SCP Communication - Connects to jailbroken devices via SSH for file manipulation and command execution",
+        "Jailbreak Tools - Includes HFZRa1n, Gaster, and WinRa1n for jailbreaking supported devices",
+        "Server API Communication - HTTP GET/POST requests to remote activation server for bypass operations",
+        "Serial Number Registration - Registers device serial number with the activation server",
+        "Security & Process Management - Terminates debuggers and proxy tools (Wireshark, CharlesProxy, Fiddler, etc.)"
       ]
     },
     {
