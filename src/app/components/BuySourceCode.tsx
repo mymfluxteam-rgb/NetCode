@@ -18,6 +18,7 @@ import mtkAuthToolImage from "../../imports/mtk-auth-tool.png";
 import samFwFrpToolImage from "../../imports/samfw-frp-tool.png";
 import universalActivatorImage from "../../imports/universal-activator.png";
 import ispProgrammerImage from "../../imports/isp-programmer-tool.png";
+import xiaomiFireToolImage from "../../imports/xiaomi-fire-tool.png";
 
 interface SourceCodeItem {
   id: number;
@@ -184,6 +185,35 @@ export function BuySourceCode() {
         "Low-Level Disk I/O - Direct sector-level read/write using Windows API (CreateFile, ReadFile, WriteFile, DeviceIoControl)",
         "Background Worker - Progress reporting during long read/write operations via background thread",
         "Utility Tools - Includes 7-Zip, dd.exe, secinspect.exe, simg2img.exe, gdisk.exe and more disk utilities"
+      ]
+    },
+    {
+      id: 13,
+      name: "Xiaomi Fire Tool",
+      description: "Full-featured Xiaomi flashing and servicing tool with server authentication, credit system, ADB/Fastboot tools, EDL mode flashing, and MTK support. Connects to xiaomifiretool.in for auth and credit management.",
+      price: 1500,
+      category: "Desktop Application",
+      rating: 4.9,
+      downloads: 2430,
+      tags: ["C#", "Xiaomi", "EDL", "Fastboot", "MediaTek"],
+      image: xiaomiFireToolImage,
+      features: [
+        "Server Authentication - User login/registration via xiaomifiretool.in with credit balance display and server status",
+        "Credit System - Each auth operation costs 2 credits; real-time credit balance tracking",
+        "Device Info - Displays serial number, codename, and bootloader status via ADB",
+        "Image Flasher - Flash partitions (boot, recovery, system, modem, etc.) via Fastboot",
+        "Rebooter - Reboot to system, fastboot, recovery, or EDL mode",
+        "Wiper - Wipe cache or data + cache partitions",
+        "OEM Unlocker/Locker - Lock and unlock bootloader via Fastboot",
+        "Debloater - Uninstall bloatware apps from device",
+        "Camera2 API - Enable/disable Camera2 HAL3 support",
+        "Device Properties - Full device info retrieval via getprop",
+        "MiFlash EDL Mode - Qualcomm & MTK support with auto device detection in EDL mode",
+        "Firmware Flashing - Flash official firmware with Clean All, Save User Data, or Clean All & Lock options",
+        "Firmware Validation - MD5/SHA256 image integrity check before flashing",
+        "Script Management - Load and execute flash scripts with real-time multi-device progress tracking",
+        "MTK Features - Scatter file, DA file, Auth file support, and ROM info management",
+        "Utilities - Driver wizard, debug/info/warn/error logging, USB event watcher, auto-flash mode, multi-language support"
       ]
     },
     {
