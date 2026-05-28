@@ -22,6 +22,7 @@ import xiaomiFireToolImage from "../../imports/xiaomi-fire-tool.png";
 import androidSamFrpImage from "../../imports/android-samfrp-tool.png";
 import androidServiceToolImage from "../../imports/android-service-tool.png";
 import keyGeneratorImage from "../../imports/key-generator.png";
+import mymProToolImage from "../../imports/mym-pro-tool.png";
 
 interface SourceCodeItem {
   id: number;
@@ -286,6 +287,35 @@ export function BuySourceCode() {
         "Topup System - Secondary form accepts System Product ID and TopUp Key for run-count top-up",
         "Run Tracking - Built-in application run counter (default 999 runs, adjustable via key positions)",
         "Close Button - Simple exit functionality built into the UI"
+      ]
+    },
+    {
+      id: 17,
+      name: "MYM Pro Tool",
+      description: "Universal multi-chip Android servicing tool supporting Qualcomm EDL, MediaTek, eMMC ISP, Samsung, and Fastboot modes. Includes Format Data, FRP erase, Mi Cloud disable, NV backup/restore, bootloader relock, and a built-in security scanner.",
+      price: 300,
+      category: "Desktop Application",
+      rating: 4.9,
+      downloads: 1580,
+      tags: ["C#", "Python", "Qualcomm", "MediaTek", "EDL"],
+      image: mymProToolImage,
+      features: [
+        "Qualcomm EDL Mode - Connects via HS-USB QDLoader 9008; uses emmcdl.exe and fh_loader.exe for operations",
+        "MediaTek Support - Python-based MTK flashing logic with 18+ preloaders (MT6750, MT6765, MT6769, MT6771, and more)",
+        "Fastboot Mode - Flash, reboot, and check device info via Fastboot protocol",
+        "eMMC ISP Mode - Direct ISP-level eMMC access for low-level operations",
+        "Samsung Mode - Dedicated Samsung device support tab",
+        "Format Data - Wipe userdata partition for factory reset",
+        "Erase FRP - Bypass Factory Reset Protection on supported devices",
+        "Bootloader Relock - Relock bootloader via Fastboot",
+        "Disable Mi Cloud - Remove Xiaomi Mi Account lock",
+        "Backup / Restore NV Data - Back up and restore Non-Volatile memory (IMEI, calibration data)",
+        "Erase NV Data - Wipe NV partition when required",
+        "Partition Management - Read/write GPT info; supports both eMMC and UFS memory types",
+        "Auth Bypass - Checks and handles device authentication requirements",
+        "Raw Drive Access - Direct raw disk drive read/write",
+        "Qualcomm Chips - MSM8916/17/37/40, SDM439/450/636/660/665 and more",
+        "Security Scanner - Detects and kills reverse-engineering tools (dnSpy, IDA, x64dbg, etc.)"
       ]
     },
     {
