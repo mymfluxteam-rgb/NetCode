@@ -187,11 +187,6 @@ export function Privacy() {
                 <p className="text-sm text-gray-600 mt-1">Talk to a real person — not a bot — at every stage of your purchase</p>
               </div>
             </div>
-            <div className="mt-4 p-4 bg-white rounded-lg border border-blue-100">
-              <p className="text-sm text-gray-700">
-                <span className="font-semibold">Refund Policy:</span> If the source code you receive does not match its listed description and features, contact us within 7 days and we will resolve the issue or issue a full refund. Your satisfaction is guaranteed.
-              </p>
-            </div>
           </CardContent>
         </Card>
 

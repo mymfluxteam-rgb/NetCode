@@ -43,6 +43,7 @@ export interface SourceCodeItem {
   image?: string;
   images?: string[];
   features?: string[];
+  badge?: "new" | "featured";
 }
 
 export const sourceCodeItems: SourceCodeItem[] = [
@@ -57,6 +58,7 @@ export const sourceCodeItems: SourceCodeItem[] = [
       downloads: 2850,
       tags: ["C#", "Qualcomm", "EDL", "Fastboot"],
       image: qualcommToolImage,
+      badge: "featured",
       features: [
         "EDL Flashing (FlashUI.cs) - Auto-detect partition table (eMMC/UFS), flash/read/erase partitions, XML flash file support",
         "AutoLoader Support - Auto-detects appropriate loader for 725+ devices with manual fallback option",
@@ -79,6 +81,7 @@ export const sourceCodeItems: SourceCodeItem[] = [
       downloads: 3200,
       tags: ["C#", "DevExpress", "Qualcomm", "MediaTek"],
       image: mifixProImage,
+      badge: "featured",
       features: [
         "User Authentication & Credit System - Login to mifixpro.org server with secure account management",
         "Qualcomm (Snapdragon) Support - Firehose protocol, GPT operations, firmware flashing from rawprogram XML",
@@ -469,6 +472,7 @@ export const sourceCodeItems: SourceCodeItem[] = [
       downloads: 980,
       tags: ["C#", "Fastboot", "Xiaomi", "Android"],
       image: fastbootFlasherImage,
+      badge: "new",
       features: [
         "Firmware Selection & Parsing - Browse and select Xiaomi fastboot firmware folders, parses flash_all.bat to extract flashable partitions",
         "Firmware Validation - Checks for images folder and flash script to ensure firmware structure integrity",
@@ -494,6 +498,7 @@ export const sourceCodeItems: SourceCodeItem[] = [
       downloads: 1420,
       tags: ["C#", "Xiaomi", "EDL", "ADB", "Qualcomm"],
       image: noNeedVpnImage,
+      badge: "new",
       features: [
         "ADB & Sideload Mode - Device info retrieval (phone name, MIUI version, Android version, serial, region), user lock removal, device reboot",
         "Fastboot Mode - Model name & bootloader state retrieval, anti-rollback version check, bootloader unlock check, reboot to EDL",
@@ -520,6 +525,7 @@ export const sourceCodeItems: SourceCodeItem[] = [
       downloads: 980,
       tags: ["TypeScript", "Telegram", "Supabase", "Web", "E-Commerce"],
       image: optimaGramImage,
+      badge: "new",
       features: [
         "Subscription System (Supabase) - Device fingerprinting for security, persistent encrypted local storage for subscription tokens, free trial mode, paywall UI on expiry, auto-renewal prompts, and full subscription bootstrap/state management",
         "Quick Messages Templates - Predefined message templates supporting text, images, and video. Edit mode: create, edit, reorder, and delete templates. Template matching modes: exact, contains, starts with",
@@ -577,7 +583,7 @@ export function BuySourceCode() {
           <Card key={item.id} className="flex flex-col overflow-hidden">
             {item.image && (
               <div
-                className="w-full h-48 bg-gray-100 overflow-hidden cursor-pointer hover:opacity-90 transition-opacity"
+                className="w-full h-48 bg-gray-100 overflow-hidden cursor-pointer hover:opacity-90 transition-opacity relative"
                 onClick={() => setSelectedProduct(item)}
               >
                 <ImageWithFallback
@@ -585,6 +591,16 @@ export function BuySourceCode() {
                   alt={item.name}
                   className="w-full h-full object-cover"
                 />
+                {item.badge === "new" && (
+                  <span className="absolute top-2 left-2 bg-emerald-500 text-white text-xs font-bold px-2 py-0.5 rounded-full shadow">
+                    NEW
+                  </span>
+                )}
+                {item.badge === "featured" && (
+                  <span className="absolute top-2 left-2 bg-amber-400 text-white text-xs font-bold px-2 py-0.5 rounded-full shadow">
+                    ⭐ FEATURED
+                  </span>
+                )}
               </div>
             )}
             <CardHeader>
