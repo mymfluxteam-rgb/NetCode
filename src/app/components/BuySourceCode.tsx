@@ -20,6 +20,7 @@ import universalActivatorImage from "../../imports/universal-activator.png";
 import ispProgrammerImage from "../../imports/isp-programmer-tool.png";
 import xiaomiFireToolImage from "../../imports/xiaomi-fire-tool.png";
 import androidSamFrpImage from "../../imports/android-samfrp-tool.png";
+import androidServiceToolImage from "../../imports/android-service-tool.png";
 
 interface SourceCodeItem {
   id: number;
@@ -235,6 +236,34 @@ export function BuySourceCode() {
         "Extended Info - Reads CPU ABI, country code, vendor GSM state, fingerprint, build date, and baseband version",
         "Device Detection - Auto-detects Samsung modem ports with refresh button to re-scan connected devices",
         "ADB Server Management - Automatically starts ADB server on application load"
+      ]
+    },
+    {
+      id: 15,
+      name: "Android Service Tool",
+      description: "Multi-brand Android servicing tool with Qualcomm EDL mode support, ADB device info, partition operations, FRP/lock removal, and a hardware-based license activation system. Covers Qualcomm, Samsung, MTK, Meizu, Mi-Oppo and more.",
+      price: 350,
+      category: "Desktop Application",
+      rating: 4.8,
+      downloads: 1760,
+      tags: ["C#", "Qualcomm", "EDL", "ADB", "MediaTek"],
+      image: androidServiceToolImage,
+      features: [
+        "Device Info (ADB) - Reads model, Android version, brand, build number, Knox version, CPU type, and hardware platform",
+        "EDL Port Detection - Auto-detects Qualcomm HS-USB QDLoader 9008 port and identifies CPU model automatically",
+        "CPU Auto-detect - Supports MSM8x10, MSM8916/17, MSM8936/37, SDM660, MSM8953/76/96, and more Qualcomm chipsets",
+        "Brand Auto-detect - Identifies Xiaomi, Huawei, Lenovo, Asus, Oppo, Vivo and other brands in EDL mode",
+        "Firehose Programmer - Auto-sends appropriate .mbn/.elf firehose programmer per detected CPU",
+        "GPT Partition Table - Reads and displays partition info: name, start LBA, size in MB/GB, file name",
+        "Partition Write/Erase - Flash or wipe partitions by name or sector range in EDL mode",
+        "Partition Backup/Restore - Back up and restore partitions to/from files",
+        "XML Firmware Flash - Flashes firmware packages using rawprogram.xml and patch.xml",
+        "FRP Removal - Factory Reset Protection bypass for supported devices",
+        "Lock Reset - User lock/pattern/password reset via userdata partition manipulation",
+        "Vivo Network Unlock - Network unlock and IMEI protection support for Vivo devices",
+        "Mi Account Disable - Disables Mi Account lock on Xiaomi devices",
+        "License Activation - Hardware-based license using TripleDES, SHA hashing, and Rijndael encryption",
+        "Dependencies - emmcdl.exe, adb.exe, fastboot.exe, fh_loader.exe, flash_tool.exe, ICSharpCode.SharpZipLib"
       ]
     },
     {
