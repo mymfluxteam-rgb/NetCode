@@ -1,9 +1,8 @@
 import { useParams, useNavigate } from "react-router";
 import { useState, useEffect, useCallback } from "react";
-import { ArrowLeft, Star, Download, CheckCircle2, Tag, X, ZoomIn } from "lucide-react";
+import { ArrowLeft, Star, Download, CheckCircle2, Tag, X, ZoomIn, ChevronLeft, ChevronRight } from "lucide-react";
 import { Button } from "./ui/button";
 import { Badge } from "./ui/badge";
-import { ImageWithFallback } from "./figma/ImageWithFallback";
 import { sourceCodeItems } from "./BuySourceCode";
 import whatsappQr from "../../imports/whatsapp-qr.png";
 
@@ -35,15 +34,47 @@ export function ProductPage() {
   const { id } = useParams<{ id: string }>();
   const navigate = useNavigate();
   const product = sourceCodeItems.find((item) => item.id === Number(id));
+
+  const allImages = product
+    ? product.images && product.images.length > 0
+      ? product.images
+      : product.image
+      ? [product.image]
+      : []
+    : [];
+
+  const [activeIdx, setActiveIdx] = useState(0);
   const [lightboxOpen, setLightboxOpen] = useState(false);
+  const [lightboxIdx, setLightboxIdx] = useState(0);
 
   const closeLightbox = useCallback(() => setLightboxOpen(false), []);
 
+  const lightboxPrev = useCallback(
+    (e: React.MouseEvent) => {
+      e.stopPropagation();
+      setLightboxIdx((i) => (i - 1 + allImages.length) % allImages.length);
+    },
+    [allImages.length]
+  );
+
+  const lightboxNext = useCallback(
+    (e: React.MouseEvent) => {
+      e.stopPropagation();
+      setLightboxIdx((i) => (i + 1) % allImages.length);
+    },
+    [allImages.length]
+  );
+
   useEffect(() => {
-    const onKey = (e: KeyboardEvent) => { if (e.key === "Escape") closeLightbox(); };
-    if (lightboxOpen) window.addEventListener("keydown", onKey);
+    if (!lightboxOpen) return;
+    const onKey = (e: KeyboardEvent) => {
+      if (e.key === "Escape") closeLightbox();
+      if (e.key === "ArrowLeft") setLightboxIdx((i) => (i - 1 + allImages.length) % allImages.length);
+      if (e.key === "ArrowRight") setLightboxIdx((i) => (i + 1) % allImages.length);
+    };
+    window.addEventListener("keydown", onKey);
     return () => window.removeEventListener("keydown", onKey);
-  }, [lightboxOpen, closeLightbox]);
+  }, [lightboxOpen, closeLightbox, allImages.length]);
 
   if (!product) {
     return (
@@ -68,18 +99,19 @@ export function ProductPage() {
       </button>
 
       <div className="grid lg:grid-cols-5 gap-10">
-        {/* Left column — image + contact */}
+        {/* Left column — gallery + contact */}
         <div className="lg:col-span-2 space-y-6">
-          {product.image && (
-            <>
+          {allImages.length > 0 && (
+            <div className="space-y-2">
+              {/* Main image */}
               <div
                 className="rounded-xl overflow-hidden border border-gray-200 shadow-sm bg-gray-50 relative group cursor-zoom-in"
-                onDoubleClick={() => setLightboxOpen(true)}
+                onDoubleClick={() => { setLightboxIdx(activeIdx); setLightboxOpen(true); }}
                 title="Double-click to zoom"
               >
-                <ImageWithFallback
-                  src={product.image}
-                  alt={product.name}
+                <img
+                  src={allImages[activeIdx]}
+                  alt={`${product.name} screenshot ${activeIdx + 1}`}
                   className="w-full h-auto object-contain"
                 />
                 <div className="absolute inset-0 flex items-center justify-center opacity-0 group-hover:opacity-100 transition-opacity bg-black/10 pointer-events-none">
@@ -88,28 +120,86 @@ export function ProductPage() {
                     Double-click to zoom
                   </div>
                 </div>
+                {allImages.length > 1 && (
+                  <div className="absolute bottom-2 right-2 bg-black/50 text-white text-xs px-2 py-0.5 rounded-full pointer-events-none">
+                    {activeIdx + 1} / {allImages.length}
+                  </div>
+                )}
               </div>
 
-              {lightboxOpen && (
-                <div
-                  className="fixed inset-0 z-50 flex items-center justify-center bg-black/80 backdrop-blur-sm"
-                  onClick={closeLightbox}
-                >
-                  <button
-                    onClick={closeLightbox}
-                    className="absolute top-4 right-4 bg-white/10 hover:bg-white/20 text-white rounded-full p-2 transition-colors"
-                  >
-                    <X className="w-6 h-6" />
-                  </button>
-                  <img
-                    src={product.image}
-                    alt={product.name}
-                    className="max-w-[90vw] max-h-[90vh] object-contain rounded-lg shadow-2xl"
-                    onClick={(e) => e.stopPropagation()}
-                  />
+              {/* Thumbnail strip — only shown when multiple images */}
+              {allImages.length > 1 && (
+                <div className="flex gap-2 overflow-x-auto pb-1">
+                  {allImages.map((src, idx) => (
+                    <button
+                      key={idx}
+                      onClick={() => setActiveIdx(idx)}
+                      className={`flex-shrink-0 w-16 h-16 rounded-lg overflow-hidden border-2 transition-all ${
+                        idx === activeIdx
+                          ? "border-blue-500 shadow-md scale-105"
+                          : "border-gray-200 hover:border-blue-300 opacity-70 hover:opacity-100"
+                      }`}
+                    >
+                      <img
+                        src={src}
+                        alt={`Thumbnail ${idx + 1}`}
+                        className="w-full h-full object-cover"
+                      />
+                    </button>
+                  ))}
                 </div>
               )}
-            </>
+            </div>
+          )}
+
+          {/* Lightbox */}
+          {lightboxOpen && allImages.length > 0 && (
+            <div
+              className="fixed inset-0 z-50 flex items-center justify-center bg-black/85 backdrop-blur-sm"
+              onClick={closeLightbox}
+            >
+              <button
+                onClick={closeLightbox}
+                className="absolute top-4 right-4 bg-white/10 hover:bg-white/25 text-white rounded-full p-2 transition-colors"
+              >
+                <X className="w-6 h-6" />
+              </button>
+
+              {allImages.length > 1 && (
+                <>
+                  <button
+                    onClick={lightboxPrev}
+                    className="absolute left-4 bg-white/10 hover:bg-white/25 text-white rounded-full p-3 transition-colors"
+                  >
+                    <ChevronLeft className="w-6 h-6" />
+                  </button>
+                  <button
+                    onClick={lightboxNext}
+                    className="absolute right-4 bg-white/10 hover:bg-white/25 text-white rounded-full p-3 transition-colors"
+                  >
+                    <ChevronRight className="w-6 h-6" />
+                  </button>
+                  <div className="absolute bottom-4 left-1/2 -translate-x-1/2 flex gap-2">
+                    {allImages.map((_, idx) => (
+                      <button
+                        key={idx}
+                        onClick={(e) => { e.stopPropagation(); setLightboxIdx(idx); }}
+                        className={`w-2 h-2 rounded-full transition-all ${
+                          idx === lightboxIdx ? "bg-white scale-125" : "bg-white/40 hover:bg-white/70"
+                        }`}
+                      />
+                    ))}
+                  </div>
+                </>
+              )}
+
+              <img
+                src={allImages[lightboxIdx]}
+                alt={`${product.name} screenshot ${lightboxIdx + 1}`}
+                className="max-w-[88vw] max-h-[88vh] object-contain rounded-lg shadow-2xl"
+                onClick={(e) => e.stopPropagation()}
+              />
+            </div>
           )}
 
           {/* Pricing card */}

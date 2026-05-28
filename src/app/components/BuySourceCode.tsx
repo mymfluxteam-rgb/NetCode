@@ -41,6 +41,7 @@ export interface SourceCodeItem {
   downloads: number;
   tags: string[];
   image?: string;
+  images?: string[];
   features?: string[];
 }
 
