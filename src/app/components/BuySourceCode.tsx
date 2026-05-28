@@ -15,6 +15,7 @@ import {
 import mifixProImage from "../../imports/image.png";
 import qualcommToolImage from "../../imports/image-1.png";
 import mtkAuthToolImage from "../../imports/mtk-auth-tool.png";
+import samFwFrpToolImage from "../../imports/samfw-frp-tool.png";
 
 interface SourceCodeItem {
   id: number;
@@ -106,6 +107,30 @@ export function BuySourceCode() {
         "Partition Management - Add/select individual partitions for targeted flashing",
         "CPU Type Support - Compatible with eMMC and UFS storage types",
         "Libraries Used - DevExpress UI, SevenZipSharp, Newtonsoft.Json, Python integration, MTK flash libraries"
+      ]
+    },
+    {
+      id: 10,
+      name: "SamFwFRP Tool",
+      description: "Premium Samsung FRP removal and servicing tool. Supports FRP bypass, factory reset, Knox disable, CSC change, and browser unlock via ADB, AT commands, and APK automation. Integrates with samfw.com API.",
+      price: 500,
+      category: "Desktop Application",
+      rating: 4.8,
+      downloads: 1920,
+      tags: ["C#", "Samsung", "ADB", "AT Commands"],
+      image: samFwFrpToolImage,
+      features: [
+        "New FRP Removal - Enables ADB via AT commands, then pushes and executes frp.bin binary to bypass Factory Reset Protection",
+        "Old FRP Removal - Uses ADB commands to modify settings and launch Google login activity for legacy Samsung devices",
+        "Enable ADB - Uses AT commands over serial port to enable USB debugging on Samsung devices",
+        "CSC Change - Modifies device's Country Specific Code using AT commands and reboots automatically",
+        "Factory Reset (APK) - Installs FacRst.apk and automates UI clicks via ADB for a clean factory reset",
+        "Factory Reset (AT Command) - Uses AT+FACTORST command for MTP mode factory reset without UI automation",
+        "Disable Knox - Uninstalls, clears, and disables ~12 Knox-related system packages via ADB",
+        "Open Browser - Installs a temporary driver, uses linux-adk.exe to put device in Accessory mode, opens YouTube/Google Maps/Samsung Browser",
+        "Read Device Information - Retrieves model, CSC, version, IMEI, serial number, lock status via AT+DEVCONINFO",
+        "Reboot Device - Reboots device using AT+CFUN command",
+        "API Integration - Checks for updates from samfw.com and sends job status reports to samfw.com API"
       ]
     },
     {
