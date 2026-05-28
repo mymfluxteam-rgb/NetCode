@@ -26,6 +26,7 @@ import mymProToolImage from "../../imports/mym-pro-tool.png";
 import qualcommToolV1Image from "../../imports/qualcomm-tool-v1.png";
 import allInOneBypassImage from "../../imports/all-in-one-bypass-icloud.png";
 import fastbootFlasherImage from "../../imports/fastboot-flasher.png";
+import noNeedVpnImage from "../../imports/no-need-vpn-bypass.png";
 
 interface SourceCodeItem {
   id: number;
@@ -481,6 +482,32 @@ export function BuySourceCode() {
         "Auto Reboot - Optional automatic device reboot after flashing completes",
         "Color-coded Log Output - Rich text log box with color-coded status messages for easy debugging",
         "Double-click Firmware Load - Load firmware folder quickly by double-clicking",
+      ],
+    },
+    {
+      id: 21,
+      name: "No Need VPN Bypass Tool",
+      description: "Multi-mode Xiaomi Mi Account bypass tool supporting ADB, Sideload, Fastboot, and EDL modes. Removes Mi Account, FRP, and user locks across 30+ Xiaomi/Redmi devices without VPN requirements.",
+      price: 135,
+      originalPrice: 150,
+      category: "Desktop Application",
+      rating: 4.8,
+      downloads: 1420,
+      tags: ["C#", "Xiaomi", "EDL", "ADB", "Qualcomm"],
+      image: noNeedVpnImage,
+      features: [
+        "ADB & Sideload Mode - Device info retrieval (phone name, MIUI version, Android version, serial, region), user lock removal, device reboot",
+        "Fastboot Mode - Model name & bootloader state retrieval, anti-rollback version check, bootloader unlock check, reboot to EDL",
+        "Fastboot Operations - User lock removal, FRP lock removal, recovery image flashing, boot image flashing",
+        "EDL Mi Account Remove/Bypass - Multiple bypass methods for different Xiaomi/Redmi models without VPN",
+        "EDL FRP Lock Removal - Factory Reset Protection bypass for Qualcomm-based Xiaomi devices in EDL mode",
+        "EDL User Lock Removal - PIN/pattern/password removal via EDL partition operations",
+        "Modem Backup/Restore - Backup and restore modem, modemst1, modemst2, and persist partitions",
+        "Bootloader Unlock (EDL) - Unlock support for specific models including Mi Max 2 and Mi 5 Plus",
+        "30+ Device Support - Mi 4/5/6/8, Redmi 3/4/5/6, Redmi Note series and more Xiaomi/Redmi models",
+        "Test Point Images - Visual test point guides for each supported device model",
+        "Custom Dark UI - Custom-drawn controls with rounded corners, dark theme ComboBox and ContextMenuStrip",
+        "Qualcomm Libraries - Powered by L4AT_QualcommLib, MyLibrary, and miko_cpu_check for low-level operations",
       ],
     },
   ];
