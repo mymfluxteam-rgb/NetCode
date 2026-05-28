@@ -9,7 +9,7 @@ export function Navigation() {
   const navItems = [
     { path: "/", label: "Menu" },
     { path: "/buy-source-code", label: "Buy Source Code" },
-    { path: "/privacy", label: "Privacy" },
+    { path: "/privacy", label: "Docs" },
     { path: "/about", label: "About" },
     { path: "/contact", label: "Contact" },
   ];
