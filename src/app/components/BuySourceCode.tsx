@@ -23,6 +23,7 @@ import androidSamFrpImage from "../../imports/android-samfrp-tool.png";
 import androidServiceToolImage from "../../imports/android-service-tool.png";
 import keyGeneratorImage from "../../imports/key-generator.png";
 import mymProToolImage from "../../imports/mym-pro-tool.png";
+import qualcommToolV1Image from "../../imports/qualcomm-tool-v1.png";
 
 interface SourceCodeItem {
   id: number;
@@ -316,6 +317,33 @@ export function BuySourceCode() {
         "Raw Drive Access - Direct raw disk drive read/write",
         "Qualcomm Chips - MSM8916/17/37/40, SDM439/450/636/660/665 and more",
         "Security Scanner - Detects and kills reverse-engineering tools (dnSpy, IDA, x64dbg, etc.)"
+      ]
+    },
+    {
+      id: 18,
+      name: "Qualcomm Tool Version 1.1",
+      description: "Multi-brand Qualcomm servicing tool with ADB, Fastboot, EDL (9008), and Sideload modes. Covers Xiaomi Mi Account bypass/reset, FRP removal, Oppo user lock/FRP removal, factory reset, and device info reading across a wide range of models.",
+      price: 50,
+      category: "Desktop Application",
+      rating: 4.7,
+      downloads: 2890,
+      tags: ["C#", "Qualcomm", "EDL", "Xiaomi", "Oppo"],
+      image: qualcommToolV1Image,
+      features: [
+        "ADB Mode - Connect to devices in normal Android debug mode",
+        "Fastboot Mode - Connect to devices in bootloader mode; check bootloader lock status",
+        "Qualcomm EDL Mode - Connect via QDLoader 9008 COM port for low-level operations",
+        "Sideload Mode - Factory reset support for MIUI devices in sideload mode",
+        "Mi Account Bypass (ADB) - Disables Find Device and Cloud Service apps then reboots",
+        "Mi Account Reset (EDL) - Writes patched persist partition to remove Mi Account lock",
+        "Mi FRP Reset (EDL) - Resets Factory Reset Protection for Xiaomi devices",
+        "Factory Reset (Sideload) - Wipes user data via Mi Sideload mode",
+        "Read Device Info - Brand, model, Android version, build, CPU type, bootloader status, MIUI info",
+        "Oppo User Lock Remove (EDL) - Removes PIN/password/pattern lock for Oppo A/F/R series",
+        "Oppo FRP Remove (EDL) - Resets FRP lock for Oppo devices",
+        "Xiaomi Models - Mi 3/4/5/6/8/MIX/Note/Pad, Redmi Note/Pro/Prime/S2 series and more",
+        "Oppo Models - A31/33/37/51/53/57/71/77, F1/F3Plus, R7/R9/R9s/X9006 and more",
+        "Tools Used - adb.exe, fastboot.exe, miadb.exe, emmcdl.exe, fh_loader.exe, firehose .mbn/.elf files, Ionic.Zip"
       ]
     },
     {
