@@ -14,6 +14,7 @@ import {
 } from "./ui/dialog";
 import mifixProImage from "../../imports/image.png";
 import qualcommToolImage from "../../imports/image-1.png";
+import mtkAuthToolImage from "../../imports/mtk-auth-tool.png";
 
 interface SourceCodeItem {
   id: number;
@@ -73,6 +74,38 @@ export function BuySourceCode() {
         "Wide Chipset Coverage - Helio P10-P70, G80-G96, Dimensity 700-9400-Ultra (MT6755-MT6991)",
         "Firmware Management - Read/write partitions, preloader flashing, device reboot capabilities",
         "Automatic Updates - Built-in update checking and downloading system"
+      ]
+    },
+    {
+      id: 9,
+      name: "MTK Python Auth Tool",
+      description: "Premium MediaTek smartphone servicing tool with Python integration. Supports FRP erase, MiCloud reset, firmware flashing, and auth bypass across 10+ major brands including Xiaomi, Samsung, Huawei, and more.",
+      price: 700,
+      category: "Desktop Application",
+      rating: 4.8,
+      downloads: 1640,
+      tags: ["C#", "Python", "MediaTek", "DevExpress"],
+      image: mtkAuthToolImage,
+      features: [
+        "Supported Brands - Xiaomi, Vivo, Oppo, Realme, Asus, Samsung, Meizu, Huawei, Nokia, Infinix",
+        "FRP Erase - Factory Reset Protection removal for supported MTK devices",
+        "MiCloud Reset - Bypass and reset Xiaomi MiCloud account lock",
+        "Format Data - Full data format with partition wipe support",
+        "Read Firmware - Read full firmware from device storage",
+        "Flash Firmware - Write firmware via scatter file or preloader",
+        "Read RPMB - Read Replay Protected Memory Block data",
+        "Universal Unlock/Relock - Bootloader unlock and relock operations",
+        "Backup NV Memory - Non-Volatile memory backup for IMEI and calibration data",
+        "Auth Bypass - Authentication bypass for secured MTK devices",
+        "Read Info (UNIF/BROM) - Device info reading in both UNIF and BROM modes",
+        "Scatter File Support - MTK firmware flashing via scatter file format",
+        "Preloader Handling - Custom preloader injection and management",
+        "DA Support - Download Agent support for MTK communication",
+        "Auth File Support - Custom auth file loading for protected devices",
+        "Connection Modes - BromUSB and BromUART connection support",
+        "Partition Management - Add/select individual partitions for targeted flashing",
+        "CPU Type Support - Compatible with eMMC and UFS storage types",
+        "Libraries Used - DevExpress UI, SevenZipSharp, Newtonsoft.Json, Python integration, MTK flash libraries"
       ]
     },
     {
