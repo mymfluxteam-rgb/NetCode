@@ -28,6 +28,7 @@ import qualcommToolV1Image from "../../imports/qualcomm-tool-v1.png";
 import allInOneBypassImage from "../../imports/all-in-one-bypass-icloud.png";
 import fastbootFlasherImage from "../../imports/fastboot-flasher.png";
 import noNeedVpnImage from "../../imports/no-need-vpn-bypass.png";
+import optimaGramImage from "../../imports/optimagram-premium.png";
 
 export interface SourceCodeItem {
   id: number;
@@ -505,6 +506,33 @@ export const sourceCodeItems: SourceCodeItem[] = [
         "Test Point Images - Visual test point guides for each supported device model",
         "Custom Dark UI - Custom-drawn controls with rounded corners, dark theme ComboBox and ContextMenuStrip",
         "Qualcomm Libraries - Powered by L4AT_QualcommLib, MyLibrary, and miko_cpu_check for low-level operations",
+      ],
+    },
+    {
+      id: 22,
+      name: "Telegram Web-K [ OptimaGram Premium ]",
+      description: "Premium Telegram Web-K client with advanced subscription management, fast message templates, two-way translation, auto-reply engine, and cross-device cloud sync. Built on Supabase with device fingerprinting security.",
+      price: 910,
+      originalPrice: 1300,
+      category: "E-Commerce Platform",
+      rating: 4.9,
+      downloads: 980,
+      tags: ["TypeScript", "Telegram", "Supabase", "Web", "E-Commerce"],
+      image: optimaGramImage,
+      features: [
+        "Subscription System (Supabase) - Device fingerprinting for security, persistent encrypted local storage for subscription tokens, free trial mode, paywall UI on expiry, auto-renewal prompts, and full subscription bootstrap/state management",
+        "Quick Messages Templates - Predefined message templates supporting text, images, and video. Edit mode: create, edit, reorder, and delete templates. Template matching modes: exact, contains, starts with",
+        "Media Uploads - Upload images and videos directly to Telegram with inline previews from within templates",
+        "Language Format - Two-way translation configuration with 'Your language' and 'Client language' selectors supporting 15+ languages. Layout style options and auto-reply toggle",
+        "Fast Messages Auto Reply - Listens to incoming messages and automatically replies when a message matches a template trigger",
+        "Loop Prevention - Ignores outgoing messages and own Saved Messages, throttles to 1 auto-reply per peer every 30 seconds, remembers recent replies to prevent echo loops",
+        "Fast Messages Cloud Sync - Synchronises Fast Messages templates across devices using your Saved Messages chat",
+        "Hidden Sync Marker - Templates stored as a hidden, pinned message in Saved Messages with marker header to prevent accidental edits",
+        "Debounced Saves - 3-second debounce on cloud saves to avoid API spam, with automatic cleanup of old sync markers",
+        "Multi-account Sessions - Up to 20 signed-in accounts, ~45–55 MB RAM per active session, multi-profile switcher with isolated per-account data",
+        "Show Deleted Messages - Integrated in Chat View with top-bar toggle, inline recovery rows, date grouping, and live-vs-history dedupe",
+        "Recovery Deleted Data - Database-backed recovery with local history store, media re-download, and in-thread preview",
+        "Premium Active UI - All premium features listed per-row with unlock modes clearly shown in the OptimaGram Premium features panel",
       ],
     },
 ];
