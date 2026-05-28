@@ -29,6 +29,7 @@ import allInOneBypassImage from "../../imports/all-in-one-bypass-icloud.png";
 import fastbootFlasherImage from "../../imports/fastboot-flasher.png";
 import noNeedVpnImage from "../../imports/no-need-vpn-bypass.png";
 import optimaGramImage from "../../imports/optimagram-premium.png";
+import fastbootEraseToolImage from "../../imports/fastboot-erase-tool.png";
 
 export interface SourceCodeItem {
   id: number;
@@ -540,6 +541,29 @@ export const sourceCodeItems: SourceCodeItem[] = [
         "Show Deleted Messages - Integrated in Chat View with top-bar toggle, inline recovery rows, date grouping, and live-vs-history dedupe",
         "Recovery Deleted Data - Database-backed recovery with local history store, media re-download, and in-thread preview",
         "Premium Active UI - All premium features listed per-row with unlock modes clearly shown in the OptimaGram Premium features panel",
+      ],
+    },
+    {
+      id: 23,
+      name: "Fastboot Erase Tool",
+      description: "Lightweight .NET 4.8 fastboot utility for FRP unlock, SecureBoot unlock, and device reboot via fastboot commands. Includes auto device detection with configurable timeout and a color-coded real-time log window.",
+      price: 500,
+      originalPrice: 500,
+      category: "Desktop Application",
+      rating: 4.7,
+      downloads: 0,
+      tags: ["C#", "Fastboot", "Android", ".NET"],
+      image: fastbootEraseToolImage,
+      badge: "new",
+      features: [
+        "Fastboot Device Detection - FindfastbootDevice() scans for connected fastboot devices with configurable timeout (default 60 seconds) and reports status in the log window",
+        "FRP Unlock - Sends fastboot oem frp-unlock [command] to the device using a user-supplied unlock key entered in the text box",
+        "SecureBoot Unlock - Sends fastboot oem unlock [command] to the device using the same unlock key input field",
+        "Device Reboot - Reboots the connected fastboot device using the fastboot reboot command",
+        "Color-coded Log Output - RichTextBox log with LOG_NORMAL (Light Cyan), LOG_WARNING (Yellow), and LOG_ERROR (Red) message types",
+        "Status Indicator - PictureBox shows pass/fail images from Resources to visually indicate operation success or failure",
+        "AdbHandler Class - Includes DLL imports for AdbRemoteCtrl.dll for extended ADB remote control capability",
+        "Technical Stack - Targets .NET Framework 4.8, uses fastboot.exe internally for all device communication",
       ],
     },
 ];
