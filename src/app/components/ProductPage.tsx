@@ -1,5 +1,6 @@
 import { useParams, useNavigate } from "react-router";
-import { ArrowLeft, Star, Download, CheckCircle2, Tag } from "lucide-react";
+import { useState, useEffect, useCallback } from "react";
+import { ArrowLeft, Star, Download, CheckCircle2, Tag, X, ZoomIn } from "lucide-react";
 import { Button } from "./ui/button";
 import { Badge } from "./ui/badge";
 import { ImageWithFallback } from "./figma/ImageWithFallback";
@@ -34,6 +35,15 @@ export function ProductPage() {
   const { id } = useParams<{ id: string }>();
   const navigate = useNavigate();
   const product = sourceCodeItems.find((item) => item.id === Number(id));
+  const [lightboxOpen, setLightboxOpen] = useState(false);
+
+  const closeLightbox = useCallback(() => setLightboxOpen(false), []);
+
+  useEffect(() => {
+    const onKey = (e: KeyboardEvent) => { if (e.key === "Escape") closeLightbox(); };
+    if (lightboxOpen) window.addEventListener("keydown", onKey);
+    return () => window.removeEventListener("keydown", onKey);
+  }, [lightboxOpen, closeLightbox]);
 
   if (!product) {
     return (
@@ -61,13 +71,45 @@ export function ProductPage() {
         {/* Left column — image + contact */}
         <div className="lg:col-span-2 space-y-6">
           {product.image && (
-            <div className="rounded-xl overflow-hidden border border-gray-200 shadow-sm bg-gray-50">
-              <ImageWithFallback
-                src={product.image}
-                alt={product.name}
-                className="w-full h-auto object-contain"
-              />
-            </div>
+            <>
+              <div
+                className="rounded-xl overflow-hidden border border-gray-200 shadow-sm bg-gray-50 relative group cursor-zoom-in"
+                onDoubleClick={() => setLightboxOpen(true)}
+                title="Double-click to zoom"
+              >
+                <ImageWithFallback
+                  src={product.image}
+                  alt={product.name}
+                  className="w-full h-auto object-contain"
+                />
+                <div className="absolute inset-0 flex items-center justify-center opacity-0 group-hover:opacity-100 transition-opacity bg-black/10 pointer-events-none">
+                  <div className="bg-black/50 text-white text-xs px-2 py-1 rounded-full flex items-center gap-1">
+                    <ZoomIn className="w-3 h-3" />
+                    Double-click to zoom
+                  </div>
+                </div>
+              </div>
+
+              {lightboxOpen && (
+                <div
+                  className="fixed inset-0 z-50 flex items-center justify-center bg-black/80 backdrop-blur-sm"
+                  onClick={closeLightbox}
+                >
+                  <button
+                    onClick={closeLightbox}
+                    className="absolute top-4 right-4 bg-white/10 hover:bg-white/20 text-white rounded-full p-2 transition-colors"
+                  >
+                    <X className="w-6 h-6" />
+                  </button>
+                  <img
+                    src={product.image}
+                    alt={product.name}
+                    className="max-w-[90vw] max-h-[90vh] object-contain rounded-lg shadow-2xl"
+                    onClick={(e) => e.stopPropagation()}
+                  />
+                </div>
+              )}
+            </>
           )}
 
           {/* Pricing card */}
