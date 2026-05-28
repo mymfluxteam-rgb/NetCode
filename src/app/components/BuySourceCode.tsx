@@ -24,6 +24,7 @@ import androidServiceToolImage from "../../imports/android-service-tool.png";
 import keyGeneratorImage from "../../imports/key-generator.png";
 import mymProToolImage from "../../imports/mym-pro-tool.png";
 import qualcommToolV1Image from "../../imports/qualcomm-tool-v1.png";
+import allInOneBypassImage from "../../imports/all-in-one-bypass-icloud.png";
 
 interface SourceCodeItem {
   id: number;
@@ -344,6 +345,36 @@ export function BuySourceCode() {
         "Xiaomi Models - Mi 3/4/5/6/8/MIX/Note/Pad, Redmi Note/Pro/Prime/S2 series and more",
         "Oppo Models - A31/33/37/51/53/57/71/77, F1/F3Plus, R7/R9/R9s/X9006 and more",
         "Tools Used - adb.exe, fastboot.exe, miadb.exe, emmcdl.exe, fh_loader.exe, firehose .mbn/.elf files, Ionic.Zip"
+      ]
+    },
+    {
+      id: 19,
+      name: "All in One Bypass iCloud V6",
+      description: "Comprehensive iOS activation lock bypass tool supporting GSM, MEID, and broken baseband bypass, MDM unlock, passcode bypass, Apple ID removal, and untethered bypass. Uses SSH/libimobiledevice for deep device access on jailbroken iOS.",
+      price: 500,
+      category: "Desktop Application",
+      rating: 4.8,
+      downloads: 1340,
+      tags: ["C#", "iOS", "iCloud Bypass", "SSH", "MDM"],
+      image: allInOneBypassImage,
+      features: [
+        "USB Device Detection - Connects and detects iOS devices; retrieves serial, UDID, iOS version, model, IMEI/MEID, activation state",
+        "Jailbreak Detection - Detects jailbreak status and establishes SSH connectivity to the device",
+        "GSM Bypass - Activation lock bypass with full cellular signal support",
+        "MEID Bypass (N/S) - Activation lock bypass without signal for MEID devices",
+        "Broken Baseband Bypass - Bypass for devices with broken or missing baseband hardware",
+        "MDM Unlock - Removes Mobile Device Management profiles from locked iOS devices",
+        "Passcode Bypass - Bypass via backup extraction and activation restore",
+        "Apple ID Removal - Removes Apple ID lock via hidden account menu",
+        "App Patching - Patches installed apps for compatibility post-bypass",
+        "A11 Device Erasure - Erase iOS 14+ A11 chip devices (Erase iOS 14 - A11)",
+        "Banking App Fix - Patches banking apps to work correctly after bypass",
+        "USB Patching - Patches USB communication layer for device access",
+        "Disable OTA - Disables over-the-air iOS update prompts",
+        "Anti-Reset - Applies settings to prevent accidental device reset",
+        "SSH/SCP Access - File system mounting, modification, and plist editing on jailbroken devices",
+        "libimobiledevice - Uses ideviceinfo, idevicepair, ideviceactivation and related utilities",
+        "Untethered Bypass - Persistent bypass that survives reboots via Cydia Substrate tweaks"
       ]
     },
     {
