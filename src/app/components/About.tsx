@@ -4,7 +4,7 @@ import { ImageWithFallback } from "./figma/ImageWithFallback";
 
 export function About() {
   const stats = [
-    { label: "Source Code Projects", value: "500+" },
+    { label: "Premium Source Code Projects", value: "20+" },
     { label: "Happy Customers", value: "10,000+" },
     { label: "Countries Served", value: "75+" },
     { label: "Customer Satisfaction", value: "98%" },

@@ -174,7 +174,7 @@ export function Privacy() {
               <div className="bg-white rounded-lg p-4 text-center shadow-sm">
                 <Star className="w-8 h-8 text-yellow-500 mx-auto mb-2" />
                 <p className="font-semibold text-gray-900">Genuine Code</p>
-                <p className="text-sm text-gray-600 mt-1">No resold or leaked tools — all source code is original and owned by us</p>
+                <p className="text-sm text-gray-600 mt-1">All source code is original and owned by us. Customers are not allowed to resell purchased source code without a license.</p>
               </div>
               <div className="bg-white rounded-lg p-4 text-center shadow-sm">
                 <Zap className="w-8 h-8 text-blue-500 mx-auto mb-2" />
