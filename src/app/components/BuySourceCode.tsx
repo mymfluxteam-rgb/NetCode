@@ -1,4 +1,5 @@
 import { useState } from "react";
+import { useNavigate } from "react-router";
 import { ShoppingCart, Star, Download, Search, X } from "lucide-react";
 import { Button } from "./ui/button";
 import { Card, CardContent, CardDescription, CardFooter, CardHeader, CardTitle } from "./ui/card";
@@ -28,7 +29,7 @@ import allInOneBypassImage from "../../imports/all-in-one-bypass-icloud.png";
 import fastbootFlasherImage from "../../imports/fastboot-flasher.png";
 import noNeedVpnImage from "../../imports/no-need-vpn-bypass.png";
 
-interface SourceCodeItem {
+export interface SourceCodeItem {
   id: number;
   name: string;
   description: string;
@@ -42,11 +43,7 @@ interface SourceCodeItem {
   features?: string[];
 }
 
-export function BuySourceCode() {
-  const [searchQuery, setSearchQuery] = useState("");
-  const [selectedProduct, setSelectedProduct] = useState<SourceCodeItem | null>(null);
-
-  const sourceCodeItems: SourceCodeItem[] = [
+export const sourceCodeItems: SourceCodeItem[] = [
     {
       id: 1,
       name: "Qualcomm Service Tool",
@@ -510,7 +507,12 @@ export function BuySourceCode() {
         "Qualcomm Libraries - Powered by L4AT_QualcommLib, MyLibrary, and miko_cpu_check for low-level operations",
       ],
     },
-  ];
+];
+
+export function BuySourceCode() {
+  const [searchQuery, setSearchQuery] = useState("");
+  const [selectedProduct, setSelectedProduct] = useState<SourceCodeItem | null>(null);
+  const navigate = useNavigate();
 
   const filteredItems = sourceCodeItems.filter((item) =>
     item.name.toLowerCase().includes(searchQuery.toLowerCase()) ||
@@ -610,7 +612,10 @@ export function BuySourceCode() {
                 </div>
                 <span className="text-sm text-gray-400 line-through">${item.originalPrice}</span>
               </div>
-              <Button className="bg-blue-600 hover:bg-blue-700">
+              <Button
+                className="bg-blue-600 hover:bg-blue-700"
+                onClick={() => navigate(`/product/${item.id}`)}
+              >
                 <ShoppingCart className="w-4 h-4 mr-2" />
                 Buy Now
               </Button>
