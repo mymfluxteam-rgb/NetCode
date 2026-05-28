@@ -32,6 +32,7 @@ interface SourceCodeItem {
   name: string;
   description: string;
   price: number;
+  originalPrice: number;
   category: string;
   rating: number;
   downloads: number;
@@ -49,7 +50,8 @@ export function BuySourceCode() {
       id: 1,
       name: "Qualcomm Service Tool",
       description: "Premium Qualcomm EDL service tool with advanced flashing capabilities, one-click operations, Mi Fastboot support, and MTP bypass. Supports 725+ devices with auto-loader detection.",
-      price: 1000,
+      price: 700,
+      originalPrice: 1000,
       category: "Desktop Application",
       rating: 4.9,
       downloads: 2850,
@@ -70,7 +72,8 @@ export function BuySourceCode() {
       id: 2,
       name: "Xiaomi Auth Flashing (Mi Fix Pro)",
       description: "Professional Xiaomi device unlocking and flashing tool with support for Qualcomm and MediaTek chipsets. Includes user authentication, credit system, and automatic updates.",
-      price: 2000,
+      price: 1400,
+      originalPrice: 2000,
       category: "Desktop Application",
       rating: 4.9,
       downloads: 3200,
@@ -91,7 +94,8 @@ export function BuySourceCode() {
       id: 9,
       name: "MTK Python Auth Tool",
       description: "Premium MediaTek smartphone servicing tool with Python integration. Supports FRP erase, MiCloud reset, firmware flashing, and auth bypass across 10+ major brands including Xiaomi, Samsung, Huawei, and more.",
-      price: 700,
+      price: 630,
+      originalPrice: 700,
       category: "Desktop Application",
       rating: 4.8,
       downloads: 1640,
@@ -123,7 +127,8 @@ export function BuySourceCode() {
       id: 10,
       name: "SamFwFRP Tool",
       description: "Premium Samsung FRP removal and servicing tool. Supports FRP bypass, factory reset, Knox disable, CSC change, and browser unlock via ADB, AT commands, and APK automation. Integrates with samfw.com API.",
-      price: 500,
+      price: 450,
+      originalPrice: 500,
       category: "Desktop Application",
       rating: 4.8,
       downloads: 1920,
@@ -147,7 +152,8 @@ export function BuySourceCode() {
       id: 11,
       name: "Universal Activator MEID/GSM Full Signal",
       description: "Premium iOS activation bypass tool supporting MEID and GSM models on iOS 12–17. Detects connected devices, displays full device info, and performs iCloud activation lock bypass using SSH, jailbreak tools, and server-side API communication.",
-      price: 400,
+      price: 360,
+      originalPrice: 400,
       category: "Desktop Application",
       rating: 4.7,
       downloads: 1105,
@@ -173,7 +179,8 @@ export function BuySourceCode() {
       id: 12,
       name: "ISP Programmer Tool",
       description: "Advanced ISP (In-System Programming) tool for direct eMMC/SD card flashing, partition management, FRP removal, and factory reset. Supports Qualcomm and MediaTek chipsets with low-level disk I/O via Windows API.",
-      price: 500,
+      price: 450,
+      originalPrice: 500,
       category: "Desktop Application",
       rating: 4.8,
       downloads: 980,
@@ -198,7 +205,8 @@ export function BuySourceCode() {
       id: 13,
       name: "Xiaomi Fire Tool",
       description: "Full-featured Xiaomi flashing and servicing tool with server authentication, credit system, ADB/Fastboot tools, EDL mode flashing, and MTK support. Connects to xiaomifiretool.in for auth and credit management.",
-      price: 1500,
+      price: 1050,
+      originalPrice: 1500,
       category: "Desktop Application",
       rating: 4.9,
       downloads: 2430,
@@ -227,7 +235,8 @@ export function BuySourceCode() {
       id: 14,
       name: "Android SamFrp Tool",
       description: "Lightweight Samsung FRP bypass and ADB enabler tool. Detects Samsung modem ports, sends AT command sequences to enable USB debugging, resets FRP lock via ADB, and reads full device information.",
-      price: 100,
+      price: 90,
+      originalPrice: 100,
       category: "Desktop Application",
       rating: 4.6,
       downloads: 3180,
@@ -247,7 +256,8 @@ export function BuySourceCode() {
       id: 15,
       name: "Android Service Tool",
       description: "Multi-brand Android servicing tool with Qualcomm EDL mode support, ADB device info, partition operations, FRP/lock removal, and a hardware-based license activation system. Covers Qualcomm, Samsung, MTK, Meizu, Mi-Oppo and more.",
-      price: 350,
+      price: 315,
+      originalPrice: 350,
       category: "Desktop Application",
       rating: 4.8,
       downloads: 1760,
@@ -275,7 +285,8 @@ export function BuySourceCode() {
       id: 16,
       name: "Key Generator (Keygen)",
       description: "Lightweight C# keygen tool that generates 19-character hyphenated license keys from a base input string. Includes clipboard copy, run-count tracking, and a Topup system for distributing keys to end users.",
-      price: 25,
+      price: 23,
+      originalPrice: 25,
       category: "Desktop Application",
       rating: 4.5,
       downloads: 4210,
@@ -296,7 +307,8 @@ export function BuySourceCode() {
       id: 17,
       name: "MYM Pro Tool",
       description: "Universal multi-chip Android servicing tool supporting Qualcomm EDL, MediaTek, eMMC ISP, Samsung, and Fastboot modes. Includes Format Data, FRP erase, Mi Cloud disable, NV backup/restore, bootloader relock, and a built-in security scanner.",
-      price: 300,
+      price: 270,
+      originalPrice: 300,
       category: "Desktop Application",
       rating: 4.9,
       downloads: 1580,
@@ -325,7 +337,8 @@ export function BuySourceCode() {
       id: 18,
       name: "Qualcomm Tool Version 1.1",
       description: "Multi-brand Qualcomm servicing tool with ADB, Fastboot, EDL (9008), and Sideload modes. Covers Xiaomi Mi Account bypass/reset, FRP removal, Oppo user lock/FRP removal, factory reset, and device info reading across a wide range of models.",
-      price: 50,
+      price: 45,
+      originalPrice: 50,
       category: "Desktop Application",
       rating: 4.7,
       downloads: 2890,
@@ -352,7 +365,8 @@ export function BuySourceCode() {
       id: 19,
       name: "All in One Bypass iCloud V6",
       description: "Comprehensive iOS activation lock bypass tool supporting GSM, MEID, and broken baseband bypass, MDM unlock, passcode bypass, Apple ID removal, and untethered bypass. Uses SSH/libimobiledevice for deep device access on jailbroken iOS.",
-      price: 500,
+      price: 450,
+      originalPrice: 500,
       category: "Desktop Application",
       rating: 4.8,
       downloads: 1340,
@@ -382,7 +396,8 @@ export function BuySourceCode() {
       id: 3,
       name: "E-Commerce Platform",
       description: "Full-featured e-commerce platform with payment integration, product management, and user authentication.",
-      price: 299,
+      price: 269,
+      originalPrice: 299,
       category: "Web Application",
       rating: 4.8,
       downloads: 1250,
@@ -392,7 +407,8 @@ export function BuySourceCode() {
       id: 4,
       name: "Social Media Dashboard",
       description: "Modern social media management dashboard with analytics, scheduling, and multi-platform support.",
-      price: 199,
+      price: 179,
+      originalPrice: 199,
       category: "Dashboard",
       rating: 4.6,
       downloads: 890,
@@ -402,7 +418,8 @@ export function BuySourceCode() {
       id: 5,
       name: "Mobile Banking App",
       description: "Complete mobile banking application with transaction history, transfers, and security features.",
-      price: 399,
+      price: 359,
+      originalPrice: 399,
       category: "Mobile App",
       rating: 4.9,
       downloads: 2100,
@@ -412,7 +429,8 @@ export function BuySourceCode() {
       id: 6,
       name: "Blog CMS",
       description: "Content management system for blogs with SEO optimization, markdown support, and media library.",
-      price: 149,
+      price: 134,
+      originalPrice: 149,
       category: "CMS",
       rating: 4.5,
       downloads: 1580,
@@ -422,7 +440,8 @@ export function BuySourceCode() {
       id: 7,
       name: "Task Management System",
       description: "Collaborative task management platform with team boards, notifications, and time tracking.",
-      price: 249,
+      price: 224,
+      originalPrice: 249,
       category: "Productivity",
       rating: 4.7,
       downloads: 1320,
@@ -432,7 +451,8 @@ export function BuySourceCode() {
       id: 8,
       name: "Real Estate Portal",
       description: "Property listing platform with advanced search, map integration, and virtual tour features.",
-      price: 349,
+      price: 314,
+      originalPrice: 349,
       category: "Web Application",
       rating: 4.8,
       downloads: 760,
@@ -442,7 +462,8 @@ export function BuySourceCode() {
       id: 20,
       name: "Fastboot Flasher",
       description: "Xiaomi fastboot firmware flashing tool with partition parsing, A/B slot support, Mi Cloud disable patch, and color-coded log output. Supports full firmware flashing from flash_all.bat scripts.",
-      price: 250,
+      price: 225,
+      originalPrice: 250,
       category: "Desktop Application",
       rating: 4.8,
       downloads: 980,
@@ -553,8 +574,14 @@ export function BuySourceCode() {
               </div>
             </CardContent>
             <CardFooter className="flex items-center justify-between">
-              <div>
-                <span className="text-3xl text-gray-900">${item.price}</span>
+              <div className="flex flex-col">
+                <div className="flex items-center gap-2">
+                  <span className="text-3xl font-bold text-gray-900">${item.price}</span>
+                  <Badge className="bg-green-100 text-green-700 border-green-200 text-xs font-semibold">
+                    {item.originalPrice >= 1000 ? "30% OFF" : "10% OFF"}
+                  </Badge>
+                </div>
+                <span className="text-sm text-gray-400 line-through">${item.originalPrice}</span>
               </div>
               <Button className="bg-blue-600 hover:bg-blue-700">
                 <ShoppingCart className="w-4 h-4 mr-2" />
