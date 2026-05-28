@@ -1,6 +1,6 @@
-import { useState } from "react";
+import { useState, useCallback, useEffect } from "react";
 import { useNavigate } from "react-router";
-import { ShoppingCart, Star, Download, Search, X } from "lucide-react";
+import { ShoppingCart, Star, Download, Search, X, ZoomIn } from "lucide-react";
 import { Button } from "./ui/button";
 import { Card, CardContent, CardDescription, CardFooter, CardHeader, CardTitle } from "./ui/card";
 import { Input } from "./ui/input";
@@ -547,7 +547,17 @@ export const sourceCodeItems: SourceCodeItem[] = [
 export function BuySourceCode() {
   const [searchQuery, setSearchQuery] = useState("");
   const [selectedProduct, setSelectedProduct] = useState<SourceCodeItem | null>(null);
+  const [zoomedImage, setZoomedImage] = useState<string | null>(null);
   const navigate = useNavigate();
+
+  const closeZoom = useCallback(() => setZoomedImage(null), []);
+
+  useEffect(() => {
+    if (!zoomedImage) return;
+    const onKey = (e: KeyboardEvent) => { if (e.key === "Escape") closeZoom(); };
+    window.addEventListener("keydown", onKey);
+    return () => window.removeEventListener("keydown", onKey);
+  }, [zoomedImage, closeZoom]);
 
   const filteredItems = sourceCodeItems.filter((item) =>
     item.name.toLowerCase().includes(searchQuery.toLowerCase()) ||
@@ -675,6 +685,27 @@ export function BuySourceCode() {
         </div>
       )}
 
+      {/* Zoom Lightbox */}
+      {zoomedImage && (
+        <div
+          className="fixed inset-0 z-[100] flex items-center justify-center bg-black/90 backdrop-blur-sm"
+          onClick={closeZoom}
+        >
+          <button
+            onClick={closeZoom}
+            className="absolute top-4 right-4 bg-white/10 hover:bg-white/25 text-white rounded-full p-2 transition-colors"
+          >
+            <X className="w-6 h-6" />
+          </button>
+          <img
+            src={zoomedImage}
+            alt="Zoomed view"
+            className="max-w-[92vw] max-h-[92vh] object-contain rounded-lg shadow-2xl"
+            onClick={(e) => e.stopPropagation()}
+          />
+        </div>
+      )}
+
       {/* Product Details Modal */}
       <Dialog open={!!selectedProduct} onOpenChange={() => setSelectedProduct(null)}>
         <DialogContent className="max-w-4xl max-h-[90vh] overflow-y-auto">
@@ -700,12 +731,22 @@ export function BuySourceCode() {
 
               <div className="space-y-6">
                 {selectedProduct.image && (
-                  <div className="w-full rounded-lg overflow-hidden bg-gray-100">
+                  <div
+                    className="w-full rounded-lg overflow-hidden bg-gray-100 relative group cursor-zoom-in"
+                    onClick={() => setZoomedImage(selectedProduct.image!)}
+                    title="Click to zoom"
+                  >
                     <ImageWithFallback
                       src={selectedProduct.image}
                       alt={selectedProduct.name}
                       className="w-full h-auto object-contain"
                     />
+                    <div className="absolute inset-0 flex items-center justify-center opacity-0 group-hover:opacity-100 transition-opacity bg-black/10 pointer-events-none">
+                      <div className="bg-black/60 text-white text-xs px-3 py-1.5 rounded-full flex items-center gap-1.5">
+                        <ZoomIn className="w-3.5 h-3.5" />
+                        Click to zoom
+                      </div>
+                    </div>
                   </div>
                 )}
 
