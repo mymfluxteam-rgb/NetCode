@@ -25,6 +25,7 @@ import keyGeneratorImage from "../../imports/key-generator.png";
 import mymProToolImage from "../../imports/mym-pro-tool.png";
 import qualcommToolV1Image from "../../imports/qualcomm-tool-v1.png";
 import allInOneBypassImage from "../../imports/all-in-one-bypass-icloud.png";
+import fastbootFlasherImage from "../../imports/fastboot-flasher.png";
 
 interface SourceCodeItem {
   id: number;
@@ -436,6 +437,30 @@ export function BuySourceCode() {
       rating: 4.8,
       downloads: 760,
       tags: ["React", "Maps API", "Search"],
+    },
+    {
+      id: 20,
+      name: "Fastboot Flasher",
+      description: "Xiaomi fastboot firmware flashing tool with partition parsing, A/B slot support, Mi Cloud disable patch, and color-coded log output. Supports full firmware flashing from flash_all.bat scripts.",
+      price: 250,
+      category: "Desktop Application",
+      rating: 4.8,
+      downloads: 980,
+      tags: ["C#", "Fastboot", "Xiaomi", "Android"],
+      image: fastbootFlasherImage,
+      features: [
+        "Firmware Selection & Parsing - Browse and select Xiaomi fastboot firmware folders, parses flash_all.bat to extract flashable partitions",
+        "Firmware Validation - Checks for images folder and flash script to ensure firmware structure integrity",
+        "Device Information - Detects connected Android devices, shows bootloader status (locked/unlocked), displays product name",
+        "A/B Partition Support - Checks slot count and supports A/B slot selection and setting active slot",
+        "Flashing Capabilities - Erases boot and metadata partitions first, then flashes selected partitions from parsed firmware",
+        "Verified Boot Disable - Optional vbmeta.img flash with --disable-verity --disable-verification flags",
+        "Mi Cloud Disable Patch - Modifies NON-HLOS.bin to disable Mi Cloud on Qualcomm devices",
+        "Partition Selection - Checkbox list to select which partitions to flash with Select All / Unselect All buttons",
+        "Auto Reboot - Optional automatic device reboot after flashing completes",
+        "Color-coded Log Output - Rich text log box with color-coded status messages for easy debugging",
+        "Double-click Firmware Load - Load firmware folder quickly by double-clicking",
+      ],
     },
   ];
 
