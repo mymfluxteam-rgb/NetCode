@@ -17,6 +17,7 @@ import qualcommToolImage from "../../imports/image-1.png";
 import mtkAuthToolImage from "../../imports/mtk-auth-tool.png";
 import samFwFrpToolImage from "../../imports/samfw-frp-tool.png";
 import universalActivatorImage from "../../imports/universal-activator.png";
+import ispProgrammerImage from "../../imports/isp-programmer-tool.png";
 
 interface SourceCodeItem {
   id: number;
@@ -158,6 +159,31 @@ export function BuySourceCode() {
         "Server API Communication - HTTP GET/POST requests to remote activation server for bypass operations",
         "Serial Number Registration - Registers device serial number with the activation server",
         "Security & Process Management - Terminates debuggers and proxy tools (Wireshark, CharlesProxy, Fiddler, etc.)"
+      ]
+    },
+    {
+      id: 12,
+      name: "ISP Programmer Tool",
+      description: "Advanced ISP (In-System Programming) tool for direct eMMC/SD card flashing, partition management, FRP removal, and factory reset. Supports Qualcomm and MediaTek chipsets with low-level disk I/O via Windows API.",
+      price: 500,
+      category: "Desktop Application",
+      rating: 4.8,
+      downloads: 980,
+      tags: ["C#", "VB.NET", "eMMC", "GPT"],
+      image: ispProgrammerImage,
+      features: [
+        "Disk Detection - Detects removable storage (eMMC, SD cards) via WMI with model and size info; requires admin privileges",
+        "GPT Partition Table - Reads and parses GUID Partition Table, displays partitions with name, size, and offset using 7-Zip",
+        "Write Partitions - Flash .img partition images to specific partitions on the disk",
+        "Read/Backup Partitions - Save selected partitions to .bin files using secinspect.exe",
+        "Erase Partitions - Wipe selected partitions using dd.exe with /dev/zero; checkbox-based partition selection",
+        "Factory Reset - Writes userdata partition to perform a complete factory reset",
+        "FRP Removal - Erases FRP/config partition to bypass Factory Reset Protection lock",
+        "Qualcomm & MediaTek Support - Chipset-specific operations for both QCOM and MTK devices",
+        "Sparse Image Handling - Converts Android sparse .img files to raw images using simg2img.exe before writing",
+        "Low-Level Disk I/O - Direct sector-level read/write using Windows API (CreateFile, ReadFile, WriteFile, DeviceIoControl)",
+        "Background Worker - Progress reporting during long read/write operations via background thread",
+        "Utility Tools - Includes 7-Zip, dd.exe, secinspect.exe, simg2img.exe, gdisk.exe and more disk utilities"
       ]
     },
     {
