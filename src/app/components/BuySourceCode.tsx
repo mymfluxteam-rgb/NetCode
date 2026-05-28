@@ -21,6 +21,7 @@ import ispProgrammerImage from "../../imports/isp-programmer-tool.png";
 import xiaomiFireToolImage from "../../imports/xiaomi-fire-tool.png";
 import androidSamFrpImage from "../../imports/android-samfrp-tool.png";
 import androidServiceToolImage from "../../imports/android-service-tool.png";
+import keyGeneratorImage from "../../imports/key-generator.png";
 
 interface SourceCodeItem {
   id: number;
@@ -264,6 +265,27 @@ export function BuySourceCode() {
         "Mi Account Disable - Disables Mi Account lock on Xiaomi devices",
         "License Activation - Hardware-based license using TripleDES, SHA hashing, and Rijndael encryption",
         "Dependencies - emmcdl.exe, adb.exe, fastboot.exe, fh_loader.exe, flash_tool.exe, ICSharpCode.SharpZipLib"
+      ]
+    },
+    {
+      id: 16,
+      name: "Key Generator (Keygen)",
+      description: "Lightweight C# keygen tool that generates 19-character hyphenated license keys from a base input string. Includes clipboard copy, run-count tracking, and a Topup system for distributing keys to end users.",
+      price: 25,
+      category: "Desktop Application",
+      rating: 4.5,
+      downloads: 4210,
+      tags: ["C#", "License", "Keygen", "WinForms"],
+      image: keyGeneratorImage,
+      features: [
+        "Base Input - Accepts a user-provided base string (System Product ID) to seed key generation",
+        "Custom Key Generation - GetChar() maps digits 0–9 to letters; GetNum() maps letters A–Z to digits",
+        "Key Format - Outputs a 19-character hyphenated key in XXXX-XXXX-XXXX-XXXX format",
+        "Key Display - Shows generated key in a read-only output field",
+        "Copy to Clipboard - One-click copy of the generated key",
+        "Topup System - Secondary form accepts System Product ID and TopUp Key for run-count top-up",
+        "Run Tracking - Built-in application run counter (default 999 runs, adjustable via key positions)",
+        "Close Button - Simple exit functionality built into the UI"
       ]
     },
     {
