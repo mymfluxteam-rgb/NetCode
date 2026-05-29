@@ -955,18 +955,23 @@ export function BuySourceCode() {
                 <div className="flex flex-wrap gap-2">
                   <p className="w-full text-sm text-slate-400 mb-1">Technologies:</p>
                   {selectedProduct.tags.map((tag) => (
-                    <Badge key={tag} variant="outline">
+                    <Badge key={tag} variant="outline" className="text-slate-300 border-slate-500">
                       {tag}
                     </Badge>
                   ))}
                 </div>
 
-                <div className="flex items-center gap-4 text-sm text-slate-400">
-                  <div className="flex items-center gap-1">
-                    <Download className="w-4 h-4" />
-                    <span>{selectedProduct.downloads.toLocaleString()} downloads</span>
+                {selectedProduct.price === 0 ? (
+                  <div className="flex items-center gap-1.5 text-emerald-400 font-medium text-sm">
+                    <CheckCircle className="w-4 h-4" />
+                    <span>Instant download</span>
                   </div>
-                </div>
+                ) : (
+                  <div className="flex items-center gap-1.5 text-slate-500 text-sm">
+                    <Lock className="w-4 h-4" />
+                    <span>No download available</span>
+                  </div>
+                )}
 
                 <div className="flex items-center justify-between pt-4 border-t">
                   <div>
