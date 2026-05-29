@@ -15,6 +15,8 @@ import {
 } from "./ui/dialog";
 import mifixProImage from "../../imports/image.png";
 import qualcommToolImage from "../../imports/qualcomm-service-tool.png";
+import qualcommCustomer1Image from "../../imports/qualcomm-customer-1.png";
+import qualcommCustomer2Image from "../../imports/qualcomm-customer-2.png";
 import mtkAuthToolImage from "../../imports/mtk-auth-tool.png";
 import samFwFrpToolImage from "../../imports/samfw-frp-tool.png";
 import universalActivatorImage from "../../imports/universal-activator.png";
@@ -60,6 +62,7 @@ export const sourceCodeItems: SourceCodeItem[] = [
       downloads: 2850,
       tags: ["C#", "Qualcomm", "EDL", "Fastboot"],
       image: qualcommToolImage,
+      images: [qualcommToolImage, qualcommCustomer1Image, qualcommCustomer2Image],
       badge: "featured",
       features: [
         "EDL Flashing (FlashUI.cs) - Auto-detect partition table (eMMC/UFS), flash/read/erase partitions, XML flash file support",
