@@ -548,7 +548,7 @@ export const sourceCodeItems: SourceCodeItem[] = [
       id: 23,
       name: "Fastboot Erase Tool",
       description: "Lightweight .NET 4.8 fastboot utility for FRP unlock, SecureBoot unlock, and device reboot via fastboot commands. Includes auto device detection with configurable timeout and a color-coded real-time log window.",
-      price: 500,
+      price: 450,
       originalPrice: 500,
       category: "Desktop Application",
       rating: 4.7,
@@ -571,8 +571,8 @@ export const sourceCodeItems: SourceCodeItem[] = [
       id: 24,
       name: "Android Tool",
       description: "Multi-mode Android servicing tool for Xiaomi (Qualcomm/EDL), MediaTek, and Fastboot devices. Covers Mi Account removal, FRP erase, bootloader unlock, firmware flashing, and essential Windows tool installers — all in one tabbed interface.",
-      price: 25,
-      originalPrice: 500,
+      price: 15,
+      originalPrice: 17,
       category: "Desktop Application",
       rating: 4.7,
       downloads: 0,
@@ -598,6 +598,7 @@ export const sourceCodeItems: SourceCodeItem[] = [
 
 export function BuySourceCode() {
   const [searchQuery, setSearchQuery] = useState("");
+  const [selectedCategory, setSelectedCategory] = useState<string>("All");
   const [selectedProduct, setSelectedProduct] = useState<SourceCodeItem | null>(null);
   const [zoomedImage, setZoomedImage] = useState<string | null>(null);
   const navigate = useNavigate();
@@ -611,23 +612,28 @@ export function BuySourceCode() {
     return () => window.removeEventListener("keydown", onKey);
   }, [zoomedImage, closeZoom]);
 
-  const filteredItems = sourceCodeItems.filter((item) =>
-    item.name.toLowerCase().includes(searchQuery.toLowerCase()) ||
-    item.description.toLowerCase().includes(searchQuery.toLowerCase()) ||
-    item.tags.some((tag) => tag.toLowerCase().includes(searchQuery.toLowerCase()))
-  );
+  const categories = ["All", ...Array.from(new Set(sourceCodeItems.map((item) => item.category))).sort()];
+
+  const filteredItems = sourceCodeItems.filter((item) => {
+    const matchesCategory = selectedCategory === "All" || item.category === selectedCategory;
+    const matchesSearch =
+      item.name.toLowerCase().includes(searchQuery.toLowerCase()) ||
+      item.description.toLowerCase().includes(searchQuery.toLowerCase()) ||
+      item.tags.some((tag) => tag.toLowerCase().includes(searchQuery.toLowerCase()));
+    return matchesCategory && matchesSearch;
+  });
 
   return (
     <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-12">
       {/* Header */}
-      <div className="mb-12">
+      <div className="mb-8">
         <h1 className="text-4xl mb-4 text-gray-900">Buy Source Code</h1>
         <p className="text-xl text-gray-600 mb-8">
           Browse our collection of premium, ready-to-use source code for your projects.
         </p>
 
         {/* Search */}
-        <div className="relative max-w-md">
+        <div className="relative max-w-md mb-6">
           <Search className="absolute left-3 top-1/2 transform -translate-y-1/2 text-gray-400 w-5 h-5" />
           <Input
             type="text"
@@ -636,6 +642,33 @@ export function BuySourceCode() {
             onChange={(e) => setSearchQuery(e.target.value)}
             className="pl-10"
           />
+        </div>
+
+        {/* Category Filter */}
+        <div className="flex flex-wrap gap-2">
+          {categories.map((cat) => (
+            <button
+              key={cat}
+              onClick={() => setSelectedCategory(cat)}
+              className={`px-4 py-1.5 rounded-full text-sm font-medium border transition-all ${
+                selectedCategory === cat
+                  ? "bg-blue-600 text-white border-blue-600 shadow-sm"
+                  : "bg-white text-gray-600 border-gray-200 hover:border-blue-300 hover:text-blue-600"
+              }`}
+            >
+              {cat}
+              {cat !== "All" && (
+                <span className={`ml-1.5 text-xs ${selectedCategory === cat ? "text-blue-200" : "text-gray-400"}`}>
+                  ({sourceCodeItems.filter((i) => i.category === cat).length})
+                </span>
+              )}
+              {cat === "All" && (
+                <span className={`ml-1.5 text-xs ${selectedCategory === cat ? "text-blue-200" : "text-gray-400"}`}>
+                  ({sourceCodeItems.length})
+                </span>
+              )}
+            </button>
+          ))}
         </div>
       </div>
 
