@@ -772,7 +772,7 @@ export function BuySourceCode() {
             <CardContent className="flex-grow">
               {item.features && item.features.length > 0 && (
                 <div className="mb-4">
-                  <p className="text-sm mb-2">Key Features:</p>
+                  <p className="text-sm mb-2 text-slate-300 font-medium">Key Features:</p>
                   <ul className="text-xs text-slate-400 space-y-1 list-disc list-inside">
                     {item.features.slice(0, 3).map((feature, idx) => (
                       <li key={idx}>{feature.split(' - ')[0]}</li>
