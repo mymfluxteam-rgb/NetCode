@@ -14,7 +14,7 @@ import {
   DialogTitle,
 } from "./ui/dialog";
 import mifixProImage from "../../imports/image.png";
-import qualcommToolImage from "../../imports/image-1.png";
+import qualcommToolImage from "../../imports/qualcomm-service-tool.png";
 import mtkAuthToolImage from "../../imports/mtk-auth-tool.png";
 import samFwFrpToolImage from "../../imports/samfw-frp-tool.png";
 import universalActivatorImage from "../../imports/universal-activator.png";
