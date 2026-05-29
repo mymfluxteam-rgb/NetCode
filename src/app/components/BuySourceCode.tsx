@@ -51,6 +51,7 @@ export interface SourceCodeItem {
   images?: string[];
   features?: string[];
   badge?: "new" | "featured";
+  demoVideo?: string;
 }
 
 export const sourceCodeItems: SourceCodeItem[] = [
@@ -66,6 +67,7 @@ export const sourceCodeItems: SourceCodeItem[] = [
       tags: ["C#", "Qualcomm", "EDL", "Fastboot"],
       image: qualcommToolImage,
       images: [qualcommToolImage, qualcommCustomer1Image, qualcommCustomer2Image],
+      demoVideo: "jq8m_wuOtbI",
       badge: "featured",
       features: [
         "EDL Flashing (FlashUI.cs) - Auto-detect partition table (eMMC/UFS), flash/read/erase partitions, XML flash file support",
@@ -89,6 +91,7 @@ export const sourceCodeItems: SourceCodeItem[] = [
       downloads: 3200,
       tags: ["C#", "DevExpress", "Qualcomm", "MediaTek"],
       image: mifixProImage,
+      demoVideo: "axP1xKrCCXU",
       badge: "featured",
       features: [
         "User Authentication & Credit System - Login to mifixpro.org server with secure account management",
@@ -113,6 +116,7 @@ export const sourceCodeItems: SourceCodeItem[] = [
       tags: ["C#", "Python", "MediaTek", "DevExpress"],
       image: mtkAuthToolImage,
       images: [mtkAuthToolImage, mtkAuthCustomerImage],
+      demoVideo: "BRjVk82M3mY",
       features: [
         "Supported Brands - Xiaomi, Vivo, Oppo, Realme, Asus, Samsung, Meizu, Huawei, Nokia, Infinix",
         "FRP Erase - Factory Reset Protection removal for supported MTK devices",
@@ -146,6 +150,7 @@ export const sourceCodeItems: SourceCodeItem[] = [
       downloads: 1920,
       tags: ["C#", "Samsung", "ADB", "AT Commands"],
       image: samFwFrpToolImage,
+      demoVideo: "76hXl-EgqMo",
       features: [
         "New FRP Removal - Enables ADB via AT commands, then pushes and executes frp.bin binary to bypass Factory Reset Protection",
         "Old FRP Removal - Uses ADB commands to modify settings and launch Google login activity for legacy Samsung devices",
@@ -225,6 +230,7 @@ export const sourceCodeItems: SourceCodeItem[] = [
       downloads: 2430,
       tags: ["C#", "Xiaomi", "EDL", "Fastboot", "MediaTek"],
       image: xiaomiFireToolImage,
+      demoVideo: "yiF6h_KmO9A",
       features: [
         "Server Authentication - User login/registration via xiaomifiretool.in with credit balance display and server status",
         "Credit System - Each auth operation costs 2 credits; real-time credit balance tracking",
@@ -498,6 +504,7 @@ export const sourceCodeItems: SourceCodeItem[] = [
       downloads: 0,
       tags: ["C#", "Fastboot", "Android", ".NET"],
       image: fastbootEraseToolImage,
+      demoVideo: "K2R9lTNdcuE",
       badge: "new",
       features: [
         "Fastboot Device Detection - FindfastbootDevice() scans for connected fastboot devices with configurable timeout (default 60 seconds) and reports status in the log window",

@@ -1,6 +1,6 @@
 import { useParams, useNavigate } from "react-router";
 import { useState, useEffect, useCallback } from "react";
-import { ArrowLeft, Star, Download, CheckCircle2, Tag, X, ZoomIn, ChevronLeft, ChevronRight } from "lucide-react";
+import { ArrowLeft, Star, Download, CheckCircle2, Tag, X, ZoomIn, ChevronLeft, ChevronRight, PlayCircle } from "lucide-react";
 import { Button } from "./ui/button";
 import { Badge } from "./ui/badge";
 import { sourceCodeItems } from "./BuySourceCode";
@@ -331,6 +331,25 @@ export function ProductPage() {
                   );
                 })}
               </ul>
+            </div>
+          )}
+
+          {/* Demo Video */}
+          {product.demoVideo && (
+            <div>
+              <div className="flex items-center gap-2 mb-3">
+                <PlayCircle className="w-4 h-4 text-red-500" />
+                <p className="text-sm font-semibold text-gray-700 uppercase tracking-wide">Demo Video</p>
+              </div>
+              <div className="rounded-xl overflow-hidden border border-gray-200 shadow-sm aspect-video">
+                <iframe
+                  src={`https://www.youtube.com/embed/${product.demoVideo}`}
+                  title={`${product.name} Demo`}
+                  allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
+                  allowFullScreen
+                  className="w-full h-full"
+                />
+              </div>
             </div>
           )}
         </div>
