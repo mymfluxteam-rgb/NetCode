@@ -31,8 +31,8 @@ export function Privacy() {
       {/* Header */}
       <div className="text-center mb-10">
         <BookOpen className="w-16 h-16 text-blue-600 mx-auto mb-4" />
-        <h1 className="text-4xl mb-4 text-gray-900">Documentation</h1>
-        <p className="text-xl text-gray-600">
+        <h1 className="text-4xl mb-4 text-white">Documentation</h1>
+        <p className="text-xl text-gray-300">
           Everything you need to know about purchasing source code from NetCodeShop
         </p>
       </div>

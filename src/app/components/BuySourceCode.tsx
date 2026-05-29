@@ -613,8 +613,8 @@ export function BuySourceCode() {
     <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-12">
       {/* Header */}
       <div className="mb-8">
-        <h1 className="text-4xl mb-4 text-gray-900">Buy Source Code</h1>
-        <p className="text-xl text-gray-600 mb-8">
+        <h1 className="text-4xl mb-4 text-white">Buy Source Code</h1>
+        <p className="text-xl text-gray-300 mb-8">
           Browse our collection of premium, ready-to-use source code for your projects.
         </p>
 

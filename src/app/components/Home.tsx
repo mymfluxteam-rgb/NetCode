@@ -3,7 +3,6 @@ import { Code2, ShoppingCart, Shield, Zap } from "lucide-react";
 import { Button } from "./ui/button";
 import { Card, CardContent, CardDescription, CardHeader, CardTitle } from "./ui/card";
 import { ImageWithFallback } from "./figma/ImageWithFallback";
-import { ParticleCanvas } from "./ParticleCanvas";
 
 export function Home() {
   const features = [
@@ -32,9 +31,8 @@ export function Home() {
   return (
     <div>
       {/* Hero Section */}
-      <section className="relative text-white overflow-hidden" style={{ background: "linear-gradient(135deg, #3b0764 0%, #5b21b6 35%, #1e40af 70%, #1e3a5f 100%)" }}>
-        <ParticleCanvas />
-        <div className="relative z-10 max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-20 md:py-32">
+      <section className="relative text-white overflow-hidden">
+        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-20 md:py-32">
           <div className="grid md:grid-cols-2 gap-12 items-center">
             <div>
               <h1 className="text-4xl md:text-5xl lg:text-6xl mb-6">
@@ -71,8 +69,8 @@ export function Home() {
       {/* Features Section */}
       <section className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-16 md:py-24">
         <div className="text-center mb-12">
-          <h2 className="text-3xl md:text-4xl mb-4 text-gray-900">Why Choose NetCodeShop?</h2>
-          <p className="text-xl text-gray-600 max-w-2xl mx-auto">
+          <h2 className="text-3xl md:text-4xl mb-4 text-white">Why Choose NetCodeShop?</h2>
+          <p className="text-xl text-gray-300 max-w-2xl mx-auto">
             We provide the best source code solutions for developers and businesses.
           </p>
         </div>
@@ -93,12 +91,12 @@ export function Home() {
       </section>
 
       {/* CTA Section */}
-      <section className="bg-gray-100">
+      <section className="bg-slate-800/40 backdrop-blur-sm border-y border-white/10">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-16 md:py-24 text-center">
-          <h2 className="text-3xl md:text-4xl mb-6 text-gray-900">
+          <h2 className="text-3xl md:text-4xl mb-6 text-white">
             Ready to Get Started?
           </h2>
-          <p className="text-xl text-gray-600 mb-8 max-w-2xl mx-auto">
+          <p className="text-xl text-gray-300 mb-8 max-w-2xl mx-auto">
             Browse our collection of premium source code and find the perfect solution for your project.
           </p>
           <Link to="/buy-source-code">
