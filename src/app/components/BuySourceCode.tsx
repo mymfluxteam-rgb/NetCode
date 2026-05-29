@@ -38,6 +38,7 @@ import fastbootEraseToolImage from "../../imports/fastboot-erase-tool.png";
 import androidToolImage from "../../imports/android-tool.png";
 import miflashNoAuthImage from "../../imports/miflash-noauth.png";
 import authLoaderXiaomiImage from "../../imports/auth-loader-android-xiaomi.png";
+import hwidKeygenImage from "../../imports/hwid-keygen-generator.png";
 
 export interface SourceCodeItem {
   id: number;
@@ -613,6 +614,32 @@ export const sourceCodeItems: SourceCodeItem[] = [
         "Docker Support — Production-ready Docker and Nginx deployment configuration",
         "Professional Packaging — Multiple batch scripts for professional tool delivery and distribution",
         "Comprehensive Logging — Detailed structured logs on both Python client and Node.js server sides",
+      ],
+    },
+    {
+      id: 27,
+      name: "HWID Login Form — Keygen Generator",
+      description: "Dual-component .NET hardware-locked licensing system. A keygen generates MD5-based keys from any ID input, while a registration form reads the machine's Processor ID via WMI, validates a user-supplied key, and persists the registration to disk.",
+      price: 40,
+      originalPrice: 40,
+      category: "Desktop Application",
+      rating: 4.6,
+      downloads: 0,
+      tags: ["C#", "WinForms", ".NET", "License", "Keygen", "HWID"],
+      image: hwidKeygenImage,
+      badge: "new",
+      features: [
+        "ID-to-Key Generation — Accepts any string ID input, computes its MD5 hash, and extracts the first 11 characters of the hex digest as the license key",
+        "One-Click Generate — Single button triggers hash computation and displays the result instantly",
+        "Hardware ID Binding — Registration form reads the machine's Processor ID via WMI (Win32_Processor) to uniquely identify the hardware",
+        "MD5 Registration Key — Derives a 19-character registration key from the Processor ID using MD5 with x5 formatting",
+        "Key Validation — Compares the user-entered key against the expected hardware-derived key and shows success or error feedback",
+        "Persistent Registration — Saves the Processor ID and registration date to a regi.dat file on successful activation",
+        "Startup Check — On launch, detects an existing regi.dat file and skips the registration prompt if already activated",
+        "Status Display — Shows current registration status and starting date in the main application UI",
+        "Hardware ID Display — Renders the machine's Hardware ID in the registration panel for easy copy-paste into the keygen",
+        "Targets .NET Framework 4.5.2 / 4.7.2 / 4.8 — Compatible with a wide range of Windows environments",
+        "Minimal WinForms UI — Lightweight Windows Forms interface with no external dependencies",
       ],
     },
 ];
