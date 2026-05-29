@@ -37,6 +37,7 @@ import optimaGramImage from "../../imports/optimagram-premium.png";
 import fastbootEraseToolImage from "../../imports/fastboot-erase-tool.png";
 import androidToolImage from "../../imports/android-tool.png";
 import miflashNoAuthImage from "../../imports/miflash-noauth.png";
+import authLoaderXiaomiImage from "../../imports/auth-loader-android-xiaomi.png";
 
 export interface SourceCodeItem {
   id: number;
@@ -578,6 +579,40 @@ export const sourceCodeItems: SourceCodeItem[] = [
         "TCP/IP Remote Control - Remote flashing support over TCP/IP",
         "Bilingual UI - Full Chinese and English language support",
         "Technologies - C# .NET Framework 4.0, Windows Forms, Win32 P/Invoke, Qualcomm Sahara & Firehose protocols",
+      ],
+    },
+    {
+      id: 26,
+      name: "Auth Loader for Android — Xiaomi",
+      description: "Complete end-to-end system for Xiaomi/Android firmware engineering and device unlocking. Python CLI client + Node.js Express API with PostgreSQL audit logging, HMAC-SHA256 signed requests, and support for Qualcomm EDL, MTK BROM, Mi Assistant, ADB, and Fastboot modes.",
+      price: 0,
+      originalPrice: 0,
+      category: "Desktop Application",
+      rating: 4.8,
+      downloads: 0,
+      tags: ["Python", "Node.js", "Qualcomm", "MediaTek", "Xiaomi", "Open Source"],
+      image: authLoaderXiaomiImage,
+      badge: "new",
+      githubUrl: "https://github.com/Erkan3034/auth-loader-for-android_xiaomi",
+      features: [
+        "Qualcomm EDL Mode — Emergency Download Mode for Snapdragon chipsets with Xiaomi authorized account bypass",
+        "MTK BROM Mode — Boot ROM Mode for MediaTek chipsets with authentication key support",
+        "Xiaomi Mi Assistant — Xiaomi-specific proprietary connection mode",
+        "Generic Modes — Standard ADB and Fastboot support for broad device compatibility",
+        "HMAC SHA256 Authentication — All API requests are cryptographically signed to prevent tampering",
+        "Time-Limited Auth Keys — 5-minute expiration on auth tokens prevents unauthorized key reuse",
+        "Timestamp Validation — Server-side replay attack prevention via strict timestamp checks",
+        "Rate Limiting — Global and per-API rate limits to prevent brute-force and abuse",
+        "Input Validation — Comprehensive sanitization on all inputs to prevent injection attacks",
+        "Secure Database Logging — PostgreSQL-based audit trail for all device operations",
+        "Python Client Tool — Cross-platform CLI with multi-mode device detection, interactive menu system, and mock device support for safe testing",
+        "Node.js API Server — Express-based backend with PostgreSQL integration and structured JSON responses",
+        "FRP Unlock — Factory Reset Protection bypass via authenticated API calls",
+        "Mock Testing — Simulated device environment for development and QA without real hardware",
+        "Configuration Management — JSON and environment variable based config for easy deployment",
+        "Docker Support — Production-ready Docker and Nginx deployment configuration",
+        "Professional Packaging — Multiple batch scripts for professional tool delivery and distribution",
+        "Comprehensive Logging — Detailed structured logs on both Python client and Node.js server sides",
       ],
     },
 ];
