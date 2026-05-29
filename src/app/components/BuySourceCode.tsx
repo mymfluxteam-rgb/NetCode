@@ -620,7 +620,7 @@ export const sourceCodeItems: SourceCodeItem[] = [
       id: 27,
       name: "HWID Login Form — Keygen Generator",
       description: "Dual-component .NET hardware-locked licensing system. A keygen generates MD5-based keys from any ID input, while a registration form reads the machine's Processor ID via WMI, validates a user-supplied key, and persists the registration to disk.",
-      price: 40,
+      price: 36,
       originalPrice: 40,
       category: "Desktop Application",
       rating: 4.6,
