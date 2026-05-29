@@ -79,7 +79,7 @@ export function ProductPage() {
   if (!product) {
     return (
       <div className="max-w-4xl mx-auto px-4 py-24 text-center">
-        <h1 className="text-3xl text-gray-900 mb-4">Product Not Found</h1>
+        <h1 className="text-3xl text-white mb-4">Product Not Found</h1>
         <Button onClick={() => navigate("/buy-source-code")} variant="outline">
           <ArrowLeft className="w-4 h-4 mr-2" /> Back to Store
         </Button>
@@ -92,7 +92,7 @@ export function ProductPage() {
       {/* Back button */}
       <button
         onClick={() => navigate("/buy-source-code")}
-        className="flex items-center gap-2 text-gray-500 hover:text-gray-800 mb-8 transition-colors"
+        className="flex items-center gap-2 text-slate-400 hover:text-white mb-8 transition-colors"
       >
         <ArrowLeft className="w-4 h-4" />
         <span className="text-sm">Back to Store</span>
@@ -105,7 +105,7 @@ export function ProductPage() {
             <div className="space-y-2">
               {/* Main image */}
               <div
-                className="rounded-xl overflow-hidden border border-gray-200 shadow-sm bg-gray-50 relative group cursor-zoom-in"
+                className="rounded-xl overflow-hidden border border-white/10 shadow-sm bg-slate-800/40 relative group cursor-zoom-in"
                 onDoubleClick={() => { setLightboxIdx(activeIdx); setLightboxOpen(true); }}
                 title="Double-click to zoom"
               >
@@ -142,7 +142,7 @@ export function ProductPage() {
                       className={`flex-shrink-0 w-16 h-16 rounded-lg overflow-hidden border-2 transition-all ${
                         idx === activeIdx
                           ? "border-blue-500 shadow-md scale-105"
-                          : "border-gray-200 hover:border-blue-300 opacity-70 hover:opacity-100"
+                          : "border-white/20 hover:border-blue-400 opacity-70 hover:opacity-100"
                       }`}
                     >
                       <img
@@ -208,12 +208,12 @@ export function ProductPage() {
           )}
 
           {/* Pricing card */}
-          <div className="rounded-xl border border-gray-200 shadow-sm p-5 bg-white">
+          <div className="rounded-xl border border-white/10 shadow-lg p-5 bg-slate-900/40 backdrop-blur-md">
             {product.price === 0 ? (
               <>
                 <div className="flex items-center gap-3 mb-4">
                   <span className="text-4xl font-bold text-green-600">Free</span>
-                  <Badge className="bg-blue-100 text-blue-700 border-blue-200 font-semibold">Open Source</Badge>
+                  <Badge className="bg-blue-500/20 text-blue-300 border-blue-500/30 font-semibold">Open Source</Badge>
                 </div>
                 {product.githubUrl && (
                   <a
@@ -230,29 +230,29 @@ export function ProductPage() {
             ) : (
               <>
                 <div className="flex items-center gap-3 mb-1">
-                  <span className="text-4xl font-bold text-gray-900">${product.price}</span>
-                  <Badge className="bg-green-100 text-green-700 border-green-200 font-semibold">
+                  <span className="text-4xl font-bold text-white">${product.price}</span>
+                  <Badge className="bg-green-500/20 text-green-400 border-green-500/30 font-semibold">
                     {product.originalPrice >= 1000 ? "30% OFF" : "10% OFF"}
                   </Badge>
                 </div>
                 <p className="text-sm text-gray-400 line-through mb-5">${product.originalPrice}</p>
 
             {/* Contact section */}
-            <p className="text-sm font-semibold text-gray-700 mb-3">Contact to Purchase</p>
+            <p className="text-sm font-semibold text-slate-300 mb-3">Contact to Purchase</p>
             <div className="space-y-3">
               {/* Facebook */}
               <a
                 href="https://www.facebook.com/share/1B8BRnNqhr/"
                 target="_blank"
                 rel="noopener noreferrer"
-                className="flex items-center gap-3 p-3 rounded-lg border border-gray-200 hover:border-blue-300 hover:bg-blue-50 transition-all group"
+                className="flex items-center gap-3 p-3 rounded-lg border border-white/10 hover:border-blue-400/50 hover:bg-blue-500/10 transition-all group"
               >
                 <span className="text-[#1877F2] group-hover:scale-110 transition-transform">
                   <FacebookIcon />
                 </span>
                 <div>
-                  <p className="text-sm font-semibold text-gray-800">Facebook</p>
-                  <p className="text-xs text-gray-500">Message us on Facebook</p>
+                  <p className="text-sm font-semibold text-white">Facebook</p>
+                  <p className="text-xs text-slate-400">Message us on Facebook</p>
                 </div>
               </a>
 
@@ -261,14 +261,14 @@ export function ProductPage() {
                 href="https://t.me/NetCodeShop"
                 target="_blank"
                 rel="noopener noreferrer"
-                className="flex items-center gap-3 p-3 rounded-lg border border-gray-200 hover:border-sky-300 hover:bg-sky-50 transition-all group"
+                className="flex items-center gap-3 p-3 rounded-lg border border-white/10 hover:border-sky-400/50 hover:bg-sky-500/10 transition-all group"
               >
                 <span className="text-[#229ED9] group-hover:scale-110 transition-transform">
                   <TelegramIcon />
                 </span>
                 <div>
-                  <p className="text-sm font-semibold text-gray-800">Telegram</p>
-                  <p className="text-xs text-gray-500">@NetCodeShop</p>
+                  <p className="text-sm font-semibold text-white">Telegram</p>
+                  <p className="text-xs text-slate-400">@NetCodeShop</p>
                 </div>
               </a>
 
@@ -277,29 +277,29 @@ export function ProductPage() {
                 href="https://t.me/NetCodeSolutions"
                 target="_blank"
                 rel="noopener noreferrer"
-                className="flex items-center gap-3 p-3 rounded-lg border border-gray-200 hover:border-sky-300 hover:bg-sky-50 transition-all group"
+                className="flex items-center gap-3 p-3 rounded-lg border border-white/10 hover:border-sky-400/50 hover:bg-sky-500/10 transition-all group"
               >
                 <span className="text-[#229ED9] group-hover:scale-110 transition-transform">
                   <TelegramIcon />
                 </span>
                 <div>
-                  <p className="text-sm font-semibold text-gray-800">Telegram Channel</p>
-                  <p className="text-xs text-gray-500">@NetCodeSolutions</p>
+                  <p className="text-sm font-semibold text-white">Telegram Channel</p>
+                  <p className="text-xs text-slate-400">@NetCodeSolutions</p>
                 </div>
               </a>
 
               {/* WhatsApp */}
-              <div className="p-3 rounded-lg border border-gray-200">
+              <div className="p-3 rounded-lg border border-white/10 bg-green-500/5">
                 <div className="flex items-center gap-3 mb-3">
                   <span className="text-[#25D366]">
                     <WhatsAppIcon />
                   </span>
                   <div>
-                    <p className="text-sm font-semibold text-gray-800">WhatsApp</p>
-                    <p className="text-xs text-gray-500">Scan QR to chat</p>
+                    <p className="text-sm font-semibold text-white">WhatsApp</p>
+                    <p className="text-xs text-slate-400">Scan QR to chat</p>
                   </div>
                 </div>
-                <div className="rounded-lg overflow-hidden border border-gray-100">
+                <div className="rounded-lg overflow-hidden border border-white/10">
                   <img
                     src={whatsappQr}
                     alt="WhatsApp QR Code"
@@ -323,20 +323,20 @@ export function ProductPage() {
                 <Star className="w-4 h-4 text-yellow-400 fill-yellow-400" />
                 <span className="text-sm font-medium">{product.rating}</span>
               </div>
-              <div className="flex items-center gap-1 text-gray-500 text-sm">
+              <div className="flex items-center gap-1 text-slate-400 text-sm">
                 <Download className="w-4 h-4" />
                 <span>{product.downloads.toLocaleString()} downloads</span>
               </div>
             </div>
-            <h1 className="text-3xl font-bold text-gray-900 mb-3">{product.name}</h1>
-            <p className="text-gray-600 text-base leading-relaxed">{product.description}</p>
+            <h1 className="text-3xl font-bold text-white mb-3">{product.name}</h1>
+            <p className="text-slate-300 text-base leading-relaxed">{product.description}</p>
           </div>
 
           {/* Technologies */}
           <div>
             <div className="flex items-center gap-2 mb-3">
-              <Tag className="w-4 h-4 text-gray-400" />
-              <p className="text-sm font-semibold text-gray-700 uppercase tracking-wide">Technologies</p>
+              <Tag className="w-4 h-4 text-slate-400" />
+              <p className="text-sm font-semibold text-slate-300 uppercase tracking-wide">Technologies</p>
             </div>
             <div className="flex flex-wrap gap-2">
               {product.tags.map((tag) => (
@@ -350,7 +350,7 @@ export function ProductPage() {
           {/* Full Feature List */}
           {product.features && product.features.length > 0 && (
             <div>
-              <p className="text-sm font-semibold text-gray-700 uppercase tracking-wide mb-4">
+              <p className="text-sm font-semibold text-slate-300 uppercase tracking-wide mb-4">
                 Complete Feature List
               </p>
               <ul className="space-y-4">
@@ -360,9 +360,9 @@ export function ProductPage() {
                     <li key={idx} className="flex gap-3">
                       <CheckCircle2 className="w-5 h-5 text-blue-500 mt-0.5 shrink-0" />
                       <div>
-                        <p className="text-gray-900 font-medium">{title}</p>
+                        <p className="text-white font-medium">{title}</p>
                         {description && (
-                          <p className="text-sm text-gray-500 mt-0.5">{description}</p>
+                          <p className="text-sm text-slate-400 mt-0.5">{description}</p>
                         )}
                       </div>
                     </li>
@@ -377,9 +377,9 @@ export function ProductPage() {
             <div>
               <div className="flex items-center gap-2 mb-3">
                 <PlayCircle className="w-4 h-4 text-red-500" />
-                <p className="text-sm font-semibold text-gray-700 uppercase tracking-wide">Demo Video</p>
+                <p className="text-sm font-semibold text-slate-300 uppercase tracking-wide">Demo Video</p>
               </div>
-              <div className="rounded-xl overflow-hidden border border-gray-200 shadow-sm aspect-video">
+              <div className="rounded-xl overflow-hidden border border-white/10 shadow-sm aspect-video">
                 <iframe
                   src={`https://www.youtube.com/embed/${product.demoVideo}`}
                   title={`${product.name} Demo`}

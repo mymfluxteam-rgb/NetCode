@@ -639,17 +639,17 @@ export function BuySourceCode() {
               className={`px-4 py-1.5 rounded-full text-sm font-medium border transition-all ${
                 selectedCategory === cat
                   ? "bg-blue-600 text-white border-blue-600 shadow-sm"
-                  : "bg-white text-gray-600 border-gray-200 hover:border-blue-300 hover:text-blue-600"
+                  : "bg-slate-800/60 text-slate-300 border-white/10 hover:border-blue-400 hover:text-blue-300 backdrop-blur-sm"
               }`}
             >
               {cat}
               {cat !== "All" && (
-                <span className={`ml-1.5 text-xs ${selectedCategory === cat ? "text-blue-200" : "text-gray-400"}`}>
+                <span className={`ml-1.5 text-xs ${selectedCategory === cat ? "text-blue-200" : "text-slate-500"}`}>
                   ({sourceCodeItems.filter((i) => i.category === cat).length})
                 </span>
               )}
               {cat === "All" && (
-                <span className={`ml-1.5 text-xs ${selectedCategory === cat ? "text-blue-200" : "text-gray-400"}`}>
+                <span className={`ml-1.5 text-xs ${selectedCategory === cat ? "text-blue-200" : "text-slate-500"}`}>
                   ({sourceCodeItems.length})
                 </span>
               )}
@@ -664,7 +664,7 @@ export function BuySourceCode() {
           <Card key={item.id} className="flex flex-col overflow-hidden">
             {item.image && (
               <div
-                className="w-full h-48 bg-gray-100 overflow-hidden cursor-pointer hover:opacity-90 transition-opacity relative"
+                className="w-full h-48 bg-slate-800/60 overflow-hidden cursor-pointer hover:opacity-90 transition-opacity relative"
                 onClick={() => setSelectedProduct(item)}
               >
                 <ImageWithFallback
@@ -711,7 +711,7 @@ export function BuySourceCode() {
               {item.features && item.features.length > 0 && (
                 <div className="mb-4">
                   <p className="text-sm mb-2">Key Features:</p>
-                  <ul className="text-xs text-gray-600 space-y-1 list-disc list-inside">
+                  <ul className="text-xs text-slate-400 space-y-1 list-disc list-inside">
                     {item.features.slice(0, 3).map((feature, idx) => (
                       <li key={idx}>{feature.split(' - ')[0]}</li>
                     ))}
@@ -733,7 +733,7 @@ export function BuySourceCode() {
                   </Badge>
                 ))}
               </div>
-              <div className="flex items-center gap-4 text-sm text-gray-600">
+              <div className="flex items-center gap-4 text-sm text-slate-400">
                 <div className="flex items-center gap-1">
                   <Download className="w-4 h-4" />
                   <span>{item.downloads.toLocaleString()} downloads</span>
@@ -743,8 +743,8 @@ export function BuySourceCode() {
             <CardFooter className="flex items-center justify-between">
               <div className="flex flex-col">
                 <div className="flex items-center gap-2">
-                  <span className="text-3xl font-bold text-gray-900">${item.price}</span>
-                  <Badge className="bg-green-100 text-green-700 border-green-200 text-xs font-semibold">
+                  <span className="text-3xl font-bold text-white">${item.price}</span>
+                  <Badge className="bg-green-500/20 text-green-400 border-green-500/30 text-xs font-semibold">
                     {item.originalPrice >= 1000 ? "30% OFF" : "10% OFF"}
                   </Badge>
                 </div>
@@ -775,7 +775,7 @@ export function BuySourceCode() {
 
       {filteredItems.length === 0 && (
         <div className="text-center py-12">
-          <p className="text-xl text-gray-600">No source code found matching your search.</p>
+          <p className="text-xl text-slate-400">No source code found matching your search.</p>
         </div>
       )}
 
@@ -826,7 +826,7 @@ export function BuySourceCode() {
               <div className="space-y-6">
                 {selectedProduct.image && (
                   <div
-                    className="w-full rounded-lg overflow-hidden bg-gray-100 relative group cursor-zoom-in"
+                    className="w-full rounded-lg overflow-hidden bg-slate-800/60 relative group cursor-zoom-in"
                     onClick={() => setZoomedImage(selectedProduct.image!)}
                     title="Click to zoom"
                   >
@@ -854,9 +854,9 @@ export function BuySourceCode() {
                           <li key={idx} className="flex gap-3">
                             <span className="text-blue-600 mt-1">•</span>
                             <div>
-                              <p className="text-gray-900">{title}</p>
+                              <p className="text-white">{title}</p>
                               {description && (
-                                <p className="text-sm text-gray-600 mt-1">{description}</p>
+                                <p className="text-sm text-slate-400 mt-1">{description}</p>
                               )}
                             </div>
                           </li>
@@ -875,7 +875,7 @@ export function BuySourceCode() {
                   ))}
                 </div>
 
-                <div className="flex items-center gap-4 text-sm text-gray-600">
+                <div className="flex items-center gap-4 text-sm text-slate-400">
                   <div className="flex items-center gap-1">
                     <Download className="w-4 h-4" />
                     <span>{selectedProduct.downloads.toLocaleString()} downloads</span>

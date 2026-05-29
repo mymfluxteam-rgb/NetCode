@@ -43,7 +43,7 @@ export function Privacy() {
           <a
             key={s.id}
             href={`#${s.id}`}
-            className="px-3 py-1.5 rounded-full text-sm font-medium bg-gray-100 text-gray-700 hover:bg-blue-100 hover:text-blue-700 transition-colors"
+            className="px-3 py-1.5 rounded-full text-sm font-medium bg-slate-800/60 text-slate-300 border border-white/10 hover:bg-blue-500/20 hover:text-blue-300 hover:border-blue-500/30 transition-colors backdrop-blur-sm"
           >
             {s.label}
           </a>
@@ -60,7 +60,7 @@ export function Privacy() {
               <CardTitle>How to Purchase</CardTitle>
             </div>
           </CardHeader>
-          <CardContent className="space-y-4 text-gray-700">
+          <CardContent className="space-y-4 text-slate-300">
             <p>Buying source code from NetCodeShop is simple and straightforward. Follow these steps:</p>
             <ol className="space-y-3">
               {[
@@ -89,22 +89,22 @@ export function Privacy() {
               <CardTitle>Payment Channels</CardTitle>
             </div>
           </CardHeader>
-          <CardContent className="space-y-6 text-gray-700">
+          <CardContent className="space-y-6 text-slate-300">
             <p>
               All purchases are handled personally through our official channels below. We accept payments via
               bank transfer, e-wallet, or cryptocurrency — details are confirmed during your chat.
             </p>
 
             {/* Facebook */}
-            <div className="flex items-start gap-4 p-4 rounded-lg bg-blue-50 border border-blue-100">
+            <div className="flex items-start gap-4 p-4 rounded-lg bg-blue-500/10 border border-blue-500/20">
               <div className="flex-shrink-0 w-10 h-10 rounded-full bg-blue-600 flex items-center justify-center">
                 <svg viewBox="0 0 24 24" className="w-5 h-5 fill-white">
                   <path d="M24 12.073c0-6.627-5.373-12-12-12s-12 5.373-12 12c0 5.99 4.388 10.954 10.125 11.854v-8.385H7.078v-3.47h3.047V9.43c0-3.007 1.792-4.669 4.533-4.669 1.312 0 2.686.235 2.686.235v2.953H15.83c-1.491 0-1.956.925-1.956 1.874v2.25h3.328l-.532 3.47h-2.796v8.385C19.612 23.027 24 18.062 24 12.073z" />
                 </svg>
               </div>
               <div>
-                <p className="font-semibold text-gray-900">Facebook Messenger</p>
-                <p className="text-sm text-gray-600 mb-2">Fastest response during business hours. Send us a message directly on our page.</p>
+                <p className="font-semibold text-white">Facebook Messenger</p>
+                <p className="text-sm text-slate-400 mb-2">Fastest response during business hours. Send us a message directly on our page.</p>
                 <a
                   href="https://www.facebook.com/share/1B8BRnNqhr/"
                   target="_blank"
@@ -117,15 +117,15 @@ export function Privacy() {
             </div>
 
             {/* Telegram */}
-            <div className="flex items-start gap-4 p-4 rounded-lg bg-sky-50 border border-sky-100">
+            <div className="flex items-start gap-4 p-4 rounded-lg bg-sky-500/10 border border-sky-500/20">
               <div className="flex-shrink-0 w-10 h-10 rounded-full bg-sky-500 flex items-center justify-center">
                 <svg viewBox="0 0 24 24" className="w-5 h-5 fill-white">
                   <path d="M11.944 0A12 12 0 0 0 0 12a12 12 0 0 0 12 12 12 12 0 0 0 12-12A12 12 0 0 0 12 0a12 12 0 0 0-.056 0zm4.962 7.224c.1-.002.321.023.465.14a.506.506 0 0 1 .171.325c.016.093.036.306.02.472-.18 1.898-.962 6.502-1.36 8.627-.168.9-.499 1.201-.82 1.23-.696.065-1.225-.46-1.9-.902-1.056-.693-1.653-1.124-2.678-1.8-1.185-.78-.417-1.21.258-1.91.177-.184 3.247-2.977 3.307-3.23.007-.032.014-.15-.056-.212s-.174-.041-.249-.024c-.106.024-1.793 1.14-5.061 3.345-.48.33-.913.49-1.302.48-.428-.008-1.252-.241-1.865-.44-.752-.245-1.349-.374-1.297-.789.027-.216.325-.437.893-.663 3.498-1.524 5.83-2.529 6.998-3.014 3.332-1.386 4.025-1.627 4.476-1.635z" />
                 </svg>
               </div>
               <div>
-                <p className="font-semibold text-gray-900">Telegram</p>
-                <p className="text-sm text-gray-600 mb-2">Available 24/7. Instant replies for order inquiries, demos, and payment confirmation.</p>
+                <p className="font-semibold text-white">Telegram</p>
+                <p className="text-sm text-slate-400 mb-2">Available 24/7. Instant replies for order inquiries, demos, and payment confirmation.</p>
                 <a
                   href="https://t.me/NetCodeShop"
                   target="_blank"
@@ -138,15 +138,15 @@ export function Privacy() {
             </div>
 
             {/* WhatsApp */}
-            <div className="flex items-start gap-4 p-4 rounded-lg bg-green-50 border border-green-100">
+            <div className="flex items-start gap-4 p-4 rounded-lg bg-green-500/10 border border-green-500/20">
               <div className="flex-shrink-0 w-10 h-10 rounded-full bg-green-500 flex items-center justify-center">
                 <svg viewBox="0 0 24 24" className="w-5 h-5 fill-white">
                   <path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 0 1-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 0 1-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 0 1 2.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0 0 12.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 0 0 5.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 0 0-3.48-8.413Z" />
                 </svg>
               </div>
               <div>
-                <p className="font-semibold text-gray-900">WhatsApp</p>
-                <p className="text-sm text-gray-600 mb-2">Scan the QR code on any product page to start a chat directly. No account required.</p>
+                <p className="font-semibold text-white">WhatsApp</p>
+                <p className="text-sm text-slate-400 mb-2">Scan the QR code on any product page to start a chat directly. No account required.</p>
                 <Link
                   to="/buy-source-code"
                   className="inline-flex items-center gap-1 text-green-600 hover:text-green-700 text-sm font-medium"
@@ -166,7 +166,7 @@ export function Privacy() {
               <CardTitle>What You Get After Purchase</CardTitle>
             </div>
           </CardHeader>
-          <CardContent className="space-y-3 text-gray-700">
+          <CardContent className="space-y-3 text-slate-300">
             {[
               { icon: <CheckCircle className="w-5 h-5 text-green-500 flex-shrink-0" />, text: "Full source code — complete, uncommented, and ready to compile" },
               { icon: <CheckCircle className="w-5 h-5 text-green-500 flex-shrink-0" />, text: "All required libraries and dependencies included" },
@@ -184,32 +184,32 @@ export function Privacy() {
         </Card>
 
         {/* Buy with Confidence */}
-        <Card id="buy-with-confidence" className="border-blue-200 bg-blue-50">
+        <Card id="buy-with-confidence" className="border-blue-500/20 bg-blue-500/10">
           <CardHeader>
             <div className="flex items-center gap-3">
-              <Shield className="w-6 h-6 text-blue-600" />
-              <CardTitle className="text-blue-900">Buy with Confidence</CardTitle>
+              <Shield className="w-6 h-6 text-blue-400" />
+              <CardTitle className="text-blue-300">Buy with Confidence</CardTitle>
             </div>
           </CardHeader>
-          <CardContent className="space-y-4 text-blue-900">
+          <CardContent className="space-y-4 text-slate-300">
             <p>
               Every product sold at NetCodeShop is developed and tested in-house. We stand behind the quality of our tools.
             </p>
             <div className="grid sm:grid-cols-3 gap-4">
-              <div className="bg-white rounded-lg p-4 text-center shadow-sm">
+              <div className="bg-slate-800/60 rounded-lg p-4 text-center border border-white/10">
                 <Star className="w-8 h-8 text-yellow-500 mx-auto mb-2" />
-                <p className="font-semibold text-gray-900">Genuine Code</p>
-                <p className="text-sm text-gray-600 mt-1">All source code is original and owned by us. Customers are not allowed to resell purchased source code without a license.</p>
+                <p className="font-semibold text-white">Genuine Code</p>
+                <p className="text-sm text-slate-400 mt-1">All source code is original and owned by us. Customers are not allowed to resell purchased source code without a license.</p>
               </div>
-              <div className="bg-white rounded-lg p-4 text-center shadow-sm">
-                <Zap className="w-8 h-8 text-blue-500 mx-auto mb-2" />
-                <p className="font-semibold text-gray-900">Instant Delivery</p>
-                <p className="text-sm text-gray-600 mt-1">Delivered within minutes of confirmed payment, directly via your chat channel</p>
+              <div className="bg-slate-800/60 rounded-lg p-4 text-center border border-white/10">
+                <Zap className="w-8 h-8 text-blue-400 mx-auto mb-2" />
+                <p className="font-semibold text-white">Instant Delivery</p>
+                <p className="text-sm text-slate-400 mt-1">Delivered within minutes of confirmed payment, directly via your chat channel</p>
               </div>
-              <div className="bg-white rounded-lg p-4 text-center shadow-sm">
+              <div className="bg-slate-800/60 rounded-lg p-4 text-center border border-white/10">
                 <MessageCircle className="w-8 h-8 text-green-500 mx-auto mb-2" />
-                <p className="font-semibold text-gray-900">Human Support</p>
-                <p className="text-sm text-gray-600 mt-1">Talk to a real person — not a bot — at every stage of your purchase</p>
+                <p className="font-semibold text-white">Human Support</p>
+                <p className="text-sm text-slate-400 mt-1">Talk to a real person — not a bot — at every stage of your purchase</p>
               </div>
             </div>
           </CardContent>
@@ -223,11 +223,11 @@ export function Privacy() {
               <CardTitle>Terms of Service</CardTitle>
             </div>
           </CardHeader>
-          <CardContent className="space-y-6 text-gray-700 text-sm leading-relaxed">
-            <p className="text-xs text-gray-400">Last updated: May 2025</p>
+          <CardContent className="space-y-6 text-slate-300 text-sm leading-relaxed">
+            <p className="text-xs text-slate-500">Last updated: May 2025</p>
 
             <div className="space-y-2">
-              <h3 className="font-semibold text-gray-900 text-base">1. Agreement to Terms</h3>
+              <h3 className="font-semibold text-white text-base">1. Agreement to Terms</h3>
               <p>
                 By contacting NetCodeShop to purchase, browsing this website, or completing any transaction with us,
                 you agree to be bound by these Terms of Service. If you do not agree, please do not proceed with
@@ -236,7 +236,7 @@ export function Privacy() {
             </div>
 
             <div className="space-y-2">
-              <h3 className="font-semibold text-gray-900 text-base">2. Products</h3>
+              <h3 className="font-semibold text-white text-base">2. Products</h3>
               <p>
                 NetCodeShop sells desktop application source code written primarily in C#, Python, and VB.NET.
                 All products are digital goods. Product descriptions, screenshots, and feature lists on this website
@@ -246,7 +246,7 @@ export function Privacy() {
             </div>
 
             <div className="space-y-2">
-              <h3 className="font-semibold text-gray-900 text-base">3. Pricing and Payment</h3>
+              <h3 className="font-semibold text-white text-base">3. Pricing and Payment</h3>
               <p>
                 All prices are displayed on the product pages and are quoted in USD unless otherwise stated during
                 your order chat. Prices may change without prior notice, but the price confirmed to you during your
@@ -257,7 +257,7 @@ export function Privacy() {
             </div>
 
             <div className="space-y-2">
-              <h3 className="font-semibold text-gray-900 text-base">4. Delivery</h3>
+              <h3 className="font-semibold text-white text-base">4. Delivery</h3>
               <p>
                 Source code is delivered digitally via the same messaging channel used to place the order
                 (Facebook Messenger, Telegram, or WhatsApp). Delivery is completed within minutes of payment
@@ -268,7 +268,7 @@ export function Privacy() {
             </div>
 
             <div className="space-y-2">
-              <h3 className="font-semibold text-gray-900 text-base">5. License</h3>
+              <h3 className="font-semibold text-white text-base">5. License</h3>
               <p>
                 Each purchase grants the buyer a <strong>single-user, non-exclusive, non-transferable license</strong> to
                 use the purchased source code for personal or commercial purposes within one business or project.
@@ -286,7 +286,7 @@ export function Privacy() {
             </div>
 
             <div className="space-y-2">
-              <h3 className="font-semibold text-gray-900 text-base">6. Refund Policy</h3>
+              <h3 className="font-semibold text-white text-base">6. Refund Policy</h3>
               <p>
                 Because our products are digital and delivered immediately upon payment, <strong>all sales are final</strong>.
                 We do not offer refunds once the source code has been delivered. However, if you experience a critical
@@ -297,7 +297,7 @@ export function Privacy() {
             </div>
 
             <div className="space-y-2">
-              <h3 className="font-semibold text-gray-900 text-base">7. Support and Bug Fixes</h3>
+              <h3 className="font-semibold text-white text-base">7. Support and Bug Fixes</h3>
               <p>
                 Free support is provided for bugs that exist in the source code at the time of purchase. Support is
                 delivered via the channel you used to purchase. We aim to respond within 24 hours. Support does
@@ -307,7 +307,7 @@ export function Privacy() {
             </div>
 
             <div className="space-y-2">
-              <h3 className="font-semibold text-gray-900 text-base">8. Intellectual Property</h3>
+              <h3 className="font-semibold text-white text-base">8. Intellectual Property</h3>
               <p>
                 All source code, designs, product names, and content on this website are the intellectual property
                 of NetCodeShop. Ownership of the intellectual property does not transfer with purchase. You receive
@@ -317,7 +317,7 @@ export function Privacy() {
             </div>
 
             <div className="space-y-2">
-              <h3 className="font-semibold text-gray-900 text-base">9. Limitation of Liability</h3>
+              <h3 className="font-semibold text-white text-base">9. Limitation of Liability</h3>
               <p>
                 NetCodeShop provides its source code products "as-is." We make no warranties, express or implied,
                 regarding fitness for a particular purpose or uninterrupted operation. In no event shall NetCodeShop
@@ -328,7 +328,7 @@ export function Privacy() {
             </div>
 
             <div className="space-y-2">
-              <h3 className="font-semibold text-gray-900 text-base">10. Prohibited Use</h3>
+              <h3 className="font-semibold text-white text-base">10. Prohibited Use</h3>
               <p>
                 You agree not to use any NetCodeShop product for purposes that are illegal under applicable laws,
                 that infringe on the rights of others, or that could damage, disable, or impair any network,
@@ -337,7 +337,7 @@ export function Privacy() {
             </div>
 
             <div className="space-y-2">
-              <h3 className="font-semibold text-gray-900 text-base">11. Changes to These Terms</h3>
+              <h3 className="font-semibold text-white text-base">11. Changes to These Terms</h3>
               <p>
                 NetCodeShop reserves the right to update these Terms of Service at any time. Changes will be
                 reflected on this page with an updated date. Continued use of the website or purchase of products
@@ -346,7 +346,7 @@ export function Privacy() {
             </div>
 
             <div className="space-y-2">
-              <h3 className="font-semibold text-gray-900 text-base">12. Contact</h3>
+              <h3 className="font-semibold text-white text-base">12. Contact</h3>
               <p>
                 For any questions regarding these Terms of Service, contact us via Telegram at{" "}
                 <a href="https://t.me/NetCodeShop" target="_blank" rel="noopener noreferrer" className="text-blue-600 hover:underline">@NetCodeShop</a>{" "}
@@ -365,12 +365,12 @@ export function Privacy() {
               <CardTitle>Privacy Policy</CardTitle>
             </div>
           </CardHeader>
-          <CardContent className="space-y-6 text-gray-700 text-sm leading-relaxed">
-            <p className="text-xs text-gray-400">Last updated: May 2025</p>
+          <CardContent className="space-y-6 text-slate-300 text-sm leading-relaxed">
+            <p className="text-xs text-slate-500">Last updated: May 2025</p>
 
-            <div className="p-4 rounded-lg bg-green-50 border border-green-100 flex items-start gap-3">
-              <Shield className="w-5 h-5 text-green-600 flex-shrink-0 mt-0.5" />
-              <p className="text-green-800">
+            <div className="p-4 rounded-lg bg-green-500/10 border border-green-500/20 flex items-start gap-3">
+              <Shield className="w-5 h-5 text-green-400 flex-shrink-0 mt-0.5" />
+              <p className="text-green-300">
                 <strong>Summary:</strong> NetCodeShop does not collect, store, or sell your personal data.
                 We do not use cookies, tracking pixels, or analytics platforms. We only hold information
                 you voluntarily share with us during a purchase conversation, and we use it solely to fulfill your order.
@@ -378,7 +378,7 @@ export function Privacy() {
             </div>
 
             <div className="space-y-2">
-              <h3 className="font-semibold text-gray-900 text-base">1. Who We Are</h3>
+              <h3 className="font-semibold text-white text-base">1. Who We Are</h3>
               <p>
                 NetCodeShop is an independent software vendor that sells desktop application source code.
                 We operate through this website and communicate with customers via Facebook Messenger,
@@ -388,7 +388,7 @@ export function Privacy() {
             </div>
 
             <div className="space-y-2">
-              <h3 className="font-semibold text-gray-900 text-base">2. Information We Collect</h3>
+              <h3 className="font-semibold text-white text-base">2. Information We Collect</h3>
               <p>We collect only what is strictly necessary to complete a sale:</p>
               <ul className="list-disc list-inside space-y-1 pl-2">
                 <li><strong>Contact information</strong> — your messaging handle (Telegram username, Facebook profile name, or WhatsApp number) as provided when you reach out to us</li>
@@ -402,7 +402,7 @@ export function Privacy() {
             </div>
 
             <div className="space-y-2">
-              <h3 className="font-semibold text-gray-900 text-base">3. How We Use Your Information</h3>
+              <h3 className="font-semibold text-white text-base">3. How We Use Your Information</h3>
               <p>Information you share with us is used only for the following purposes:</p>
               <ul className="list-disc list-inside space-y-1 pl-2">
                 <li>To confirm and process your order</li>
@@ -414,7 +414,7 @@ export function Privacy() {
             </div>
 
             <div className="space-y-2">
-              <h3 className="font-semibold text-gray-900 text-base">4. Data Storage and Retention</h3>
+              <h3 className="font-semibold text-white text-base">4. Data Storage and Retention</h3>
               <p>
                 Order conversations are stored within the messaging platform you used (Facebook Messenger,
                 Telegram, or WhatsApp). These platforms have their own privacy policies which govern how
@@ -425,7 +425,7 @@ export function Privacy() {
             </div>
 
             <div className="space-y-2">
-              <h3 className="font-semibold text-gray-900 text-base">5. Third-Party Platforms</h3>
+              <h3 className="font-semibold text-white text-base">5. Third-Party Platforms</h3>
               <p>
                 We communicate through third-party messaging platforms (Facebook, Telegram, WhatsApp).
                 By using these platforms to contact us, you are also subject to their respective privacy policies.
@@ -436,7 +436,7 @@ export function Privacy() {
             </div>
 
             <div className="space-y-2">
-              <h3 className="font-semibold text-gray-900 text-base">6. Cookies and Tracking</h3>
+              <h3 className="font-semibold text-white text-base">6. Cookies and Tracking</h3>
               <p>
                 This website does not use cookies, local storage for tracking purposes, analytics tools
                 (such as Google Analytics), or advertising trackers. Your visit to this website is not monitored
@@ -445,7 +445,7 @@ export function Privacy() {
             </div>
 
             <div className="space-y-2">
-              <h3 className="font-semibold text-gray-900 text-base">7. Data Security</h3>
+              <h3 className="font-semibold text-white text-base">7. Data Security</h3>
               <p>
                 We take reasonable precautions to protect the information shared with us. All order
                 communications are conducted within encrypted messaging platforms (Telegram and WhatsApp
@@ -456,7 +456,7 @@ export function Privacy() {
             </div>
 
             <div className="space-y-2">
-              <h3 className="font-semibold text-gray-900 text-base">8. Your Rights</h3>
+              <h3 className="font-semibold text-white text-base">8. Your Rights</h3>
               <p>Regardless of your location, you have the right to:</p>
               <ul className="list-disc list-inside space-y-1 pl-2">
                 <li>Ask what information we hold about you</li>
@@ -472,7 +472,7 @@ export function Privacy() {
             </div>
 
             <div className="space-y-2">
-              <h3 className="font-semibold text-gray-900 text-base">9. Children's Privacy</h3>
+              <h3 className="font-semibold text-white text-base">9. Children's Privacy</h3>
               <p>
                 Our products are intended for adult professionals and developers. We do not knowingly collect
                 information from anyone under 18 years of age. If you believe a minor has shared personal
@@ -481,7 +481,7 @@ export function Privacy() {
             </div>
 
             <div className="space-y-2">
-              <h3 className="font-semibold text-gray-900 text-base">10. Changes to This Policy</h3>
+              <h3 className="font-semibold text-white text-base">10. Changes to This Policy</h3>
               <p>
                 We may update this Privacy Policy from time to time. Any changes will be reflected on this
                 page with a new effective date. We encourage you to review this page periodically. Continued
@@ -490,7 +490,7 @@ export function Privacy() {
             </div>
 
             <div className="space-y-2">
-              <h3 className="font-semibold text-gray-900 text-base">11. Contact</h3>
+              <h3 className="font-semibold text-white text-base">11. Contact</h3>
               <p>
                 For any privacy-related questions or requests, reach us at:{" "}
                 <a href="https://t.me/NetCodeShop" target="_blank" rel="noopener noreferrer" className="text-blue-600 hover:underline">Telegram @NetCodeShop</a>{" "}
@@ -509,7 +509,7 @@ export function Privacy() {
               <CardTitle>Frequently Asked Questions</CardTitle>
             </div>
           </CardHeader>
-          <CardContent className="space-y-5 text-gray-700">
+          <CardContent className="space-y-5 text-slate-300">
             {[
               {
                 q: "Can I request a demo before buying?",
@@ -548,18 +548,18 @@ export function Privacy() {
                 a: "No. This website does not use cookies, analytics, or any tracking tools. We have no visibility into who visits the site.",
               },
             ].map(({ q, a }, i) => (
-              <div key={i} className="border-b border-gray-100 last:border-0 pb-5 last:pb-0">
-                <p className="font-semibold text-gray-900 mb-1">{q}</p>
-                <p className="text-gray-600">{a}</p>
+              <div key={i} className="border-b border-white/10 last:border-0 pb-5 last:pb-0">
+                <p className="font-semibold text-white mb-1">{q}</p>
+                <p className="text-slate-400">{a}</p>
               </div>
             ))}
           </CardContent>
         </Card>
 
         {/* Disclaimer Banner */}
-        <div className="rounded-xl border border-amber-200 bg-amber-50 p-5 flex items-start gap-4">
-          <AlertTriangle className="w-6 h-6 text-amber-500 flex-shrink-0 mt-0.5" />
-          <div className="text-sm text-amber-900 space-y-1">
+        <div className="rounded-xl border border-amber-500/30 bg-amber-500/10 p-5 flex items-start gap-4">
+          <AlertTriangle className="w-6 h-6 text-amber-400 flex-shrink-0 mt-0.5" />
+          <div className="text-sm text-amber-200 space-y-1">
             <p className="font-semibold">Important Notice</p>
             <p>
               NetCodeShop tools are designed for legitimate smartphone servicing and software development purposes.
@@ -571,7 +571,7 @@ export function Privacy() {
 
         {/* CTA */}
         <div className="text-center py-8">
-          <p className="text-gray-600 mb-4">Ready to purchase? Browse our full catalogue.</p>
+          <p className="text-slate-300 mb-4">Ready to purchase? Browse our full catalogue.</p>
           <Link
             to="/buy-source-code"
             className="inline-flex items-center gap-2 bg-blue-600 hover:bg-blue-700 text-white font-semibold px-6 py-3 rounded-lg transition-colors"
