@@ -727,7 +727,7 @@ export function BuySourceCode() {
               </div>
               <Button
                 className="bg-blue-600 hover:bg-blue-700"
-                onClick={() => navigate(`/product/${item.id}`)}
+                onClick={() => window.open("https://t.me/NetCodeSolutions", "_blank")}
               >
                 <ShoppingCart className="w-4 h-4 mr-2" />
                 Buy Now
@@ -850,7 +850,7 @@ export function BuySourceCode() {
                   <div>
                     <span className="text-4xl text-gray-900">${selectedProduct.price}</span>
                   </div>
-                  <Button size="lg" className="bg-blue-600 hover:bg-blue-700">
+                  <Button size="lg" className="bg-blue-600 hover:bg-blue-700" onClick={() => window.open("https://t.me/NetCodeSolutions", "_blank")}>
                     <ShoppingCart className="w-5 h-5 mr-2" />
                     Buy Now
                   </Button>
