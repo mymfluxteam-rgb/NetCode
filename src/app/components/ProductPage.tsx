@@ -232,7 +232,7 @@ export function ProductPage() {
                 <div className="flex items-center gap-3 mb-1">
                   <span className="text-4xl font-bold text-white">${product.price}</span>
                   <Badge className="bg-green-500/20 text-green-400 border-green-500/30 font-semibold">
-                    {product.originalPrice >= 1000 ? "30% OFF" : "10% OFF"}
+                    {product.originalPrice >= 500 ? "15% OFF" : "10% OFF"}
                   </Badge>
                 </div>
                 <p className="text-sm text-gray-400 line-through mb-5">${product.originalPrice}</p>

@@ -21,7 +21,13 @@ export function Contact() {
   const contactInfo = [
     {
       icon: <TelegramIcon />,
-      title: "Telegram",
+      title: "Telegram Channel",
+      content: "t.me/NetCodeShop",
+      link: "https://t.me/NetCodeShop",
+    },
+    {
+      icon: <TelegramIcon />,
+      title: "Telegram Support",
       content: "@NetCodeShop",
       link: "https://t.me/NetCodeShop",
     },
