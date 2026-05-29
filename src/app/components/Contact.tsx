@@ -22,19 +22,16 @@ export function Contact() {
     {
       icon: <TelegramIcon />,
       title: "Telegram Channel",
-      content: "t.me/NetCodeShop",
-      link: "https://t.me/NetCodeShop",
+      link: "https://t.me/NetCodeSolutions",
     },
     {
       icon: <TelegramIcon />,
       title: "Telegram Support",
-      content: "@NetCodeShop",
       link: "https://t.me/NetCodeShop",
     },
     {
       icon: <FacebookIcon />,
       title: "Facebook",
-      content: "NetCodeShop on Facebook",
       link: "https://www.facebook.com/share/1B8BRnNqhr/",
     },
   ];
@@ -61,26 +58,18 @@ export function Contact() {
             />
           </div>
 
-          <div className="space-y-4">
+          <div className="flex gap-4">
             {contactInfo.map((info, index) => (
-              <Card key={index}>
-                <CardContent className="flex items-start gap-4 pt-6">
-                  <div className="bg-blue-100 p-3 rounded-lg shrink-0">
-                    {info.icon}
-                  </div>
-                  <div className="flex-1">
-                    <h3 className="font-semibold text-white mb-1">{info.title}</h3>
-                    <a
-                      href={info.link}
-                      target="_blank"
-                      rel="noopener noreferrer"
-                      className="text-gray-300 hover:text-blue-400 transition-colors"
-                    >
-                      {info.content}
-                    </a>
-                  </div>
-                </CardContent>
-              </Card>
+              <a
+                key={index}
+                href={info.link}
+                target="_blank"
+                rel="noopener noreferrer"
+                title={info.title}
+                className="bg-slate-800/60 border border-slate-700 hover:border-blue-500/60 hover:bg-slate-700/60 transition-all p-4 rounded-xl flex items-center justify-center"
+              >
+                {info.icon}
+              </a>
             ))}
           </div>
         </div>
