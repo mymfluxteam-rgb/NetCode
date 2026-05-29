@@ -252,6 +252,22 @@ export function ProductPage() {
                 </div>
               </a>
 
+              {/* Telegram Channel */}
+              <a
+                href="https://t.me/NetCodeSolutions"
+                target="_blank"
+                rel="noopener noreferrer"
+                className="flex items-center gap-3 p-3 rounded-lg border border-gray-200 hover:border-sky-300 hover:bg-sky-50 transition-all group"
+              >
+                <span className="text-[#229ED9] group-hover:scale-110 transition-transform">
+                  <TelegramIcon />
+                </span>
+                <div>
+                  <p className="text-sm font-semibold text-gray-800">Telegram Channel</p>
+                  <p className="text-xs text-gray-500">@NetCodeSolutions</p>
+                </div>
+              </a>
+
               {/* WhatsApp */}
               <div className="p-3 rounded-lg border border-gray-200">
                 <div className="flex items-center gap-3 mb-3">
