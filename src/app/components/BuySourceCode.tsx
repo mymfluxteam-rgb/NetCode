@@ -790,7 +790,7 @@ export function BuySourceCode() {
               )}
               <div className="flex flex-wrap gap-2 mb-4">
                 {item.tags.map((tag) => (
-                  <Badge key={tag} variant="outline" className="text-xs">
+                  <Badge key={tag} variant="outline" className="text-xs text-slate-300 border-slate-500">
                     {tag}
                   </Badge>
                 ))}
