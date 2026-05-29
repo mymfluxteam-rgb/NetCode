@@ -3,6 +3,7 @@ import { Code2, ShoppingCart, Shield, Zap } from "lucide-react";
 import { Button } from "./ui/button";
 import { Card, CardContent, CardDescription, CardHeader, CardTitle } from "./ui/card";
 import { ImageWithFallback } from "./figma/ImageWithFallback";
+import { ParticleCanvas } from "./ParticleCanvas";
 
 export function Home() {
   const features = [
@@ -31,25 +32,26 @@ export function Home() {
   return (
     <div>
       {/* Hero Section */}
-      <section className="relative bg-gradient-to-br from-blue-600 to-blue-800 text-white">
-        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-20 md:py-32">
+      <section className="relative text-white overflow-hidden" style={{ background: "linear-gradient(135deg, #3b0764 0%, #5b21b6 35%, #1e40af 70%, #1e3a5f 100%)" }}>
+        <ParticleCanvas />
+        <div className="relative z-10 max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-20 md:py-32">
           <div className="grid md:grid-cols-2 gap-12 items-center">
             <div>
               <h1 className="text-4xl md:text-5xl lg:text-6xl mb-6">
                 Premium Source Code Marketplace
               </h1>
-              <p className="text-xl text-blue-100 mb-8">
+              <p className="text-xl text-purple-100 mb-8">
                 Discover and purchase high-quality source code for your next project. 
                 Save time and accelerate your development with our curated collection.
               </p>
               <div className="flex flex-wrap gap-4">
                 <Link to="/buy-source-code">
-                  <Button size="lg" className="bg-white text-blue-600 hover:bg-gray-100">
+                  <Button size="lg" className="bg-white text-purple-700 hover:bg-gray-100">
                     Browse Source Code
                   </Button>
                 </Link>
                 <Link to="/about">
-                  <Button size="lg" variant="outline" className="border-white text-white hover:bg-blue-700">
+                  <Button size="lg" variant="outline" className="border-white text-white hover:bg-white/10">
                     Learn More
                   </Button>
                 </Link>
@@ -79,7 +81,7 @@ export function Home() {
           {features.map((feature, index) => (
             <Card key={index}>
               <CardHeader>
-                <feature.icon className="w-12 h-12 text-blue-600 mb-4" />
+                <feature.icon className="w-12 h-12 text-purple-600 mb-4" />
                 <CardTitle>{feature.title}</CardTitle>
               </CardHeader>
               <CardContent>
@@ -100,7 +102,7 @@ export function Home() {
             Browse our collection of premium source code and find the perfect solution for your project.
           </p>
           <Link to="/buy-source-code">
-            <Button size="lg" className="bg-blue-600 hover:bg-blue-700">
+            <Button size="lg" className="bg-purple-600 hover:bg-purple-700">
               Browse Source Code
             </Button>
           </Link>
