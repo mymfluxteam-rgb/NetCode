@@ -894,13 +894,13 @@ export function BuySourceCode() {
 
       {/* Product Details Modal */}
       <Dialog open={!!selectedProduct} onOpenChange={() => setSelectedProduct(null)}>
-        <DialogContent className="max-w-4xl max-h-[90vh] overflow-y-auto">
+        <DialogContent className="max-w-4xl max-h-[90vh] overflow-y-auto !bg-slate-900 border-slate-700">
           {selectedProduct && (
             <>
               <DialogHeader>
                 <div className="flex items-start justify-between">
                   <div className="flex-1">
-                    <DialogTitle className="text-2xl mb-2">{selectedProduct.name}</DialogTitle>
+                    <DialogTitle className="text-2xl mb-2 text-white">{selectedProduct.name}</DialogTitle>
                     <DialogDescription className="text-base">
                       {selectedProduct.description}
                     </DialogDescription>
@@ -909,7 +909,7 @@ export function BuySourceCode() {
                     <Badge variant="secondary">{selectedProduct.category}</Badge>
                     <div className="flex items-center gap-1">
                       <Star className="w-4 h-4 text-yellow-400 fill-yellow-400" />
-                      <span className="text-sm">{selectedProduct.rating}</span>
+                      <span className="text-sm text-slate-200">{selectedProduct.rating}</span>
                     </div>
                   </div>
                 </div>
@@ -938,10 +938,10 @@ export function BuySourceCode() {
 
                 {selectedProduct.features && selectedProduct.features.length > 0 && (
                   <div>
-                    <h3 className="text-lg mb-3">Complete Feature List</h3>
+                    <h3 className="text-lg mb-3 text-white">Complete Feature List</h3>
                     <ul className="space-y-3">
                       {selectedProduct.features.map((feature, idx) => {
-                        const [title, description] = feature.split(' - ');
+                        const [title, description] = feature.split(/ — | - /);
                         return (
                           <li key={idx} className="flex gap-3">
                             <span className="text-blue-600 mt-1">•</span>
@@ -959,7 +959,7 @@ export function BuySourceCode() {
                 )}
 
                 <div className="flex flex-wrap gap-2">
-                  <p className="w-full text-sm text-gray-600 mb-1">Technologies:</p>
+                  <p className="w-full text-sm text-slate-400 mb-1">Technologies:</p>
                   {selectedProduct.tags.map((tag) => (
                     <Badge key={tag} variant="outline">
                       {tag}
