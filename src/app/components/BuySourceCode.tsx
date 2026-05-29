@@ -1,6 +1,6 @@
 import { useState, useCallback, useEffect } from "react";
 import { useNavigate } from "react-router";
-import { ShoppingCart, Star, Download, Search, X, ZoomIn, PlayCircle } from "lucide-react";
+import { ShoppingCart, Star, Download, Search, X, ZoomIn, PlayCircle, Lock, CheckCircle, ExternalLink } from "lucide-react";
 import { Button } from "./ui/button";
 import { Card, CardContent, CardDescription, CardFooter, CardHeader, CardTitle } from "./ui/card";
 import { Input } from "./ui/input";
@@ -795,41 +795,71 @@ export function BuySourceCode() {
                   </Badge>
                 ))}
               </div>
-              <div className="flex items-center gap-4 text-sm text-slate-400">
+              <div className="flex items-center justify-between text-sm text-slate-400">
                 <div className="flex items-center gap-1">
                   <Download className="w-4 h-4" />
                   <span>{item.downloads.toLocaleString()} downloads</span>
                 </div>
+                {item.price === 0 ? (
+                  <div className="flex items-center gap-1 text-emerald-400 font-medium text-xs">
+                    <CheckCircle className="w-3.5 h-3.5" />
+                    <span>Free download</span>
+                  </div>
+                ) : (
+                  <div className="flex items-center gap-1 text-slate-500 text-xs">
+                    <Lock className="w-3.5 h-3.5" />
+                    <span>Purchase required</span>
+                  </div>
+                )}
               </div>
             </CardContent>
             <CardFooter className="flex items-center justify-between">
               <div className="flex flex-col">
                 <div className="flex items-center gap-2">
-                  <span className="text-3xl font-bold text-white">${item.price}</span>
-                  <Badge className="bg-green-500/20 text-green-400 border-green-500/30 text-xs font-semibold">
-                    {item.originalPrice >= 1000 ? "30% OFF" : "10% OFF"}
-                  </Badge>
+                  <span className="text-3xl font-bold text-white">
+                    {item.price === 0 ? "Free" : `$${item.price}`}
+                  </span>
+                  {item.price > 0 && (
+                    <Badge className="bg-green-500/20 text-green-400 border-green-500/30 text-xs font-semibold">
+                      {item.originalPrice >= 1000 ? "30% OFF" : "10% OFF"}
+                    </Badge>
+                  )}
                 </div>
-                <span className="text-sm text-gray-400 line-through">${item.originalPrice}</span>
+                {item.price > 0 && (
+                  <span className="text-sm text-gray-400 line-through">${item.originalPrice}</span>
+                )}
                 {item.demoVideo && (
                   <a
                     href={`https://www.youtube.com/watch?v=${item.demoVideo}`}
                     target="_blank"
                     rel="noopener noreferrer"
-                    className="flex items-center gap-1 text-xs text-red-600 hover:text-red-700 mt-1.5 font-medium transition-colors"
+                    className="flex items-center gap-1 text-xs text-red-500 hover:text-red-400 mt-1.5 font-medium transition-colors"
                   >
                     <PlayCircle className="w-3 h-3" />
                     Watch Demo
                   </a>
                 )}
               </div>
-              <Button
-                className="bg-blue-600 hover:bg-blue-700"
-                onClick={() => navigate(`/product/${item.id}`)}
-              >
-                <ShoppingCart className="w-4 h-4 mr-2" />
-                Buy Now
-              </Button>
+              {item.price === 0 ? (
+                <a
+                  href={item.githubUrl}
+                  target="_blank"
+                  rel="noopener noreferrer"
+                >
+                  <Button className="bg-emerald-600 hover:bg-emerald-700">
+                    <ExternalLink className="w-4 h-4 mr-2" />
+                    Download Free
+                  </Button>
+                </a>
+              ) : (
+                <Button
+                  className="bg-blue-600 hover:bg-blue-700"
+                  onClick={() => navigate(`/product/${item.id}`)}
+                >
+                  <ShoppingCart className="w-4 h-4 mr-2" />
+                  Buy Now
+                </Button>
+              )}
             </CardFooter>
           </Card>
         ))}
