@@ -795,23 +795,17 @@ export function BuySourceCode() {
                   </Badge>
                 ))}
               </div>
-              <div className="flex items-center justify-between text-sm text-slate-400">
-                <div className="flex items-center gap-1">
-                  <Download className="w-4 h-4" />
-                  <span>{item.downloads.toLocaleString()} downloads</span>
+              {item.price === 0 ? (
+                <div className="flex items-center gap-1.5 text-emerald-400 font-medium text-sm">
+                  <CheckCircle className="w-4 h-4" />
+                  <span>Instant download</span>
                 </div>
-                {item.price === 0 ? (
-                  <div className="flex items-center gap-1 text-emerald-400 font-medium text-xs">
-                    <CheckCircle className="w-3.5 h-3.5" />
-                    <span>Free download</span>
-                  </div>
-                ) : (
-                  <div className="flex items-center gap-1 text-slate-500 text-xs">
-                    <Lock className="w-3.5 h-3.5" />
-                    <span>Purchase required</span>
-                  </div>
-                )}
-              </div>
+              ) : (
+                <div className="flex items-center gap-1.5 text-slate-500 text-sm">
+                  <Lock className="w-4 h-4" />
+                  <span>No download available</span>
+                </div>
+              )}
             </CardContent>
             <CardFooter className="flex items-center justify-between">
               <div className="flex flex-col">
