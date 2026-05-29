@@ -30,6 +30,7 @@ import fastbootFlasherImage from "../../imports/fastboot-flasher.png";
 import noNeedVpnImage from "../../imports/no-need-vpn-bypass.png";
 import optimaGramImage from "../../imports/optimagram-premium.png";
 import fastbootEraseToolImage from "../../imports/fastboot-erase-tool.png";
+import androidToolImage from "../../imports/android-tool.png";
 
 export interface SourceCodeItem {
   id: number;
@@ -564,6 +565,33 @@ export const sourceCodeItems: SourceCodeItem[] = [
         "Status Indicator - PictureBox shows pass/fail images from Resources to visually indicate operation success or failure",
         "AdbHandler Class - Includes DLL imports for AdbRemoteCtrl.dll for extended ADB remote control capability",
         "Technical Stack - Targets .NET Framework 4.8, uses fastboot.exe internally for all device communication",
+      ],
+    },
+    {
+      id: 24,
+      name: "Android Tool",
+      description: "Multi-mode Android servicing tool for Xiaomi (Qualcomm/EDL), MediaTek, and Fastboot devices. Covers Mi Account removal, FRP erase, bootloader unlock, firmware flashing, and essential Windows tool installers — all in one tabbed interface.",
+      price: 25,
+      originalPrice: 500,
+      category: "Desktop Application",
+      rating: 4.7,
+      downloads: 0,
+      tags: ["C#", "Qualcomm", "EDL", "MediaTek", "Fastboot"],
+      image: androidToolImage,
+      badge: "new",
+      features: [
+        "Xiaomi (EDL) Tab - Pre-configured support for 12 Xiaomi/Redmi devices: YSL, Jason, Ugglite, Ugg, Whyred, Tulip, Lavender, Ginkgo, Oxygen, Nitrogen, Wayne, Platina",
+        "Mi Account Remove (Erase) - Erases Mi Account lock partition via EDL mode for supported Qualcomm devices",
+        "Mi Account Remove (Write) - Writes patched partition to bypass Mi Account lock via EDL",
+        "EU ROM Bypass - Bypasses region restrictions via TWRP for EU ROM installation",
+        "Mi Root - Root operation for already-rooted Qualcomm Xiaomi devices",
+        "Bootloader Unlock (BLU) - Unlocks bootloader on supported Xiaomi devices via EDL",
+        "Modem/Firmware Patching - Modifies NON-HLOS.bin for modem-level firmware patching",
+        "MediaTek Tab - Integrates BKerler's mtkclient (Python required) for Auth Bypass, Factory Reset, Factory Reset (Keep Data), FRP Erase, Bootloader Unlock, and Mi Account Erase",
+        "Fastboot Tab - Parse and flash Xiaomi fastboot firmware, unlock bootloader, erase FRP partition, launch MiUnlock.exe for Mi Sig Unlock, and read device info (bootloader status, product name, slot count)",
+        "Windows Tools Tab - One-click installers for Python, ADB, MTK Driver, USBDK, and Disable Driver Signature Enforcement",
+        "JJLab.Android Library - Powers all EDL/fastboot/ADB operations with low-level device communication",
+        "C# WinForms (.NET Framework) - Clean tabbed UI with real-time log output and device status",
       ],
     },
 ];
