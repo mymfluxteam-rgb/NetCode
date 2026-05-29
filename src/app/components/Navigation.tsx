@@ -1,6 +1,7 @@
 import { Link, useLocation } from "react-router";
-import { Code2, Menu, X } from "lucide-react";
+import { Menu, X } from "lucide-react";
 import { useState } from "react";
+import logo from "/logo.png";
 
 export function Navigation() {
   const location = useLocation();
@@ -26,9 +27,8 @@ export function Navigation() {
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         <div className="flex justify-between items-center h-16">
           {/* Logo */}
-          <Link to="/" className="flex items-center gap-2">
-            <Code2 className="w-8 h-8 text-blue-600" />
-            <span className="text-xl font-semibold text-gray-900">NetCodeShop</span>
+          <Link to="/" className="flex items-center">
+            <img src={logo} alt="NetCodeShop" className="h-10 w-auto" />
           </Link>
 
           {/* Desktop Navigation */}
