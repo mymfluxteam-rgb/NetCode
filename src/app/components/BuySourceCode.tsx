@@ -36,6 +36,7 @@ import noNeedVpnImage from "../../imports/no-need-vpn-bypass.png";
 import optimaGramImage from "../../imports/optimagram-premium.png";
 import fastbootEraseToolImage from "../../imports/fastboot-erase-tool.png";
 import androidToolImage from "../../imports/android-tool.png";
+import miflashNoAuthImage from "../../imports/miflash-noauth.png";
 
 export interface SourceCodeItem {
   id: number;
@@ -52,6 +53,7 @@ export interface SourceCodeItem {
   features?: string[];
   badge?: "new" | "featured";
   demoVideo?: string;
+  githubUrl?: string;
 }
 
 export const sourceCodeItems: SourceCodeItem[] = [
@@ -542,6 +544,40 @@ export const sourceCodeItems: SourceCodeItem[] = [
         "Windows Tools Tab - One-click installers for Python, ADB, MTK Driver, USBDK, and Disable Driver Signature Enforcement",
         "JJLab.Android Library - Powers all EDL/fastboot/ADB operations with low-level device communication",
         "C# WinForms (.NET Framework) - Clean tabbed UI with real-time log output and device status",
+      ],
+    },
+    {
+      id: 25,
+      name: "MiFlash CSharp Native NoAuth",
+      description: "Open-source C# re-implementation of MiFlash for flashing Xiaomi devices via Qualcomm EDL protocol with authentication bypass for select chipsets. Supports Snapdragon 636, 680, 845, 855, 860, and 870.",
+      price: 0,
+      originalPrice: 0,
+      category: "Desktop Application",
+      rating: 4.8,
+      downloads: 0,
+      tags: ["C#", "Qualcomm", "EDL", ".NET", "Open Source"],
+      image: miflashNoAuthImage,
+      badge: "new",
+      githubUrl: "https://github.com/HadiKhoirudin/MiFlash_CSharp_Native_NoAuth",
+      features: [
+        "EDL Flashing - Flashes Xiaomi Android devices using Qualcomm EDL (Emergency Download) protocol",
+        "Supported Chipsets - Snapdragon 636, 680, 845, 855, 860, and 870",
+        "Clean All - Flash all partitions using flash_all.bat",
+        "Save User Data - Flash all except user data partitions using flash_all_except*.bat",
+        "Clean All and Lock - Flash all partitions and lock bootloader using flash_all_lock.bat",
+        "Auto Device Detection - Automatically detects connected Xiaomi devices in EDL mode",
+        "Multi-Device Flashing - Flash multiple devices simultaneously",
+        "Real-Time Progress - Visual progress bars with flash status, time elapsed, and result",
+        "Authentication Bypass - Bypasses Xiaomi server auth via SLA_Challenge.dll (No Auth mode)",
+        "User Info Management - Login, permissions check, and user account management",
+        "Driver Installation Assistant - Guided driver setup for Qualcomm EDL devices",
+        "Flash Configuration - Read-back verify, dump options, verbose logging, COM port config",
+        "SHA-256 Validation - Firmware integrity check before flashing",
+        "Firmware Download - Built-in firmware download support",
+        "Factory Mode Support - MES and X5MES factory mode operations",
+        "TCP/IP Remote Control - Remote flashing support over TCP/IP",
+        "Bilingual UI - Full Chinese and English language support",
+        "Technologies - C# .NET Framework 4.0, Windows Forms, Win32 P/Invoke, Qualcomm Sahara & Firehose protocols",
       ],
     },
 ];

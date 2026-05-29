@@ -1,6 +1,6 @@
 import { useParams, useNavigate } from "react-router";
 import { useState, useEffect, useCallback } from "react";
-import { ArrowLeft, Star, Download, CheckCircle2, Tag, X, ZoomIn, ChevronLeft, ChevronRight, PlayCircle } from "lucide-react";
+import { ArrowLeft, Star, Download, CheckCircle2, Tag, X, ZoomIn, ChevronLeft, ChevronRight, PlayCircle, Github } from "lucide-react";
 import { Button } from "./ui/button";
 import { Badge } from "./ui/badge";
 import { sourceCodeItems } from "./BuySourceCode";
@@ -209,13 +209,33 @@ export function ProductPage() {
 
           {/* Pricing card */}
           <div className="rounded-xl border border-gray-200 shadow-sm p-5 bg-white">
-            <div className="flex items-center gap-3 mb-1">
-              <span className="text-4xl font-bold text-gray-900">${product.price}</span>
-              <Badge className="bg-green-100 text-green-700 border-green-200 font-semibold">
-                {product.originalPrice >= 1000 ? "30% OFF" : "10% OFF"}
-              </Badge>
-            </div>
-            <p className="text-sm text-gray-400 line-through mb-5">${product.originalPrice}</p>
+            {product.price === 0 ? (
+              <>
+                <div className="flex items-center gap-3 mb-4">
+                  <span className="text-4xl font-bold text-green-600">Free</span>
+                  <Badge className="bg-blue-100 text-blue-700 border-blue-200 font-semibold">Open Source</Badge>
+                </div>
+                {product.githubUrl && (
+                  <a
+                    href={product.githubUrl}
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    className="flex items-center justify-center gap-2 w-full p-3 rounded-lg bg-gray-900 hover:bg-gray-700 text-white font-semibold transition-colors"
+                  >
+                    <Github className="w-5 h-5" />
+                    View on GitHub
+                  </a>
+                )}
+              </>
+            ) : (
+              <>
+                <div className="flex items-center gap-3 mb-1">
+                  <span className="text-4xl font-bold text-gray-900">${product.price}</span>
+                  <Badge className="bg-green-100 text-green-700 border-green-200 font-semibold">
+                    {product.originalPrice >= 1000 ? "30% OFF" : "10% OFF"}
+                  </Badge>
+                </div>
+                <p className="text-sm text-gray-400 line-through mb-5">${product.originalPrice}</p>
 
             {/* Contact section */}
             <p className="text-sm font-semibold text-gray-700 mb-3">Contact to Purchase</p>
@@ -288,6 +308,8 @@ export function ProductPage() {
                 </div>
               </div>
             </div>
+              </>
+            )}
           </div>
         </div>
 
