@@ -763,7 +763,7 @@ export function BuySourceCode() {
                 <Badge variant="secondary">{item.category}</Badge>
                 <div className="flex items-center gap-1">
                   <Star className="w-4 h-4 text-yellow-400 fill-yellow-400" />
-                  <span className="text-sm">{item.rating}</span>
+                  <span className="text-sm text-slate-200">{item.rating}</span>
                 </div>
               </div>
               <CardTitle className="text-xl">{item.name}</CardTitle>

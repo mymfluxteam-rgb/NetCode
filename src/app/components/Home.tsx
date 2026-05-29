@@ -49,7 +49,7 @@ export function Home() {
                   </Button>
                 </Link>
                 <Link to="/about">
-                  <Button size="lg" variant="outline" className="border-white text-white hover:bg-white/10">
+                  <Button size="lg" variant="outline" className="border-white !text-white hover:bg-white/10 !bg-transparent">
                     Learn More
                   </Button>
                 </Link>
