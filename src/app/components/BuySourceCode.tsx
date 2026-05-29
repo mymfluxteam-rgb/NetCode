@@ -1,6 +1,6 @@
 import { useState, useCallback, useEffect } from "react";
 import { useNavigate } from "react-router";
-import { ShoppingCart, Star, Download, Search, X, ZoomIn } from "lucide-react";
+import { ShoppingCart, Star, Download, Search, X, ZoomIn, PlayCircle } from "lucide-react";
 import { Button } from "./ui/button";
 import { Card, CardContent, CardDescription, CardFooter, CardHeader, CardTitle } from "./ui/card";
 import { Input } from "./ui/input";
@@ -646,6 +646,18 @@ export function BuySourceCode() {
                     ⭐ FEATURED
                   </span>
                 )}
+                {item.demoVideo && (
+                  <a
+                    href={`https://www.youtube.com/watch?v=${item.demoVideo}`}
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    onClick={(e) => e.stopPropagation()}
+                    className="absolute bottom-2 left-2 flex items-center gap-1 bg-red-600 hover:bg-red-700 text-white text-xs font-semibold px-2.5 py-1 rounded-full shadow-md transition-colors"
+                  >
+                    <PlayCircle className="w-3.5 h-3.5" />
+                    Watch Demo
+                  </a>
+                )}
               </div>
             )}
             <CardHeader>
@@ -701,6 +713,17 @@ export function BuySourceCode() {
                   </Badge>
                 </div>
                 <span className="text-sm text-gray-400 line-through">${item.originalPrice}</span>
+                {item.demoVideo && (
+                  <a
+                    href={`https://www.youtube.com/watch?v=${item.demoVideo}`}
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    className="flex items-center gap-1 text-xs text-red-600 hover:text-red-700 mt-1.5 font-medium transition-colors"
+                  >
+                    <PlayCircle className="w-3 h-3" />
+                    Watch Demo
+                  </a>
+                )}
               </div>
               <Button
                 className="bg-blue-600 hover:bg-blue-700"
