@@ -127,6 +127,11 @@ export function ProductPage() {
                 )}
               </div>
 
+              {/* Disclaimer */}
+              <p className="text-xs text-gray-400 text-center italic px-1 pt-1">
+                These images were purchased from NetCodeShop and are freely created with their own trademarks. You can view the images currently in use and purchase with confidence.
+              </p>
+
               {/* Thumbnail strip — only shown when multiple images */}
               {allImages.length > 1 && (
                 <div className="flex gap-2 overflow-x-auto pb-1">

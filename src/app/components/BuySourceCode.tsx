@@ -18,6 +18,9 @@ import qualcommToolImage from "../../imports/qualcomm-service-tool.png";
 import qualcommCustomer1Image from "../../imports/qualcomm-customer-1.png";
 import qualcommCustomer2Image from "../../imports/qualcomm-customer-2.png";
 import mtkAuthToolImage from "../../imports/mtk-auth-tool.png";
+import mtkAuthCustomerImage from "../../imports/mtk-auth-customer.png";
+import ispProgrammerCustomerImage from "../../imports/isp-programmer-customer.png";
+import androidServiceCustomerImage from "../../imports/android-service-customer.png";
 import samFwFrpToolImage from "../../imports/samfw-frp-tool.png";
 import universalActivatorImage from "../../imports/universal-activator.png";
 import ispProgrammerImage from "../../imports/isp-programmer-tool.png";
@@ -109,6 +112,7 @@ export const sourceCodeItems: SourceCodeItem[] = [
       downloads: 1640,
       tags: ["C#", "Python", "MediaTek", "DevExpress"],
       image: mtkAuthToolImage,
+      images: [mtkAuthToolImage, mtkAuthCustomerImage],
       features: [
         "Supported Brands - Xiaomi, Vivo, Oppo, Realme, Asus, Samsung, Meizu, Huawei, Nokia, Infinix",
         "FRP Erase - Factory Reset Protection removal for supported MTK devices",
@@ -194,6 +198,7 @@ export const sourceCodeItems: SourceCodeItem[] = [
       downloads: 980,
       tags: ["C#", "VB.NET", "eMMC", "GPT"],
       image: ispProgrammerImage,
+      images: [ispProgrammerImage, ispProgrammerCustomerImage],
       features: [
         "Disk Detection - Detects removable storage (eMMC, SD cards) via WMI with model and size info; requires admin privileges",
         "GPT Partition Table - Reads and parses GUID Partition Table, displays partitions with name, size, and offset using 7-Zip",
@@ -271,6 +276,7 @@ export const sourceCodeItems: SourceCodeItem[] = [
       downloads: 1760,
       tags: ["C#", "Qualcomm", "EDL", "ADB", "MediaTek"],
       image: androidServiceToolImage,
+      images: [androidServiceToolImage, androidServiceCustomerImage],
       features: [
         "Device Info (ADB) - Reads model, Android version, brand, build number, Knox version, CPU type, and hardware platform",
         "EDL Port Detection - Auto-detects Qualcomm HS-USB QDLoader 9008 port and identifies CPU model automatically",
