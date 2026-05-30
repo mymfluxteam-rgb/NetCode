@@ -17,7 +17,9 @@ function figmaAssetResolver() {
 }
 
 export default defineConfig({
-  base: './',
+  // Dev server: base = '/'  →  Replit preview works at localhost:5000/
+  // Production build: base = '/NetCode/'  →  GitHub Pages project site
+  base: process.env.NODE_ENV === 'production' ? '/NetCode/' : '/',
   plugins: [
     figmaAssetResolver(),
     // The React and Tailwind plugins are both required for Make, even if
@@ -27,7 +29,6 @@ export default defineConfig({
   ],
   resolve: {
     alias: {
-      // Alias @ to the src directory
       '@': path.resolve(__dirname, './src'),
       '@assets': path.resolve(__dirname, './attached_assets'),
     },
