@@ -16,6 +16,7 @@ import {
 import mifixProImage from "../../imports/image.png";
 import mifixProCustomer1Image from "../../imports/mifix-pro-customer1.png";
 import mifixProCustomer2Image from "../../imports/mifix-pro-customer2.png";
+import mifixProCustomer3Image from "../../imports/mifix-pro-customer3.png";
 import qualcommToolImage from "../../imports/qualcomm-service-tool.png";
 import qualcommCustomer1Image from "../../imports/qualcomm-customer-1.png";
 import qualcommCustomer2Image from "../../imports/qualcomm-customer-2.png";
@@ -97,7 +98,7 @@ export const sourceCodeItems: SourceCodeItem[] = [
       downloads: 3200,
       tags: ["C#", "DevExpress", "Qualcomm", "MediaTek"],
       image: mifixProImage,
-      images: [mifixProImage, mifixProCustomer1Image, mifixProCustomer2Image],
+      images: [mifixProImage, mifixProCustomer1Image, mifixProCustomer2Image, mifixProCustomer3Image],
       demoVideo: "axP1xKrCCXU",
       badge: "featured",
       features: [
