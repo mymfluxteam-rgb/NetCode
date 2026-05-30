@@ -5,11 +5,25 @@
       
       <meta charset="UTF-8" />
       <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-      <link rel="icon" type="image/png" href="/logo.png" />
+      <link rel="icon" type="image/png" href="./logo.png" />
       <title>NetCodeShop website</title>
       <meta name="description" content="NetCodeShop offers a user-friendly platform for purchasing high-quality source code, catering to developers and businesses seeking efficient coding solutions." />
       <meta name="robots" content="noindex, nofollow" />
       <style>html, body { height: 100%; margin: 0; } #root { height: 100%; }</style>
+      <!-- spa-github-pages: restore path encoded by 404.html -->
+      <script>
+        (function (l) {
+          if (l.search[1] === '/') {
+            var decoded = l.search.slice(1).split('&').map(function (s) {
+              return s.replace(/~and~/g, '&');
+            });
+            window.history.replaceState(
+              null, null,
+              decoded[0] + (decoded[1] ? '&' + decoded[1] : '') + l.hash
+            );
+          }
+        }(window.location));
+      </script>
       
     </head>
 
