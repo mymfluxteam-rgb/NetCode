@@ -5,12 +5,9 @@
     <title>NetCodeShop</title>
     <script>
       // spa-github-pages redirect trick
-      // Encodes the current path into a query-string redirect so GitHub Pages
-      // serves index.html, which then restores the real URL via history.replaceState.
-      //
-      // pathSegmentsToKeep = 1  →  project site  (username.github.io/repo-name)
-      // pathSegmentsToKeep = 0  →  user/org site (username.github.io)
-      var pathSegmentsToKeep = 1;
+      // pathSegmentsToKeep = 0  →  custom domain / user site (netcodeshop.shop)
+      // pathSegmentsToKeep = 1  →  project site (username.github.io/repo-name)
+      var pathSegmentsToKeep = 0;
 
       var l = window.location;
       l.replace(

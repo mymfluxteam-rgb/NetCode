@@ -42,6 +42,7 @@ import androidToolImage from "../../imports/android-tool.png";
 import miflashNoAuthImage from "../../imports/miflash-noauth.png";
 import authLoaderXiaomiImage from "../../imports/auth-loader-android-xiaomi.png";
 import hwidKeygenImage from "../../imports/hwid-keygen-generator.png";
+import iosA12BypassImage from "../../imports/ios-a12-bypass.png";
 
 export interface SourceCodeItem {
   id: number;
@@ -644,6 +645,33 @@ export const sourceCodeItems: SourceCodeItem[] = [
         "Hardware ID Display — Renders the machine's Hardware ID in the registration panel for easy copy-paste into the keygen",
         "Targets .NET Framework 4.5.2 / 4.7.2 / 4.8 — Compatible with a wide range of Windows environments",
         "Minimal WinForms UI — Lightweight Windows Forms interface with no external dependencies",
+      ],
+    },
+    {
+      id: 28,
+      name: "iOS A12+ Bypass",
+      description: "Complete iCloud activation lock bypass tool for A12–A17 Pro iPhones (XS through iPhone 15 Pro Max). Orchestrates an end-to-end bypass pipeline with device detection, pairing, payload deployment, and post-deploy verification — all via a clean WinForms interface.",
+      price: 425,
+      originalPrice: 500,
+      category: "Desktop Application",
+      rating: 4.8,
+      downloads: 0,
+      tags: ["C#", "iOS", "iCloud Bypass", "A12+", ".NET"],
+      image: iosA12BypassImage,
+      badge: "new",
+      features: [
+        "Device Detection & Management — Lists connected devices via idevice_id.exe, reads name, product type, iOS version, UDID, serial and activation state via ideviceinfo.exe",
+        "Multi-Device Support — Handles multiple connected devices with UDID selection; raises clear errors when no device is found or no target is selected",
+        "Pairing & Trust — Validates then pairs devices via idevicepair.exe; optional Force Re-pair mode unpairs and re-pairs in one click",
+        "End-to-End Bypass Pipeline — BypassService orchestrates: validate options & GUID → detect device → verify pairing → create workspace → build payload → deploy payload → verify result",
+        "Step-by-Step Progress Reporting — Real-time percentage and status messages shown throughout every stage of the bypass workflow",
+        "Post-Deploy Verification — Re-queries device info and confirms ActivationStateAcknowledged is true; skippable via Skip Verification checkbox",
+        "A12 Bionic — iPhone XS, iPhone XS Max, iPhone XR",
+        "A13 Bionic — iPhone 11, iPhone 11 Pro, iPhone 11 Pro Max",
+        "A14 Bionic — iPhone 12 mini, iPhone 12, iPhone 12 Pro, iPhone 12 Pro Max",
+        "A15 Bionic — iPhone 13, iPhone 13 mini, iPhone 13 Pro, iPhone 13 Pro Max",
+        "A16 Bionic — iPhone 14 Pro, iPhone 14 Pro Max",
+        "A17 Pro — iPhone 15 Pro, iPhone 15 Pro Max",
       ],
     },
 ];
