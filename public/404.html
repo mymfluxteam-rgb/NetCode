@@ -1,0 +1,24 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <title>NetCodeShop</title>
+    <script>
+      // spa-github-pages redirect trick
+      // pathSegmentsToKeep = 0  →  custom domain / user site (netcodeshop.shop)
+      // pathSegmentsToKeep = 1  →  project site (username.github.io/repo-name)
+      var pathSegmentsToKeep = 0;
+
+      var l = window.location;
+      l.replace(
+        l.protocol + '//' + l.host +
+        l.pathname.split('/').slice(0, 1 + pathSegmentsToKeep).join('/') +
+        '/?/' +
+        l.pathname.slice(1).split('/').slice(pathSegmentsToKeep).join('/').replace(/&/g, '~and~') +
+        (l.search ? '&' + l.search.slice(1).replace(/&/g, '~and~') : '') +
+        l.hash
+      );
+    </script>
+  </head>
+  <body></body>
+</html>

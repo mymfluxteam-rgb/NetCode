@@ -1,0 +1,89 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="1200" height="630" viewBox="0 0 1200 630">
+  <defs>
+    <linearGradient id="bg" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" style="stop-color:#0a0f1e"/>
+      <stop offset="50%" style="stop-color:#0d1b3e"/>
+      <stop offset="100%" style="stop-color:#0a0f1e"/>
+    </linearGradient>
+    <linearGradient id="accent" x1="0%" y1="0%" x2="100%" y2="0%">
+      <stop offset="0%" style="stop-color:#3b82f6"/>
+      <stop offset="100%" style="stop-color:#8b5cf6"/>
+    </linearGradient>
+    <linearGradient id="pill" x1="0%" y1="0%" x2="100%" y2="0%">
+      <stop offset="0%" style="stop-color:#1d4ed8;stop-opacity:0.8"/>
+      <stop offset="100%" style="stop-color:#7c3aed;stop-opacity:0.8"/>
+    </linearGradient>
+    <filter id="glow">
+      <feGaussianBlur stdDeviation="8" result="blur"/>
+      <feMerge><feMergeNode in="blur"/><feMergeNode in="SourceGraphic"/></feMerge>
+    </filter>
+  </defs>
+
+  <!-- Background -->
+  <rect width="1200" height="630" fill="url(#bg)"/>
+
+  <!-- Subtle grid lines -->
+  <g opacity="0.06" stroke="#4f8ef7" stroke-width="1">
+    <line x1="0" y1="105" x2="1200" y2="105"/>
+    <line x1="0" y1="210" x2="1200" y2="210"/>
+    <line x1="0" y1="315" x2="1200" y2="315"/>
+    <line x1="0" y1="420" x2="1200" y2="420"/>
+    <line x1="0" y1="525" x2="1200" y2="525"/>
+    <line x1="150" y1="0" x2="150" y2="630"/>
+    <line x1="300" y1="0" x2="300" y2="630"/>
+    <line x1="450" y1="0" x2="450" y2="630"/>
+    <line x1="600" y1="0" x2="600" y2="630"/>
+    <line x1="750" y1="0" x2="750" y2="630"/>
+    <line x1="900" y1="0" x2="900" y2="630"/>
+    <line x1="1050" y1="0" x2="1050" y2="630"/>
+  </g>
+
+  <!-- Glow orbs -->
+  <circle cx="200" cy="200" r="180" fill="#3b82f6" opacity="0.07"/>
+  <circle cx="1000" cy="430" r="200" fill="#8b5cf6" opacity="0.07"/>
+  <circle cx="600" cy="100" r="120" fill="#6366f1" opacity="0.05"/>
+
+  <!-- Top accent bar -->
+  <rect x="80" y="72" width="120" height="4" rx="2" fill="url(#accent)"/>
+
+  <!-- Logo / Brand area -->
+  <text x="80" y="160" font-family="'Segoe UI', Arial, sans-serif" font-size="64" font-weight="700" fill="#ffffff" filter="url(#glow)">NetCodeShop</text>
+
+  <!-- Tagline -->
+  <text x="80" y="215" font-family="'Segoe UI', Arial, sans-serif" font-size="28" font-weight="400" fill="#94a3b8">Premium Source Code Marketplace</text>
+
+  <!-- Divider -->
+  <rect x="80" y="248" width="1040" height="1" fill="#1e3a5f" opacity="0.6"/>
+
+  <!-- Description -->
+  <text x="80" y="300" font-family="'Segoe UI', Arial, sans-serif" font-size="22" fill="#cbd5e1">High-quality Android tools, flashing utilities &amp; license systems.</text>
+  <text x="80" y="334" font-family="'Segoe UI', Arial, sans-serif" font-size="22" fill="#cbd5e1">Ready-to-use source code with instant delivery.</text>
+
+  <!-- Feature pills -->
+  <rect x="80" y="380" width="180" height="44" rx="22" fill="url(#pill)"/>
+  <text x="170" y="408" font-family="'Segoe UI', Arial, sans-serif" font-size="18" font-weight="600" fill="#e2e8f0" text-anchor="middle">21+ Products</text>
+
+  <rect x="278" y="380" width="200" height="44" rx="22" fill="url(#pill)"/>
+  <text x="378" y="408" font-family="'Segoe UI', Arial, sans-serif" font-size="18" font-weight="600" fill="#e2e8f0" text-anchor="middle">10% – 15% OFF</text>
+
+  <rect x="496" y="380" width="220" height="44" rx="22" fill="url(#pill)"/>
+  <text x="606" y="408" font-family="'Segoe UI', Arial, sans-serif" font-size="18" font-weight="600" fill="#e2e8f0" text-anchor="middle">Instant Delivery</text>
+
+  <rect x="734" y="380" width="220" height="44" rx="22" fill="url(#pill)"/>
+  <text x="844" y="408" font-family="'Segoe UI', Arial, sans-serif" font-size="18" font-weight="600" fill="#e2e8f0" text-anchor="middle">C# · Python · TS</text>
+
+  <!-- Bottom URL -->
+  <text x="80" y="565" font-family="'Segoe UI', Arial, sans-serif" font-size="20" fill="#4f8ef7">mymfluxteam-rgb.github.io/NetCode</text>
+
+  <!-- Bottom-right decorative code block -->
+  <rect x="900" y="460" width="240" height="110" rx="12" fill="#0f172a" opacity="0.9" stroke="#1e3a5f" stroke-width="1"/>
+  <text x="920" y="488" font-family="'Courier New', monospace" font-size="13" fill="#64748b">// NetCodeShop</text>
+  <text x="920" y="508" font-family="'Courier New', monospace" font-size="13" fill="#3b82f6">const</text>
+  <text x="960" y="508" font-family="'Courier New', monospace" font-size="13" fill="#e2e8f0"> price = </text>
+  <text x="1042" y="508" font-family="'Courier New', monospace" font-size="13" fill="#34d399">600</text>
+  <text x="920" y="528" font-family="'Courier New', monospace" font-size="13" fill="#3b82f6">const</text>
+  <text x="960" y="528" font-family="'Courier New', monospace" font-size="13" fill="#e2e8f0"> tools = </text>
+  <text x="1046" y="528" font-family="'Courier New', monospace" font-size="13" fill="#f59e0b">21</text>
+  <text x="920" y="548" font-family="'Courier New', monospace" font-size="13" fill="#8b5cf6">export</text>
+  <text x="974" y="548" font-family="'Courier New', monospace" font-size="13" fill="#e2e8f0"> quality</text>
+</svg>

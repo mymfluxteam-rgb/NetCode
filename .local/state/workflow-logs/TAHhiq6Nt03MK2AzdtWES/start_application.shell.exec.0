@@ -1,0 +1,105 @@
+[43m[33m[[39m[49m[43m[30mWARN[39m[49m[43m[33m][39m[49m The "pnpm" field in package.json is no longer read by pnpm. The following keys were ignored: "pnpm.overrides", "pnpm.onlyBuiltDependencies". See https://pnpm.io/settings for the new home of each setting.
+[2m$ vite[22m
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+[1;1H[0J
+  [32m[1mVITE[22m v6.3.5[39m  [2mready in [0m[1m1222[22m[2m[0m ms[22m
+
+  [32m➜[39m  [1mLocal[22m:   [36mhttp://localhost:[1m5000[22m/[39m
+  [32m➜[39m  [1mNetwork[22m: [36mhttp://172.24.0.2:[1m5000[22m/[39m
+[2m[32m  ➜[39m[22m[2m  press [22m[1mh + enter[22m[2m to show help[22m
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+[1;1H[0J[2m1:46:16 AM[22m [36m[1m[vite][22m[39m [32mvite.config.ts changed, restarting server...[39m
+[2m1:46:16 AM[22m [36m[1m[vite][22m[39m server restarted.
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+[1;1H[0J[2m1:46:29 AM[22m [36m[1m[vite][22m[39m [90m[2m(client)[22m[39m [32mpage reload [39m[2mindex.html[22m
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+[1;1H[0J[2m1:46:31 AM[22m [36m[1m[vite][22m[39m [90m[2m(client)[22m[39m [32mpage reload [39m[2mpublic/404.html[22m
+[41m[31m[[39m[49m[41m[30mELIFECYCLE[39m[49m[41m[31m][39m[49m [31mCommand failed.[39m

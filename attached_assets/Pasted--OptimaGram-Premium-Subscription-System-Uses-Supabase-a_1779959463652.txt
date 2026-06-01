@@ -1,0 +1,44 @@
+### OptimaGram Premium Subscription System
+- Uses Supabase as the backend for subscription management
+- Features:
+  - Device fingerprinting for security
+  - Persistent encrypted local storage for subscription tokens
+  - Free trial mode
+  - Paywall UI when access expires
+  - Auto-renewal prompts
+  - Subscription bootstrap/state management
+- Files:
+  - src/lib/optimaGramSubscription.ts
+  - src/lib/subscription/transactionApi.ts
+  - src/lib/subscription/types.ts
+  - src/lib/subscription/SubscriptionProvider.tsx
+  - Supabase SQL schemas in supabase/ folder
+### 2. Fast Messages Sidebar (Premium Feature)
+- Quick Messages Templates : Tab 1 in the sidebar
+  - Predefined message templates (with default examples like "Hello! 👋", "Thanks for your message", etc.)
+  - Supports text, images, and video in templates
+  - Edit mode: create, edit, reorder, delete templates
+  - Template matching modes: "exact", "contains", "starts with"
+  - Media uploads (images/videos) to Telegram with previews
+- Language Format : Tab 2 in the sidebar
+  - Two-way translation configuration
+  - "Your language" and "Client language" selectors (supports 15+ languages)
+  - Layout style options
+  - Auto-reply toggle
+- Files:
+  - src/components/fastMessagesSidebar.ts
+  - src/lib/fastMessagesUtils.ts
+### 3. Fast Messages Auto Reply (Premium Feature)
+- Listens to incoming messages and automatically replies when a message matches a template's trigger
+- Loop prevention:
+  - Ignores outgoing messages
+  - Ignores own Saved Messages
+  - Throttles to 1 auto-reply per peer every 30 seconds
+  - Remembers recent auto-replies to avoid echo loops
+- File: src/lib/fastMessagesAutoReply.ts
+### 4. Fast Messages Cloud Sync (Premium Feature)
+- Synchronizes your Fast Messages templates across devices using your Saved Messages chat
+- Stores templates as a hidden, pinned message in Saved Messages (with a marker header 🔒 TWeb Fast Messages Sync (do not edit) )
+- Debounced saves (3 seconds) to avoid spamming the API
+- Cleans up old sync markers
+- File: src/lib/fastMessagesCloudSync.ts

@@ -1,0 +1,587 @@
+import {
+  BookOpen,
+  ShoppingCart,
+  CheckCircle,
+  MessageCircle,
+  Shield,
+  Download,
+  HelpCircle,
+  Star,
+  Zap,
+  Lock,
+  FileText,
+  AlertTriangle,
+} from "lucide-react";
+import { Card, CardContent, CardHeader, CardTitle } from "./ui/card";
+import { Link } from "react-router";
+
+export function Privacy() {
+  const sections = [
+    { id: "how-to-purchase", label: "How to Purchase" },
+    { id: "payment-channels", label: "Payment" },
+    { id: "what-you-get", label: "Delivery" },
+    { id: "buy-with-confidence", label: "Confidence" },
+    { id: "terms-of-service", label: "Terms of Service" },
+    { id: "privacy-policy", label: "Privacy Policy" },
+    { id: "faq", label: "FAQ" },
+  ];
+
+  return (
+    <div className="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 py-12">
+      {/* Header */}
+      <div className="text-center mb-10">
+        <BookOpen className="w-16 h-16 text-blue-600 mx-auto mb-4" />
+        <h1 className="text-4xl mb-4 text-white">Documentation</h1>
+        <p className="text-xl text-gray-300">
+          Everything you need to know about purchasing source code from NetCodeShop
+        </p>
+      </div>
+
+      {/* Section Navigation */}
+      <div className="flex flex-wrap gap-2 justify-center mb-10">
+        {sections.map((s) => (
+          <a
+            key={s.id}
+            href={`#${s.id}`}
+            className="px-3 py-1.5 rounded-full text-sm font-medium bg-slate-800/60 text-slate-300 border border-white/10 hover:bg-blue-500/20 hover:text-blue-300 hover:border-blue-500/30 transition-colors backdrop-blur-sm"
+          >
+            {s.label}
+          </a>
+        ))}
+      </div>
+
+      <div className="space-y-6">
+
+        {/* How to Purchase */}
+        <Card id="how-to-purchase">
+          <CardHeader>
+            <div className="flex items-center gap-3">
+              <ShoppingCart className="w-6 h-6 text-blue-600" />
+              <CardTitle>How to Purchase</CardTitle>
+            </div>
+          </CardHeader>
+          <CardContent className="space-y-4 text-slate-300">
+            <p>Buying source code from NetCodeShop is simple and straightforward. Follow these steps:</p>
+            <ol className="space-y-3">
+              {[
+                { step: "1", text: 'Browse the store at "Buy Source Code" and find the tool you need.' },
+                { step: "2", text: 'Click "Buy Now" on any product to open its detail page.' },
+                { step: "3", text: "Choose your preferred contact channel — Facebook, Telegram, or WhatsApp." },
+                { step: "4", text: "Message us with the product name. We will confirm availability and send you the payment details." },
+                { step: "5", text: "Complete the payment via your agreed method. We confirm receipt and deliver the source code immediately." },
+              ].map(({ step, text }) => (
+                <li key={step} className="flex items-start gap-3">
+                  <span className="flex-shrink-0 w-7 h-7 rounded-full bg-blue-600 text-white text-sm font-bold flex items-center justify-center">
+                    {step}
+                  </span>
+                  <span>{text}</span>
+                </li>
+              ))}
+            </ol>
+          </CardContent>
+        </Card>
+
+        {/* Payment Channels */}
+        <Card id="payment-channels">
+          <CardHeader>
+            <div className="flex items-center gap-3">
+              <MessageCircle className="w-6 h-6 text-blue-600" />
+              <CardTitle>Payment Channels</CardTitle>
+            </div>
+          </CardHeader>
+          <CardContent className="space-y-6 text-slate-300">
+            <p>
+              All purchases are handled personally through our official channels below. We accept payments via
+              bank transfer, e-wallet, or cryptocurrency — details are confirmed during your chat.
+            </p>
+
+            {/* Facebook */}
+            <div className="flex items-start gap-4 p-4 rounded-lg bg-blue-500/10 border border-blue-500/20">
+              <div className="flex-shrink-0 w-10 h-10 rounded-full bg-blue-600 flex items-center justify-center">
+                <svg viewBox="0 0 24 24" className="w-5 h-5 fill-white">
+                  <path d="M24 12.073c0-6.627-5.373-12-12-12s-12 5.373-12 12c0 5.99 4.388 10.954 10.125 11.854v-8.385H7.078v-3.47h3.047V9.43c0-3.007 1.792-4.669 4.533-4.669 1.312 0 2.686.235 2.686.235v2.953H15.83c-1.491 0-1.956.925-1.956 1.874v2.25h3.328l-.532 3.47h-2.796v8.385C19.612 23.027 24 18.062 24 12.073z" />
+                </svg>
+              </div>
+              <div>
+                <p className="font-semibold text-white">Facebook Messenger</p>
+                <p className="text-sm text-slate-400 mb-2">Fastest response during business hours. Send us a message directly on our page.</p>
+                <a
+                  href="https://www.facebook.com/share/1B8BRnNqhr/"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="inline-flex items-center gap-1 text-blue-600 hover:text-blue-700 text-sm font-medium"
+                >
+                  Open Facebook Page →
+                </a>
+              </div>
+            </div>
+
+            {/* Telegram */}
+            <div className="flex items-start gap-4 p-4 rounded-lg bg-sky-500/10 border border-sky-500/20">
+              <div className="flex-shrink-0 w-10 h-10 rounded-full bg-sky-500 flex items-center justify-center">
+                <svg viewBox="0 0 24 24" className="w-5 h-5 fill-white">
+                  <path d="M11.944 0A12 12 0 0 0 0 12a12 12 0 0 0 12 12 12 12 0 0 0 12-12A12 12 0 0 0 12 0a12 12 0 0 0-.056 0zm4.962 7.224c.1-.002.321.023.465.14a.506.506 0 0 1 .171.325c.016.093.036.306.02.472-.18 1.898-.962 6.502-1.36 8.627-.168.9-.499 1.201-.82 1.23-.696.065-1.225-.46-1.9-.902-1.056-.693-1.653-1.124-2.678-1.8-1.185-.78-.417-1.21.258-1.91.177-.184 3.247-2.977 3.307-3.23.007-.032.014-.15-.056-.212s-.174-.041-.249-.024c-.106.024-1.793 1.14-5.061 3.345-.48.33-.913.49-1.302.48-.428-.008-1.252-.241-1.865-.44-.752-.245-1.349-.374-1.297-.789.027-.216.325-.437.893-.663 3.498-1.524 5.83-2.529 6.998-3.014 3.332-1.386 4.025-1.627 4.476-1.635z" />
+                </svg>
+              </div>
+              <div>
+                <p className="font-semibold text-white">Telegram</p>
+                <p className="text-sm text-slate-400 mb-2">Available 24/7. Instant replies for order inquiries, demos, and payment confirmation.</p>
+                <a
+                  href="https://t.me/NetCodeShop"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="inline-flex items-center gap-1 text-sky-600 hover:text-sky-700 text-sm font-medium"
+                >
+                  Open @NetCodeShop on Telegram →
+                </a>
+              </div>
+            </div>
+
+            {/* WhatsApp */}
+            <div className="flex items-start gap-4 p-4 rounded-lg bg-green-500/10 border border-green-500/20">
+              <div className="flex-shrink-0 w-10 h-10 rounded-full bg-green-500 flex items-center justify-center">
+                <svg viewBox="0 0 24 24" className="w-5 h-5 fill-white">
+                  <path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 0 1-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 0 1-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 0 1 2.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0 0 12.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 0 0 5.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 0 0-3.48-8.413Z" />
+                </svg>
+              </div>
+              <div>
+                <p className="font-semibold text-white">WhatsApp</p>
+                <p className="text-sm text-slate-400 mb-2">Scan the QR code on any product page to start a chat directly. No account required.</p>
+                <Link
+                  to="/buy-source-code"
+                  className="inline-flex items-center gap-1 text-green-600 hover:text-green-700 text-sm font-medium"
+                >
+                  Browse products to find QR code →
+                </Link>
+              </div>
+            </div>
+          </CardContent>
+        </Card>
+
+        {/* What You Get */}
+        <Card id="what-you-get">
+          <CardHeader>
+            <div className="flex items-center gap-3">
+              <Download className="w-6 h-6 text-blue-600" />
+              <CardTitle>What You Get After Purchase</CardTitle>
+            </div>
+          </CardHeader>
+          <CardContent className="space-y-3 text-slate-300">
+            {[
+              { icon: <CheckCircle className="w-5 h-5 text-green-500 flex-shrink-0" />, text: "Full source code — complete, uncommented, and ready to compile" },
+              { icon: <CheckCircle className="w-5 h-5 text-green-500 flex-shrink-0" />, text: "All required libraries and dependencies included" },
+              { icon: <CheckCircle className="w-5 h-5 text-green-500 flex-shrink-0" />, text: "Setup and build instructions to get you running immediately" },
+              { icon: <CheckCircle className="w-5 h-5 text-green-500 flex-shrink-0" />, text: "Lifetime access — no subscriptions, no expiry" },
+              { icon: <CheckCircle className="w-5 h-5 text-green-500 flex-shrink-0" />, text: "Free bug fixes for issues that exist at the time of purchase" },
+              { icon: <CheckCircle className="w-5 h-5 text-green-500 flex-shrink-0" />, text: "Direct support via the same channel you used to purchase" },
+            ].map(({ icon, text }, i) => (
+              <div key={i} className="flex items-start gap-3">
+                {icon}
+                <span>{text}</span>
+              </div>
+            ))}
+          </CardContent>
+        </Card>
+
+        {/* Buy with Confidence */}
+        <Card id="buy-with-confidence" className="border-blue-500/20 bg-blue-500/10">
+          <CardHeader>
+            <div className="flex items-center gap-3">
+              <Shield className="w-6 h-6 text-blue-400" />
+              <CardTitle className="text-blue-300">Buy with Confidence</CardTitle>
+            </div>
+          </CardHeader>
+          <CardContent className="space-y-4 text-slate-300">
+            <p>
+              Every product sold at NetCodeShop is developed and tested in-house. We stand behind the quality of our tools.
+            </p>
+            <div className="grid sm:grid-cols-3 gap-4">
+              <div className="bg-slate-800/60 rounded-lg p-4 text-center border border-white/10">
+                <Star className="w-8 h-8 text-yellow-500 mx-auto mb-2" />
+                <p className="font-semibold text-white">Genuine Code</p>
+                <p className="text-sm text-slate-400 mt-1">All source code is original and owned by us. Customers are not allowed to resell purchased source code without a license.</p>
+              </div>
+              <div className="bg-slate-800/60 rounded-lg p-4 text-center border border-white/10">
+                <Zap className="w-8 h-8 text-blue-400 mx-auto mb-2" />
+                <p className="font-semibold text-white">Instant Delivery</p>
+                <p className="text-sm text-slate-400 mt-1">Delivered within minutes of confirmed payment, directly via your chat channel</p>
+              </div>
+              <div className="bg-slate-800/60 rounded-lg p-4 text-center border border-white/10">
+                <MessageCircle className="w-8 h-8 text-green-500 mx-auto mb-2" />
+                <p className="font-semibold text-white">Human Support</p>
+                <p className="text-sm text-slate-400 mt-1">Talk to a real person — not a bot — at every stage of your purchase</p>
+              </div>
+            </div>
+          </CardContent>
+        </Card>
+
+        {/* Terms of Service */}
+        <Card id="terms-of-service">
+          <CardHeader>
+            <div className="flex items-center gap-3">
+              <FileText className="w-6 h-6 text-blue-600" />
+              <CardTitle>Terms of Service</CardTitle>
+            </div>
+          </CardHeader>
+          <CardContent className="space-y-6 text-slate-300 text-sm leading-relaxed">
+            <p className="text-xs text-slate-500">Last updated: May 2025</p>
+
+            <div className="space-y-2">
+              <h3 className="font-semibold text-white text-base">1. Agreement to Terms</h3>
+              <p>
+                By contacting NetCodeShop to purchase, browsing this website, or completing any transaction with us,
+                you agree to be bound by these Terms of Service. If you do not agree, please do not proceed with
+                a purchase. These terms apply to all customers, regardless of location or the channel used to complete the purchase.
+              </p>
+            </div>
+
+            <div className="space-y-2">
+              <h3 className="font-semibold text-white text-base">2. Products</h3>
+              <p>
+                NetCodeShop sells desktop application source code written primarily in C#, Python, and VB.NET.
+                All products are digital goods. Product descriptions, screenshots, and feature lists on this website
+                accurately represent the tools at the time of listing. Minor discrepancies due to version updates may occur.
+                We reserve the right to update or improve any product at any time.
+              </p>
+            </div>
+
+            <div className="space-y-2">
+              <h3 className="font-semibold text-white text-base">3. Pricing and Payment</h3>
+              <p>
+                All prices are displayed on the product pages and are quoted in USD unless otherwise stated during
+                your order chat. Prices may change without prior notice, but the price confirmed to you during your
+                purchase chat is the price you will be charged. Payment must be completed in full before delivery.
+                We accept bank transfer, e-wallet transfers, and selected cryptocurrencies. All specific payment
+                details are shared privately during your order conversation.
+              </p>
+            </div>
+
+            <div className="space-y-2">
+              <h3 className="font-semibold text-white text-base">4. Delivery</h3>
+              <p>
+                Source code is delivered digitally via the same messaging channel used to place the order
+                (Facebook Messenger, Telegram, or WhatsApp). Delivery is completed within minutes of payment
+                confirmation during business hours, and within 24 hours at most for orders placed outside
+                business hours. We are not responsible for delays caused by incorrect contact information
+                provided by the customer.
+              </p>
+            </div>
+
+            <div className="space-y-2">
+              <h3 className="font-semibold text-white text-base">5. License</h3>
+              <p>
+                Each purchase grants the buyer a <strong>single-user, non-exclusive, non-transferable license</strong> to
+                use the purchased source code for personal or commercial purposes within one business or project.
+                You may modify the code for your own use. You may <strong>not</strong>:
+              </p>
+              <ul className="list-disc list-inside space-y-1 pl-2">
+                <li>Resell, sublicense, or distribute the source code to any third party</li>
+                <li>Share, publish, or upload the source code publicly (e.g. GitHub, forums, file-sharing sites)</li>
+                <li>Use the source code to create a competing product for resale without a written commercial license from NetCodeShop</li>
+                <li>Claim authorship or original ownership of the code</li>
+              </ul>
+              <p className="mt-2">
+                Violation of these terms may result in legal action and permanent ban from future purchases.
+              </p>
+            </div>
+
+            <div className="space-y-2">
+              <h3 className="font-semibold text-white text-base">6. Refund Policy</h3>
+              <p>
+                Because our products are digital and delivered immediately upon payment, <strong>all sales are final</strong>.
+                We do not offer refunds once the source code has been delivered. However, if you experience a critical
+                issue that prevents the tool from functioning as described, contact us within 7 days of purchase and
+                we will work to resolve the problem at no additional charge. Refunds may be considered on a
+                case-by-case basis solely at our discretion, only when the product was materially misrepresented.
+              </p>
+            </div>
+
+            <div className="space-y-2">
+              <h3 className="font-semibold text-white text-base">7. Support and Bug Fixes</h3>
+              <p>
+                Free support is provided for bugs that exist in the source code at the time of purchase. Support is
+                delivered via the channel you used to purchase. We aim to respond within 24 hours. Support does
+                not cover issues caused by your own modifications to the code, incompatible hardware or software
+                configurations, or requests for new features beyond the product scope.
+              </p>
+            </div>
+
+            <div className="space-y-2">
+              <h3 className="font-semibold text-white text-base">8. Intellectual Property</h3>
+              <p>
+                All source code, designs, product names, and content on this website are the intellectual property
+                of NetCodeShop. Ownership of the intellectual property does not transfer with purchase. You receive
+                a license to use the code, not ownership of it. Screenshots and product images are proprietary and
+                may not be reproduced or used without permission.
+              </p>
+            </div>
+
+            <div className="space-y-2">
+              <h3 className="font-semibold text-white text-base">9. Limitation of Liability</h3>
+              <p>
+                NetCodeShop provides its source code products "as-is." We make no warranties, express or implied,
+                regarding fitness for a particular purpose or uninterrupted operation. In no event shall NetCodeShop
+                be liable for any indirect, incidental, or consequential damages arising from the use or inability
+                to use the purchased code, even if we have been advised of the possibility of such damages.
+                Our total liability to any customer is limited to the amount paid for the specific product involved.
+              </p>
+            </div>
+
+            <div className="space-y-2">
+              <h3 className="font-semibold text-white text-base">10. Prohibited Use</h3>
+              <p>
+                You agree not to use any NetCodeShop product for purposes that are illegal under applicable laws,
+                that infringe on the rights of others, or that could damage, disable, or impair any network,
+                server, or system. Any suspected misuse will result in permanent termination of access without refund.
+              </p>
+            </div>
+
+            <div className="space-y-2">
+              <h3 className="font-semibold text-white text-base">11. Changes to These Terms</h3>
+              <p>
+                NetCodeShop reserves the right to update these Terms of Service at any time. Changes will be
+                reflected on this page with an updated date. Continued use of the website or purchase of products
+                after changes are posted constitutes your acceptance of the revised terms.
+              </p>
+            </div>
+
+            <div className="space-y-2">
+              <h3 className="font-semibold text-white text-base">12. Contact</h3>
+              <p>
+                For any questions regarding these Terms of Service, contact us via Telegram at{" "}
+                <a href="https://t.me/NetCodeShop" target="_blank" rel="noopener noreferrer" className="text-blue-600 hover:underline">@NetCodeShop</a>{" "}
+                or via our{" "}
+                <a href="https://www.facebook.com/share/1B8BRnNqhr/" target="_blank" rel="noopener noreferrer" className="text-blue-600 hover:underline">Facebook page</a>.
+              </p>
+            </div>
+          </CardContent>
+        </Card>
+
+        {/* Privacy Policy */}
+        <Card id="privacy-policy">
+          <CardHeader>
+            <div className="flex items-center gap-3">
+              <Lock className="w-6 h-6 text-blue-600" />
+              <CardTitle>Privacy Policy</CardTitle>
+            </div>
+          </CardHeader>
+          <CardContent className="space-y-6 text-slate-300 text-sm leading-relaxed">
+            <p className="text-xs text-slate-500">Last updated: May 2025</p>
+
+            <div className="p-4 rounded-lg bg-green-500/10 border border-green-500/20 flex items-start gap-3">
+              <Shield className="w-5 h-5 text-green-400 flex-shrink-0 mt-0.5" />
+              <p className="text-green-300">
+                <strong>Summary:</strong> NetCodeShop does not collect, store, or sell your personal data.
+                We do not use cookies, tracking pixels, or analytics platforms. We only hold information
+                you voluntarily share with us during a purchase conversation, and we use it solely to fulfill your order.
+              </p>
+            </div>
+
+            <div className="space-y-2">
+              <h3 className="font-semibold text-white text-base">1. Who We Are</h3>
+              <p>
+                NetCodeShop is an independent software vendor that sells desktop application source code.
+                We operate through this website and communicate with customers via Facebook Messenger,
+                Telegram, and WhatsApp. This Privacy Policy explains how we handle any information that arises
+                from your interaction with us.
+              </p>
+            </div>
+
+            <div className="space-y-2">
+              <h3 className="font-semibold text-white text-base">2. Information We Collect</h3>
+              <p>We collect only what is strictly necessary to complete a sale:</p>
+              <ul className="list-disc list-inside space-y-1 pl-2">
+                <li><strong>Contact information</strong> — your messaging handle (Telegram username, Facebook profile name, or WhatsApp number) as provided when you reach out to us</li>
+                <li><strong>Order details</strong> — the product you requested and the agreed price</li>
+                <li><strong>Payment confirmation</strong> — a reference or confirmation from you that payment was made (we do not handle or store payment card details)</li>
+              </ul>
+              <p className="mt-2">
+                This website itself does not use cookies, tracking scripts, or analytics software.
+                No data is collected passively from website visitors.
+              </p>
+            </div>
+
+            <div className="space-y-2">
+              <h3 className="font-semibold text-white text-base">3. How We Use Your Information</h3>
+              <p>Information you share with us is used only for the following purposes:</p>
+              <ul className="list-disc list-inside space-y-1 pl-2">
+                <li>To confirm and process your order</li>
+                <li>To deliver the purchased source code to you</li>
+                <li>To provide post-purchase support if you contact us</li>
+                <li>To verify your order history if you return for a follow-up request</li>
+              </ul>
+              <p className="mt-2">We will never use your information to send unsolicited messages, promotional content, or share it with any third party for marketing purposes.</p>
+            </div>
+
+            <div className="space-y-2">
+              <h3 className="font-semibold text-white text-base">4. Data Storage and Retention</h3>
+              <p>
+                Order conversations are stored within the messaging platform you used (Facebook Messenger,
+                Telegram, or WhatsApp). These platforms have their own privacy policies which govern how
+                those messages are stored. NetCodeShop does not maintain a separate customer database.
+                We retain order references only as long as necessary to provide support. If you request
+                deletion of your information, we will remove any records we hold on our end within 14 days.
+              </p>
+            </div>
+
+            <div className="space-y-2">
+              <h3 className="font-semibold text-white text-base">5. Third-Party Platforms</h3>
+              <p>
+                We communicate through third-party messaging platforms (Facebook, Telegram, WhatsApp).
+                By using these platforms to contact us, you are also subject to their respective privacy policies.
+                We do not control how these platforms handle your data. This website is hosted on Replit, and
+                standard server access logs may be maintained by the hosting provider — NetCodeShop does not
+                access or use these logs.
+              </p>
+            </div>
+
+            <div className="space-y-2">
+              <h3 className="font-semibold text-white text-base">6. Cookies and Tracking</h3>
+              <p>
+                This website does not use cookies, local storage for tracking purposes, analytics tools
+                (such as Google Analytics), or advertising trackers. Your visit to this website is not monitored
+                or recorded by NetCodeShop.
+              </p>
+            </div>
+
+            <div className="space-y-2">
+              <h3 className="font-semibold text-white text-base">7. Data Security</h3>
+              <p>
+                We take reasonable precautions to protect the information shared with us. All order
+                communications are conducted within encrypted messaging platforms (Telegram and WhatsApp
+                use end-to-end encryption for direct messages). We do not store payment card numbers,
+                bank account details, or any sensitive financial information. If you believe your information
+                has been compromised in connection with a purchase from us, contact us immediately.
+              </p>
+            </div>
+
+            <div className="space-y-2">
+              <h3 className="font-semibold text-white text-base">8. Your Rights</h3>
+              <p>Regardless of your location, you have the right to:</p>
+              <ul className="list-disc list-inside space-y-1 pl-2">
+                <li>Ask what information we hold about you</li>
+                <li>Request correction of any inaccurate information</li>
+                <li>Request deletion of your information from our records</li>
+                <li>Withdraw consent to any communication from us</li>
+              </ul>
+              <p className="mt-2">
+                To exercise any of these rights, message us on Telegram at{" "}
+                <a href="https://t.me/NetCodeShop" target="_blank" rel="noopener noreferrer" className="text-blue-600 hover:underline">@NetCodeShop</a>{" "}
+                and we will respond within 14 days.
+              </p>
+            </div>
+
+            <div className="space-y-2">
+              <h3 className="font-semibold text-white text-base">9. Children's Privacy</h3>
+              <p>
+                Our products are intended for adult professionals and developers. We do not knowingly collect
+                information from anyone under 18 years of age. If you believe a minor has shared personal
+                information with us, please contact us so we can remove it.
+              </p>
+            </div>
+
+            <div className="space-y-2">
+              <h3 className="font-semibold text-white text-base">10. Changes to This Policy</h3>
+              <p>
+                We may update this Privacy Policy from time to time. Any changes will be reflected on this
+                page with a new effective date. We encourage you to review this page periodically. Continued
+                use of our services after changes are posted constitutes your acceptance of the updated policy.
+              </p>
+            </div>
+
+            <div className="space-y-2">
+              <h3 className="font-semibold text-white text-base">11. Contact</h3>
+              <p>
+                For any privacy-related questions or requests, reach us at:{" "}
+                <a href="https://t.me/NetCodeShop" target="_blank" rel="noopener noreferrer" className="text-blue-600 hover:underline">Telegram @NetCodeShop</a>{" "}
+                or via our{" "}
+                <a href="https://www.facebook.com/share/1B8BRnNqhr/" target="_blank" rel="noopener noreferrer" className="text-blue-600 hover:underline">Facebook page</a>.
+              </p>
+            </div>
+          </CardContent>
+        </Card>
+
+        {/* FAQ */}
+        <Card id="faq">
+          <CardHeader>
+            <div className="flex items-center gap-3">
+              <HelpCircle className="w-6 h-6 text-blue-600" />
+              <CardTitle>Frequently Asked Questions</CardTitle>
+            </div>
+          </CardHeader>
+          <CardContent className="space-y-5 text-slate-300">
+            {[
+              {
+                q: "Can I request a demo before buying?",
+                a: "Yes. Message us on any channel and we can provide a video demo or screenshot walkthrough of the tool in action.",
+              },
+              {
+                q: "Is the source code compatible with all Windows versions?",
+                a: "Most tools are built for Windows 10/11 x64. Specific compatibility details are listed on each product page.",
+              },
+              {
+                q: "Can I resell or redistribute the source code?",
+                a: "No. Each purchase is a single-user licence for personal or business use. Redistribution or resale is not permitted without a written commercial licence from NetCodeShop.",
+              },
+              {
+                q: "What payment methods do you accept?",
+                a: "We accept bank transfer, popular e-wallets, and selected cryptocurrencies. Payment options are confirmed during your order chat.",
+              },
+              {
+                q: "Will I receive updates when the tool is improved?",
+                a: "Major version updates may be available at a discounted upgrade price. Bug fixes for the purchased version are always free.",
+              },
+              {
+                q: "How do I get started after receiving the source code?",
+                a: "Each delivery includes a README with build instructions. We're also available on your purchase channel if you need any setup help.",
+              },
+              {
+                q: "Is my personal information safe?",
+                a: "Yes. We do not store your personal data in any database. All communication is handled through encrypted messaging platforms. See our Privacy Policy above for full details.",
+              },
+              {
+                q: "Can I get a refund?",
+                a: "All sales are final because the source code is delivered digitally. If the product does not work as described, contact us within 7 days and we will fix the issue. Refunds are only considered if the product was materially misrepresented.",
+              },
+              {
+                q: "Do you track me when I visit the website?",
+                a: "No. This website does not use cookies, analytics, or any tracking tools. We have no visibility into who visits the site.",
+              },
+            ].map(({ q, a }, i) => (
+              <div key={i} className="border-b border-white/10 last:border-0 pb-5 last:pb-0">
+                <p className="font-semibold text-white mb-1">{q}</p>
+                <p className="text-slate-400">{a}</p>
+              </div>
+            ))}
+          </CardContent>
+        </Card>
+
+        {/* Disclaimer Banner */}
+        <div className="rounded-xl border border-amber-500/30 bg-amber-500/10 p-5 flex items-start gap-4">
+          <AlertTriangle className="w-6 h-6 text-amber-400 flex-shrink-0 mt-0.5" />
+          <div className="text-sm text-amber-200 space-y-1">
+            <p className="font-semibold">Important Notice</p>
+            <p>
+              NetCodeShop tools are designed for legitimate smartphone servicing and software development purposes.
+              Customers are solely responsible for ensuring their use of the software complies with all applicable
+              laws and regulations in their jurisdiction. NetCodeShop accepts no liability for misuse of any product.
+            </p>
+          </div>
+        </div>
+
+        {/* CTA */}
+        <div className="text-center py-8">
+          <p className="text-slate-300 mb-4">Ready to purchase? Browse our full catalogue.</p>
+          <Link
+            to="/buy-source-code"
+            className="inline-flex items-center gap-2 bg-blue-600 hover:bg-blue-700 text-white font-semibold px-6 py-3 rounded-lg transition-colors"
+          >
+            <ShoppingCart className="w-5 h-5" />
+            Browse Source Code
+          </Link>
+        </div>
+
+      </div>
+    </div>
+  );
+}

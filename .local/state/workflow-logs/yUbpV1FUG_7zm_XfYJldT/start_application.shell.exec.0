@@ -1,0 +1,31 @@
+[43m[33m[[39m[49m[43m[30mWARN[39m[49m[43m[33m][39m[49m The "pnpm" field in package.json is no longer read by pnpm. The following keys were ignored: "pnpm.overrides", "pnpm.onlyBuiltDependencies". See https://pnpm.io/settings for the new home of each setting.
+[2m$ vite[22m
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+[1;1H[0J
+  [32m[1mVITE[22m v6.3.5[39m  [2mready in [0m[1m215[22m[2m[0m ms[22m
+
+  [32m➜[39m  [1mLocal[22m:   [36mhttp://localhost:[1m5000[22m/[39m
+  [32m➜[39m  [1mNetwork[22m: [36mhttp://172.24.0.2:[1m5000[22m/[39m
+[2m[32m  ➜[39m[22m[2m  press [22m[1mh + enter[22m[2m to show help[22m
