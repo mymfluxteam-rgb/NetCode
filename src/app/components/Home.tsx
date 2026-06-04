@@ -1,8 +1,41 @@
 import { Link } from "react-router";
-import { Code2, ShoppingCart, Shield, Zap } from "lucide-react";
+import { Code2, ShoppingCart, Shield, Star, Zap } from "lucide-react";
 import { Button } from "./ui/button";
 import { Card, CardContent, CardDescription, CardHeader, CardTitle } from "./ui/card";
 import { ImageWithFallback } from "./figma/ImageWithFallback";
+
+const testimonials = [
+  {
+    name: "James Whitfield",
+    role: "Senior Android Developer",
+    stars: 5,
+    text: "I purchased the MiFix Pro source code and was blown away by the quality. The code is clean, well-documented, and saved me months of work. When I had a question about the license integration, support replied within hours. Absolutely worth every penny.",
+  },
+  {
+    name: "Sophia Reeves",
+    role: "Founder, TechRepair Solutions Ltd.",
+    stars: 5,
+    text: "As a business owner running a device repair shop, I needed reliable flashing software for my team. NetCodeShop delivered exactly that — a professional-grade Qualcomm flashing tool with full source code. The support team helped us customize it perfectly.",
+  },
+  {
+    name: "Marcus Tan",
+    role: "Freelance Mobile Developer",
+    stars: 5,
+    text: "The Android Service Tool source code is exceptional. It's modular, readable, and comes with everything you need to get started right away. I deployed it for a client within a week. The after-sales support is some of the best I've ever experienced.",
+  },
+  {
+    name: "Elena Voronova",
+    role: "CEO, DigiTech Repair Group",
+    stars: 5,
+    text: "We've purchased three products from NetCodeShop, including the License Key System and ISP Programmer Tool. Each one exceeded our expectations in terms of code quality and reliability. Our entire operation now runs on NetCodeShop software — highly recommended.",
+  },
+  {
+    name: "Daniel Osei",
+    role: "Independent Software Engineer",
+    stars: 5,
+    text: "I was skeptical at first, but the MTK Auth Bypass Tool source code is genuinely top-tier. Delivery was instant after payment, and the included documentation made setup a breeze. I reached out to support with a customization request and got a detailed answer the same day.",
+  },
+];
 
 export function Home() {
   const features = [
@@ -84,6 +117,34 @@ export function Home() {
               </CardHeader>
               <CardContent>
                 <CardDescription>{feature.description}</CardDescription>
+              </CardContent>
+            </Card>
+          ))}
+        </div>
+      </section>
+
+      {/* Testimonials Section */}
+      <section className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-16 md:py-24">
+        <div className="text-center mb-12">
+          <h2 className="text-3xl md:text-4xl mb-4 text-white">What Our Buyers Say</h2>
+          <p className="text-xl text-gray-300 max-w-2xl mx-auto">
+            Trusted by developers and businesses around the world.
+          </p>
+        </div>
+        <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-6">
+          {testimonials.map((t, i) => (
+            <Card key={i} className="flex flex-col">
+              <CardHeader className="pb-2">
+                <div className="flex items-center gap-1 mb-2">
+                  {Array.from({ length: t.stars }).map((_, s) => (
+                    <Star key={s} className="w-4 h-4 fill-yellow-400 text-yellow-400" />
+                  ))}
+                </div>
+                <CardTitle className="text-base">{t.name}</CardTitle>
+                <CardDescription className="text-purple-400 text-sm">{t.role}</CardDescription>
+              </CardHeader>
+              <CardContent className="flex-1">
+                <p className="text-gray-300 text-sm leading-relaxed">"{t.text}"</p>
               </CardContent>
             </Card>
           ))}
