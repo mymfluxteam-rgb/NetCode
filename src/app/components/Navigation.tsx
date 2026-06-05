@@ -13,6 +13,7 @@ export function Navigation() {
     { path: "/privacy", label: "Docs" },
     { path: "/about", label: "About" },
     { path: "/contact", label: "Contact" },
+    { path: "/chat", label: "💬 Support" },
   ];
 
   const isActive = (path: string) => {

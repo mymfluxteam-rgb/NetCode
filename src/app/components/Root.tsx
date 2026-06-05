@@ -1,6 +1,7 @@
 import { Outlet } from "react-router";
 import { Navigation } from "./Navigation";
 import { ParticleBackground } from "./ParticleBackground";
+import { FloatingChat } from "./FloatingChat";
 
 export function Root() {
   return (
@@ -11,6 +12,7 @@ export function Root() {
         <main className="flex-1">
           <Outlet />
         </main>
+        <FloatingChat />
         <footer className="bg-gray-900/80 backdrop-blur-sm text-white mt-16 border-t border-white/10">
           <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-8">
             <div className="text-center">
