@@ -1,0 +1,9 @@
+# Cloudflare Workers configuration
+# Deploy with: wrangler deploy cloudflare-worker.js
+#
+# REQUIRED: Set your Gemini API key as a secret before deploying:
+#   wrangler secret put GEMINI_API_KEY
+
+name = "netcodeshop-chat"
+main = "cloudflare-worker.js"
+compatibility_date = "2024-01-01"

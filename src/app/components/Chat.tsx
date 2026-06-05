@@ -1,6 +1,10 @@
 import { useState, useRef, useEffect, FormEvent } from "react";
 import { Send, Bot, User, Loader2, MessageSquare } from "lucide-react";
 
+// 🔧 Replace with your deployed Cloudflare Worker URL after deploying cloudflare-worker.js
+// Example: "https://netcodeshop-chat.YOUR_SUBDOMAIN.workers.dev"
+const CLOUDFLARE_WORKER_URL = "https://netcodeshop-chatbot.mymauthtool.workers.dev";
+
 interface Message {
   role: "user" | "model";
   text: string;
@@ -48,7 +52,7 @@ export function Chat() {
     }));
 
     try {
-      const res = await fetch("/api/chat", {
+      const res = await fetch(CLOUDFLARE_WORKER_URL, {
         method: "POST",
         headers: { "Content-Type": "application/json" },
         body: JSON.stringify({ message: text, history }),
