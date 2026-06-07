@@ -1,0 +1,25 @@
+I checked the Cloudflare Observability Logs for the 503 error. On the second message, the `content-length` jumps to 4482 bytes, and the request times out/fails after 4.7 seconds because the chat history payload format becomes messy or too large for the Gemini API.
+
+Please inspect the Cloudflare Worker code (`worker.js`). We need to optimize how chat history is handled:
+1. Make sure the chat history array does NOT append duplicate prompts.
+2. Limit the conversation history to only the last 4 or 6 messages (Slice the history array) so the payload size stays small.
+3. Verify that the JSON structure being sent to Gemini API perfectly matches their `contents: [{ role: "user" | "model", parts: [{ text: "..." }] }]` format for multi-turn conversations.
+
+Please refactor the history payload logic to keep it lightweight and valid, then redeploy.
+
+Since we already have multiple AI Provider secrets deployed in our Cloudflare Worker variables (including GEMINI_API_KEY, GROQ_API_KEY, OPENROUTER_API_KEY, MISTRAL_API_KEY, and DEEPSEEK_API_KEY), I want to build a highly resilient Multi-Stage AI Fallback (Failover Chain) system.
+
+Please rewrite the fetching logic in `worker.js` to implement an array-based provider chain. It should work exactly like this:
+
+1. Define a list of fallback providers in order of priority. For example:
+   - Primary: Gemini API (`gemini-1.5-flash`) -> uses `env.GEMINI_API_KEY`
+   - Secondary Backup: Groq API (`llama-3.3-70b-versatile`) -> uses `env.GROQ_API_KEY`
+   - Tertiary Backup: OpenRouter API (`deepseek/deepseek-chat` or another reliable model) -> uses `env.OPENROUTER_API_KEY`
+
+2. Implement a loop or sequential try-catch mechanism. If the Primary provider fails (rate limits, timeouts, or 5xx/4xx errors), catch the error, log it, and immediately advance to the Secondary backup without throwing an error to the frontend.
+
+3. Keep trying down the chain until one provider successfully returns a string answer. Only throw a "503 All AI Providers Failed" error if every single API in the array fails.
+
+4. Ensure that the chat history slicing logic (keeping it under 4-6 turns to avoid large payloads) and the language-matching system prompt rules are perfectly preserved and passed into each provider's format correctly.
+
+Please implement this flexible chain architecture and redeploy the worker.

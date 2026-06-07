@@ -1,22 +1,16 @@
 /**
  * NetCodeShop — Cloudflare Worker
- * AI Chatbot with automatic fallback across 8 providers.
+ * Multi-stage AI fallback chatbot with history trimming.
  *
- * SETUP (Wrangler CLI):
- *   wrangler secret put GROQ_API_KEY
- *   wrangler secret put GEMINI_API_KEY
- *   wrangler secret put DEEPSEEK_API_KEY
- *   wrangler secret put OPENROUTER_API_KEY
- *   wrangler secret put MISTRAL_API_KEY
- *   wrangler secret put COHERE_API_KEY
- *   wrangler secret put XAI_API_KEY
- *   wrangler secret put ANYSCALE_API_KEY
+ * Priority chain: Gemini → Groq → OpenRouter → Mistral → DeepSeek → Cohere → xAI → Anyscale
  *
- * Or add them via: Cloudflare Dashboard → Workers → Settings → Variables & Secrets
+ * SECRETS (set via Cloudflare Dashboard → Workers → Settings → Variables & Secrets):
+ *   GEMINI_API_KEY, GROQ_API_KEY, OPENROUTER_API_KEY, MISTRAL_API_KEY,
+ *   DEEPSEEK_API_KEY, COHERE_API_KEY, XAI_API_KEY, ANYSCALE_API_KEY
  */
 
 // ---------------------------------------------------------------------------
-// CORS
+// CORS — wildcard so any origin (netcodeshop.shop, replit.app, etc.) works
 // ---------------------------------------------------------------------------
 const corsHeaders = {
   "Access-Control-Allow-Origin": "*",
@@ -26,14 +20,18 @@ const corsHeaders = {
 };
 
 // ---------------------------------------------------------------------------
-// System prompt builder
-// Combines the website content + strict rules so the AI stays on-topic.
+// How many past messages to keep (prevents oversized payloads).
+// 6 = 3 user turns + 3 bot turns, which is plenty of context.
 // ---------------------------------------------------------------------------
-function buildSystemPrompt(websiteContent) {
-  const base = `သင်သည် "NetCodeShop" ဝက်ဘ်ဆိုက်၏ တရားဝင် Customer Service Chatbot ဖြစ်သည်။
+const HISTORY_LIMIT = 6;
+
+// ---------------------------------------------------------------------------
+// System prompt (website context + strict rules)
+// ---------------------------------------------------------------------------
+const SYSTEM_PROMPT = `သင်သည် "NetCodeShop" ဝက်ဘ်ဆိုက်၏ တရားဝင် Customer Service Chatbot ဖြစ်သည်။
 
 [ဝက်ဘ်ဆိုက် အချက်အလက် / WEBSITE INFORMATION]
-${websiteContent || `NetCodeShop (netcodeshop.shop) သည် premium source code marketplace တစ်ခုဖြစ်ပြီး developer များနှင့် လုပ်ငန်းများအတွက် အရည်အသွေးမြင့် source code များကို ဝယ်ယူနိုင်ရာ platform တစ်ခုဖြစ်သည်။
+NetCodeShop (netcodeshop.shop) သည် premium source code marketplace တစ်ခုဖြစ်ပြီး developer များနှင့် လုပ်ငန်းများအတွက် အရည်အသွေးမြင့် source code များကို ဝယ်ယူနိုင်ရာ platform တစ်ခုဖြစ်သည်။
 
 ထုတ်ကုန်များ (Products):
 - MiFix Pro: Android device repair နှင့် flashing tool
@@ -50,7 +48,7 @@ ${websiteContent || `NetCodeShop (netcodeshop.shop) သည် premium source cod
 - Secure & Licensed products (လုံခြုံမှုနှင့် license ရှိသော ထုတ်ကုန်များ)
 - Multiple payment options
 
-ဆက်သွယ်ရန် (Contact): netcodeshop.shop`}
+ဆက်သွယ်ရန် (Contact): netcodeshop.shop
 
 [တင်းကျပ်သောစည်းမျဉ်းများ / STRICT RULES]
 ၁။ သင်သည် အထက်တွင် ဖော်ပြထားသော [ဝက်ဘ်ဆိုက် အချက်အလက်] ကို အခြေခံ၍ တိကျမှန်ကန်စွာ ဖြေဆိုရမည်။
@@ -58,26 +56,98 @@ ${websiteContent || `NetCodeShop (netcodeshop.shop) သည် premium source cod
 ၃။ ဝက်ဘ်ဆိုက်နှင့် မဆိုင်သောမေးခွန်းများ (ဥပမာ - ကမ္ဘာ့သမိုင်း၊ သင်္ချာ၊ ချက်ပြုတ်နည်း၊ နိုင်ငံရေး၊ သိပ္ပံ) ကို လုံးဝ မဖြေဆိုရ။
 ၄။ မဆိုင်သောမေးခွန်းများဖြစ်ပါက "ကျွန်တော်/ကျွန်မသည် NetCodeShop ဝက်ဘ်ဆိုက်ကိုသာ ကူညီနိုင်သော Chatbot ဖြစ်၍ ဤမေးခွန်းကို မဖြေနိုင်ပါ" ဟု တိုတောင်းရှင်းလင်းစွာ ငြင်းဆန်ရမည်။
 ၅။ Client မေးသောဘာသာစကားနှင့် မည်သည့်ဘာသာဖြင့် မေးမြန်းသည်ဖြစ်စေ ထိုဘာသာစကားဖြင့်သာ တုံ့ပြန်ရမည်။ (Always reply in the same language the user uses.) အမြဲတမ်း ယဉ်ကျေးသိမ်မွေ့စွာ တုံ့ပြန်ရမည်။`;
-  return base;
-}
 
 // ---------------------------------------------------------------------------
-// Provider definitions
-// Each entry describes how to call that provider and parse its response.
+// History helpers
 // ---------------------------------------------------------------------------
-function buildProviders(env, systemPrompt, history, message) {
-  // OpenAI-compatible message array (used by most providers)
-  const oaiMessages = [
-    { role: "system", content: systemPrompt },
+
+/**
+ * Slice history to the most recent HISTORY_LIMIT entries and strip any
+ * duplicate of the current message that may have already been appended
+ * by the frontend before sending.
+ */
+function trimHistory(rawHistory, currentMessage) {
+  // Remove trailing entry if it's the same text as the new user message
+  // (prevents double-sending the same prompt)
+  let hist = Array.isArray(rawHistory) ? rawHistory : [];
+  if (hist.length > 0) {
+    const last = hist[hist.length - 1];
+    if (last.role === "user" && last.text === currentMessage) {
+      hist = hist.slice(0, -1);
+    }
+  }
+  // Keep only the most recent HISTORY_LIMIT messages
+  return hist.slice(-HISTORY_LIMIT);
+}
+
+/**
+ * Build an OpenAI-compatible messages array.
+ * System prompt goes first, then history, then the new user message.
+ */
+function buildOaiMessages(history, message) {
+  return [
+    { role: "system", content: SYSTEM_PROMPT },
     ...history.map((h) => ({
       role: h.role === "model" ? "assistant" : "user",
       content: h.text,
     })),
     { role: "user", content: message },
   ];
+}
+
+/**
+ * Build a Gemini-compatible contents array.
+ * Gemini REQUIRES the array to start with a "user" turn and alternate
+ * user ↔ model. We drop any leading model messages to satisfy this.
+ */
+function buildGeminiContents(history, message) {
+  // Map history to Gemini roles
+  let contents = history.map((h) => ({
+    role: h.role === "model" ? "model" : "user",
+    parts: [{ text: h.text }],
+  }));
+
+  // Drop leading model turns — Gemini rejects model-first arrays
+  while (contents.length > 0 && contents[0].role === "model") {
+    contents.shift();
+  }
+
+  // Append the new user message
+  contents.push({ role: "user", parts: [{ text: message }] });
+
+  return contents;
+}
+
+// ---------------------------------------------------------------------------
+// Provider chain — in priority order
+// ---------------------------------------------------------------------------
+function buildProviders(env, history, message) {
+  const oai = buildOaiMessages(history, message);
+  const geminiContents = buildGeminiContents(history, message);
 
   return [
-    // ── 1. Groq ──────────────────────────────────────────────────────────────
+    // ── 1. Gemini (PRIMARY) ──────────────────────────────────────────────────
+    {
+      name: "Gemini",
+      key: env.GEMINI_API_KEY,
+      call: async () => {
+        const res = await fetch(
+          `https://generativelanguage.googleapis.com/v1beta/models/gemini-1.5-flash:generateContent?key=${env.GEMINI_API_KEY}`,
+          {
+            method: "POST",
+            headers: { "Content-Type": "application/json" },
+            body: JSON.stringify({
+              system_instruction: { parts: [{ text: SYSTEM_PROMPT }] },
+              contents: geminiContents,
+              generationConfig: { temperature: 0.4, maxOutputTokens: 1024 },
+            }),
+          }
+        );
+        return { res, parse: (json) => json.candidates[0].content.parts[0].text };
+      },
+    },
+
+    // ── 2. Groq (SECONDARY) ──────────────────────────────────────────────────
     {
       name: "Groq",
       key: env.GROQ_API_KEY,
@@ -90,69 +160,16 @@ function buildProviders(env, systemPrompt, history, message) {
           },
           body: JSON.stringify({
             model: "llama-3.3-70b-versatile",
-            messages: oaiMessages,
+            messages: oai,
             temperature: 0.4,
             max_tokens: 1024,
           }),
         });
-        return { res, parse: async (json) => json.choices[0].message.content };
+        return { res, parse: (json) => json.choices[0].message.content };
       },
     },
 
-    // ── 2. Google Gemini ─────────────────────────────────────────────────────
-    {
-      name: "Gemini",
-      key: env.GEMINI_API_KEY,
-      call: async () => {
-        const geminiContents = [
-          ...history.map((h) => ({
-            role: h.role === "model" ? "model" : "user",
-            parts: [{ text: h.text }],
-          })),
-          { role: "user", parts: [{ text: message }] },
-        ];
-        const res = await fetch(
-          `https://generativelanguage.googleapis.com/v1beta/models/gemini-2.5-flash:generateContent?key=${env.GEMINI_API_KEY}`,
-          {
-            method: "POST",
-            headers: { "Content-Type": "application/json" },
-            body: JSON.stringify({
-              system_instruction: { parts: [{ text: systemPrompt }] },
-              contents: geminiContents,
-              generationConfig: { temperature: 0.4, maxOutputTokens: 1024 },
-            }),
-          }
-        );
-        return {
-          res,
-          parse: async (json) => json.candidates[0].content.parts[0].text,
-        };
-      },
-    },
-
-    // ── 3. DeepSeek ──────────────────────────────────────────────────────────
-    {
-      name: "DeepSeek",
-      key: env.DEEPSEEK_API_KEY,
-      call: async () => {
-        const res = await fetch("https://api.deepseek.com/v1/chat/completions", {
-          method: "POST",
-          headers: {
-            "Content-Type": "application/json",
-            Authorization: `Bearer ${env.DEEPSEEK_API_KEY}`,
-          },
-          body: JSON.stringify({
-            model: "deepseek-chat",
-            messages: oaiMessages,
-            temperature: 0.4,
-            max_tokens: 1024,
-          }),
-        });
-        return { res, parse: async (json) => json.choices[0].message.content };
-      },
-    },
-
-    // ── 4. OpenRouter ─────────────────────────────────────────────────────────
+    // ── 3. OpenRouter (TERTIARY) ─────────────────────────────────────────────
     {
       name: "OpenRouter",
       key: env.OPENROUTER_API_KEY,
@@ -167,16 +184,16 @@ function buildProviders(env, systemPrompt, history, message) {
           },
           body: JSON.stringify({
             model: "google/gemini-flash-1.5-free",
-            messages: oaiMessages,
+            messages: oai,
             temperature: 0.4,
             max_tokens: 1024,
           }),
         });
-        return { res, parse: async (json) => json.choices[0].message.content };
+        return { res, parse: (json) => json.choices[0].message.content };
       },
     },
 
-    // ── 5. Mistral ───────────────────────────────────────────────────────────
+    // ── 4. Mistral ───────────────────────────────────────────────────────────
     {
       name: "Mistral",
       key: env.MISTRAL_API_KEY,
@@ -189,12 +206,34 @@ function buildProviders(env, systemPrompt, history, message) {
           },
           body: JSON.stringify({
             model: "mistral-small-latest",
-            messages: oaiMessages,
+            messages: oai,
             temperature: 0.4,
             max_tokens: 1024,
           }),
         });
-        return { res, parse: async (json) => json.choices[0].message.content };
+        return { res, parse: (json) => json.choices[0].message.content };
+      },
+    },
+
+    // ── 5. DeepSeek ──────────────────────────────────────────────────────────
+    {
+      name: "DeepSeek",
+      key: env.DEEPSEEK_API_KEY,
+      call: async () => {
+        const res = await fetch("https://api.deepseek.com/v1/chat/completions", {
+          method: "POST",
+          headers: {
+            "Content-Type": "application/json",
+            Authorization: `Bearer ${env.DEEPSEEK_API_KEY}`,
+          },
+          body: JSON.stringify({
+            model: "deepseek-chat",
+            messages: oai,
+            temperature: 0.4,
+            max_tokens: 1024,
+          }),
+        });
+        return { res, parse: (json) => json.choices[0].message.content };
       },
     },
 
@@ -203,11 +242,6 @@ function buildProviders(env, systemPrompt, history, message) {
       name: "Cohere",
       key: env.COHERE_API_KEY,
       call: async () => {
-        // Cohere uses a different chat format
-        const cohereHistory = history.map((h) => ({
-          role: h.role === "model" ? "CHATBOT" : "USER",
-          message: h.text,
-        }));
         const res = await fetch("https://api.cohere.com/v1/chat", {
           method: "POST",
           headers: {
@@ -216,14 +250,17 @@ function buildProviders(env, systemPrompt, history, message) {
           },
           body: JSON.stringify({
             model: "command-r-plus",
-            preamble: systemPrompt,
-            chat_history: cohereHistory,
+            preamble: SYSTEM_PROMPT,
+            chat_history: history.map((h) => ({
+              role: h.role === "model" ? "CHATBOT" : "USER",
+              message: h.text,
+            })),
             message,
             temperature: 0.4,
             max_tokens: 1024,
           }),
         });
-        return { res, parse: async (json) => json.text };
+        return { res, parse: (json) => json.text };
       },
     },
 
@@ -240,12 +277,12 @@ function buildProviders(env, systemPrompt, history, message) {
           },
           body: JSON.stringify({
             model: "grok-2-1212",
-            messages: oaiMessages,
+            messages: oai,
             temperature: 0.4,
             max_tokens: 1024,
           }),
         });
-        return { res, parse: async (json) => json.choices[0].message.content };
+        return { res, parse: (json) => json.choices[0].message.content };
       },
     },
 
@@ -262,19 +299,19 @@ function buildProviders(env, systemPrompt, history, message) {
           },
           body: JSON.stringify({
             model: "meta-llama/Llama-3-70b-instruct",
-            messages: oaiMessages,
+            messages: oai,
             temperature: 0.4,
             max_tokens: 1024,
           }),
         });
-        return { res, parse: async (json) => json.choices[0].message.content };
+        return { res, parse: (json) => json.choices[0].message.content };
       },
     },
   ];
 }
 
 // ---------------------------------------------------------------------------
-// Determine whether we should fall through to the next provider
+// Fallback trigger conditions
 // ---------------------------------------------------------------------------
 function shouldFallback(status) {
   return status === 429 || status === 401 || status === 403 || status >= 500;
@@ -285,6 +322,7 @@ function shouldFallback(status) {
 // ---------------------------------------------------------------------------
 export default {
   async fetch(request, env) {
+    // CORS preflight — must be first
     if (request.method === "OPTIONS") {
       return new Response(null, { status: 204, headers: corsHeaders });
     }
@@ -296,6 +334,7 @@ export default {
       });
     }
 
+    // Parse request body
     let body;
     try {
       body = await request.json();
@@ -306,22 +345,23 @@ export default {
       });
     }
 
-    const { message, history = [], websiteContent } = body;
+    const { message, history: rawHistory = [] } = body;
 
-    if (!message || typeof message !== "string") {
+    if (!message || typeof message !== "string" || !message.trim()) {
       return new Response(JSON.stringify({ error: "message is required" }), {
         status: 400,
         headers: { ...corsHeaders, "Content-Type": "application/json" },
       });
     }
 
-    const systemPrompt = buildSystemPrompt(websiteContent);
-    const providers = buildProviders(env, systemPrompt, history, message);
+    // Trim history — deduplicate + limit to HISTORY_LIMIT entries
+    const history = trimHistory(rawHistory, message);
 
+    const providers = buildProviders(env, history, message);
     const errors = [];
 
     for (const provider of providers) {
-      // Skip providers with no API key configured
+      // Skip if API key not configured
       if (!provider.key) {
         errors.push({ provider: provider.name, reason: "API key not configured" });
         continue;
@@ -335,15 +375,12 @@ export default {
         continue;
       }
 
-      if (!res.ok && shouldFallback(res.status)) {
-        const errText = await res.text().catch(() => res.status.toString());
-        errors.push({ provider: provider.name, status: res.status, reason: errText.slice(0, 200) });
-        continue;
-      }
-
+      // Fallback on rate limit, auth errors, or server errors
       if (!res.ok) {
-        const errText = await res.text().catch(() => res.status.toString());
+        const errText = await res.text().catch(() => String(res.status));
         errors.push({ provider: provider.name, status: res.status, reason: errText.slice(0, 200) });
+        if (shouldFallback(res.status)) continue;
+        // Non-retryable client error — still continue (try next provider)
         continue;
       }
 
@@ -351,30 +388,31 @@ export default {
       try {
         json = await res.json();
       } catch (err) {
-        errors.push({ provider: provider.name, reason: "Failed to parse JSON response: " + err.message });
+        errors.push({ provider: provider.name, reason: "Failed to parse response: " + err.message });
         continue;
       }
 
       let answer;
       try {
-        answer = await parse(json);
+        answer = parse(json);
       } catch (err) {
         errors.push({ provider: provider.name, reason: "Failed to extract reply: " + err.message });
         continue;
       }
 
-      if (!answer) {
+      if (!answer || typeof answer !== "string" || !answer.trim()) {
         errors.push({ provider: provider.name, reason: "Empty reply from provider" });
         continue;
       }
 
+      // Success — return immediately
       return new Response(
         JSON.stringify({ success: true, provider: provider.name, answer }),
         { status: 200, headers: { ...corsHeaders, "Content-Type": "application/json" } }
       );
     }
 
-    // All providers failed
+    // All providers exhausted
     return new Response(
       JSON.stringify({
         success: false,
