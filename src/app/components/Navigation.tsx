@@ -1,5 +1,5 @@
 import { Link, useLocation } from "react-router";
-import { Menu, X } from "lucide-react";
+import { Menu, X, Sparkles } from "lucide-react";
 import { useState } from "react";
 import logo from "/logo.png";
 
@@ -13,6 +13,7 @@ export function Navigation() {
     { path: "/privacy", label: "Docs" },
     { path: "/about", label: "About" },
     { path: "/contact", label: "Contact" },
+    { path: "/ai-assistant", label: "AI Assistant" },
   ];
 
   const isActive = (path: string) => {
@@ -33,19 +34,34 @@ export function Navigation() {
 
           {/* Desktop Navigation */}
           <div className="hidden md:flex items-center gap-8">
-            {navItems.map((item) => (
-              <Link
-                key={item.path}
-                to={item.path}
-                className={`transition-colors ${
-                  isActive(item.path)
-                    ? "text-blue-400"
-                    : "text-gray-300 hover:text-blue-400"
-                }`}
-              >
-                {item.label}
-              </Link>
-            ))}
+            {navItems.map((item) =>
+              item.path === "/ai-assistant" ? (
+                <Link
+                  key={item.path}
+                  to={item.path}
+                  className={`flex items-center gap-1.5 px-3 py-1.5 rounded-full border transition-all ${
+                    isActive(item.path)
+                      ? "border-purple-500 bg-purple-600/20 text-purple-300"
+                      : "border-purple-500/40 text-purple-300 hover:bg-purple-600/20 hover:border-purple-500"
+                  }`}
+                >
+                  <Sparkles className="w-3.5 h-3.5" />
+                  {item.label}
+                </Link>
+              ) : (
+                <Link
+                  key={item.path}
+                  to={item.path}
+                  className={`transition-colors ${
+                    isActive(item.path)
+                      ? "text-blue-400"
+                      : "text-gray-300 hover:text-blue-400"
+                  }`}
+                >
+                  {item.label}
+                </Link>
+              )
+            )}
           </div>
 
           {/* Mobile Menu Button */}

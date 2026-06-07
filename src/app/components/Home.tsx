@@ -1,5 +1,5 @@
 import { Link } from "react-router";
-import { Code2, ShoppingCart, Shield, Star, Zap } from "lucide-react";
+import { Code2, ShoppingCart, Shield, Star, Zap, BadgeCheck } from "lucide-react";
 import { Button } from "./ui/button";
 import { Card, CardContent, CardDescription, CardHeader, CardTitle } from "./ui/card";
 import { ImageWithFallback } from "./figma/ImageWithFallback";
@@ -9,30 +9,35 @@ const testimonials = [
     name: "James Whitfield",
     role: "Senior Android Developer",
     stars: 5,
+    photo: "https://randomuser.me/api/portraits/men/32.jpg",
     text: "I purchased the MiFix Pro source code and was blown away by the quality. The code is clean, well-documented, and saved me months of work. When I had a question about the license integration, support replied within hours. Absolutely worth every penny.",
   },
   {
     name: "Sophia Reeves",
     role: "Founder, TechRepair Solutions Ltd.",
     stars: 5,
+    photo: "https://randomuser.me/api/portraits/women/44.jpg",
     text: "As a business owner running a device repair shop, I needed reliable flashing software for my team. NetCodeShop delivered exactly that — a professional-grade Qualcomm flashing tool with full source code. The support team helped us customize it perfectly.",
   },
   {
     name: "Marcus Tan",
     role: "Freelance Mobile Developer",
     stars: 5,
+    photo: "https://randomuser.me/api/portraits/men/18.jpg",
     text: "The Android Service Tool source code is exceptional. It's modular, readable, and comes with everything you need to get started right away. I deployed it for a client within a week. The after-sales support is some of the best I've ever experienced.",
   },
   {
     name: "Elena Voronova",
     role: "CEO, DigiTech Repair Group",
     stars: 5,
+    photo: "https://randomuser.me/api/portraits/women/29.jpg",
     text: "We've purchased three products from NetCodeShop, including the License Key System and ISP Programmer Tool. Each one exceeded our expectations in terms of code quality and reliability. Our entire operation now runs on NetCodeShop software — highly recommended.",
   },
   {
     name: "Daniel Osei",
     role: "Independent Software Engineer",
     stars: 5,
+    photo: "https://randomuser.me/api/portraits/men/61.jpg",
     text: "I was skeptical at first, but the MTK Auth Bypass Tool source code is genuinely top-tier. Delivery was instant after payment, and the included documentation made setup a breeze. I reached out to support with a customization request and got a detailed answer the same day.",
   },
 ];
@@ -135,16 +140,29 @@ export function Home() {
           {testimonials.map((t, i) => (
             <Card key={i} className="flex flex-col">
               <CardHeader className="pb-2">
-                <div className="flex items-center gap-1 mb-2">
+                <div className="flex items-center gap-1 mb-3">
                   {Array.from({ length: t.stars }).map((_, s) => (
                     <Star key={s} className="w-4 h-4 fill-yellow-400 text-yellow-400" />
                   ))}
                 </div>
-                <CardTitle className="text-base">{t.name}</CardTitle>
-                <CardDescription className="text-purple-400 text-sm">{t.role}</CardDescription>
+                <div className="flex items-center gap-3">
+                  <img
+                    src={t.photo}
+                    alt={t.name}
+                    className="w-11 h-11 rounded-full object-cover ring-2 ring-purple-500/40 flex-shrink-0"
+                  />
+                  <div>
+                    <CardTitle className="text-base">{t.name}</CardTitle>
+                    <CardDescription className="text-purple-400 text-sm">{t.role}</CardDescription>
+                  </div>
+                </div>
               </CardHeader>
               <CardContent className="flex-1">
                 <p className="text-gray-300 text-sm leading-relaxed">"{t.text}"</p>
+                <div className="mt-3 flex items-center gap-1.5 text-xs text-emerald-400">
+                  <BadgeCheck className="w-3.5 h-3.5" />
+                  <span>Verified Buyer</span>
+                </div>
               </CardContent>
             </Card>
           ))}

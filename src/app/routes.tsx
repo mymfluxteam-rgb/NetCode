@@ -7,6 +7,7 @@ import { About } from "./components/About";
 import { Contact } from "./components/Contact";
 import { NotFound } from "./components/NotFound";
 import { ProductPage } from "./components/ProductPage";
+import { AiAssistant } from "./components/AiAssistant";
 export const router = createHashRouter([
   {
     path: "/",
@@ -18,6 +19,7 @@ export const router = createHashRouter([
       { path: "privacy", Component: Privacy },
       { path: "about", Component: About },
       { path: "contact", Component: Contact },
+      { path: "ai-assistant", Component: AiAssistant },
       { path: "*", Component: NotFound },
     ],
   },

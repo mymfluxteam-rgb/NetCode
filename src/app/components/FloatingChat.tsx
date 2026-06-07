@@ -1,5 +1,6 @@
 import { useState, useRef, useEffect, FormEvent } from "react";
 import { Bot, X, Send, User, Loader2, MessageSquare, Minimize2, Copy, Check, ExternalLink } from "lucide-react";
+import { useNavigate } from "react-router";
 
 const CLOUDFLARE_WORKER_URL = import.meta.env.PROD
   ? "https://chatbot.netcodeshop.shop"
@@ -99,6 +100,7 @@ function ProductCard({ product }: { product: Product }) {
 }
 
 export function FloatingChat() {
+  const navigate = useNavigate();
   const [open, setOpen] = useState(false);
   const [dotVisible, setDotVisible] = useState(true);
   const [showSuggestions, setShowSuggestions] = useState(true);
@@ -355,19 +357,15 @@ export function FloatingChat() {
         </div>
       )}
 
-      {/* Floating Toggle Button */}
+      {/* Floating Button — navigates to AI Assistant page */}
       <button
-        onClick={() => setOpen((prev) => !prev)}
+        onClick={() => navigate("/ai-assistant")}
         className="fixed bottom-5 right-5 z-50 w-14 h-14 rounded-full bg-purple-600 hover:bg-purple-700 text-white shadow-2xl flex items-center justify-center transition-all duration-200 hover:scale-110 active:scale-95"
-        aria-label={open ? "Close support chat" : "Open support chat"}
+        aria-label="Open AI Assistant"
       >
-        {open ? (
-          <X className="w-6 h-6" />
-        ) : (
-          <Bot className="w-6 h-6" />
-        )}
+        <Bot className="w-6 h-6" />
 
-        {dotVisible && !open && (
+        {dotVisible && (
           <span className="absolute top-0.5 right-0.5 flex h-3.5 w-3.5">
             <span className="animate-ping absolute inline-flex h-full w-full rounded-full bg-red-400 opacity-75" />
             <span className="relative inline-flex rounded-full h-3.5 w-3.5 bg-red-500 border-2 border-purple-600" />
