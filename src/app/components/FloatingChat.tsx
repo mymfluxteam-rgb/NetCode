@@ -1,7 +1,9 @@
 import { useState, useRef, useEffect, FormEvent } from "react";
 import { Bot, X, Send, User, Loader2, MessageSquare, Minimize2, Copy, Check, ExternalLink } from "lucide-react";
 
-const CLOUDFLARE_WORKER_URL = "https://netcodeshop-chatbot.mymauthtool.workers.dev";
+const CLOUDFLARE_WORKER_URL = import.meta.env.PROD
+  ? "https://netcodeshop-chatbot.myauthtool.workers.dev"
+  : "/api/chat";
 
 interface Message {
   role: "user" | "model";
@@ -144,8 +146,8 @@ export function FloatingChat() {
         body: JSON.stringify({ message: text, history }),
       });
       const data = await res.json();
-      if (!res.ok) throw new Error(data.error || "Server error");
-      setMessages((prev) => [...prev, { role: "model", text: data.reply }]);
+      if (!res.ok || !data.success) throw new Error(data.error || "Server error");
+      setMessages((prev) => [...prev, { role: "model", text: data.answer }]);
     } catch (err: unknown) {
       setError(err instanceof Error ? err.message : "Unknown error");
     } finally {

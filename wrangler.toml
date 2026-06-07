@@ -1,9 +1,19 @@
 # Cloudflare Workers configuration
 # Deploy with: wrangler deploy cloudflare-worker.js
 #
-# REQUIRED: Set your Gemini API key as a secret before deploying:
+# Set all API key secrets before deploying:
+#   wrangler secret put GROQ_API_KEY
 #   wrangler secret put GEMINI_API_KEY
+#   wrangler secret put DEEPSEEK_API_KEY
+#   wrangler secret put OPENROUTER_API_KEY
+#   wrangler secret put MISTRAL_API_KEY
+#   wrangler secret put COHERE_API_KEY
+#   wrangler secret put XAI_API_KEY
+#   wrangler secret put ANYSCALE_API_KEY
+#
+# You only need to set the keys for providers you want active.
+# Providers with missing keys are automatically skipped.
 
-name = "netcodeshop-chat"
+name = "netcodeshop-chatbot"
 main = "cloudflare-worker.js"
 compatibility_date = "2024-01-01"

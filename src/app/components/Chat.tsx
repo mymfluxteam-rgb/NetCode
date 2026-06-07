@@ -1,7 +1,9 @@
 import { useState, useRef, useEffect, FormEvent } from "react";
 import { Send, Bot, User, Loader2, MessageSquare, Copy, Check, ExternalLink } from "lucide-react";
 
-const CLOUDFLARE_WORKER_URL = "https://netcodeshop-chatbot.mymauthtool.workers.dev";
+const CLOUDFLARE_WORKER_URL = import.meta.env.PROD
+  ? "https://netcodeshop-chatbot.myauthtool.workers.dev"
+  : "/api/chat";
 
 interface Message {
   role: "user" | "model";
@@ -139,8 +141,8 @@ export function Chat() {
       });
 
       const data = await res.json();
-      if (!res.ok) throw new Error(data.error || "Server error");
-      setMessages((prev) => [...prev, { role: "model", text: data.reply }]);
+      if (!res.ok || !data.success) throw new Error(data.error || "Server error");
+      setMessages((prev) => [...prev, { role: "model", text: data.answer }]);
     } catch (err: unknown) {
       const message = err instanceof Error ? err.message : "Unknown error";
       setError(message);
