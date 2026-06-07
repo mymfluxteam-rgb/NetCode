@@ -117,6 +117,25 @@ export function Chat() {
     bottomRef.current?.scrollIntoView({ behavior: "smooth" });
   }, [messages, loading]);
 
+  // Client-side provider chain: Gemini → Groq → OpenRouter
+  // Each call targets a single provider via `useProvider`.
+  // If the worker returns a non-success response, we throw so the next
+  // provider in the chain is tried.
+  async function callWorker(
+    text: string,
+    history: { role: string; text: string }[],
+    provider: string
+  ): Promise<string> {
+    const res = await fetch(CLOUDFLARE_WORKER_URL, {
+      method: "POST",
+      headers: { "Content-Type": "application/json" },
+      body: JSON.stringify({ message: text, history, useProvider: provider }),
+    });
+    const data = await res.json();
+    if (!res.ok || !data.success) throw new Error(data.error || `${provider} failed`);
+    return data.answer as string;
+  }
+
   async function send(text: string) {
     if (!text.trim() || loading) return;
     setShowSuggestions(false);
@@ -133,23 +152,28 @@ export function Chat() {
       text: m.text,
     }));
 
-    try {
-      const res = await fetch(CLOUDFLARE_WORKER_URL, {
-        method: "POST",
-        headers: { "Content-Type": "application/json" },
-        body: JSON.stringify({ message: text, history }),
-      });
+    // Frontend fallback chain — tries each provider in order.
+    const providerChain = ["gemini", "groq", "deepseek", "xai", "mistral", "anyscale"];
+    let answer: string | null = null;
+    let lastError = "All providers failed. Please try again later.";
 
-      const data = await res.json();
-      if (!res.ok || !data.success) throw new Error(data.error || "Server error");
-      setMessages((prev) => [...prev, { role: "model", text: data.answer }]);
-    } catch (err: unknown) {
-      const message = err instanceof Error ? err.message : "Unknown error";
-      setError(message);
-    } finally {
-      setLoading(false);
-      setTimeout(() => inputRef.current?.focus(), 50);
+    for (const provider of providerChain) {
+      try {
+        answer = await callWorker(text, history, provider);
+        break; // success — stop trying
+      } catch (err: unknown) {
+        lastError = err instanceof Error ? err.message : `${provider} failed`;
+      }
     }
+
+    if (answer) {
+      setMessages((prev) => [...prev, { role: "model", text: answer as string }]);
+    } else {
+      setError(lastError);
+    }
+
+    setLoading(false);
+    setTimeout(() => inputRef.current?.focus(), 50);
   }
 
   function handleSubmit(e: FormEvent) {

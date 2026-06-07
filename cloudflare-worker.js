@@ -345,7 +345,7 @@ export default {
       });
     }
 
-    const { message, history: rawHistory = [] } = body;
+    const { message, history: rawHistory = [], useProvider } = body;
 
     if (!message || typeof message !== "string" || !message.trim()) {
       return new Response(JSON.stringify({ error: "message is required" }), {
@@ -357,7 +357,17 @@ export default {
     // Trim history — deduplicate + limit to HISTORY_LIMIT entries
     const history = trimHistory(rawHistory, message);
 
-    const providers = buildProviders(env, history, message);
+    // Build the full chain, then optionally filter to a single provider
+    // when the frontend explicitly requests one via `useProvider`.
+    let providers = buildProviders(env, history, message);
+    if (useProvider && typeof useProvider === "string") {
+      const target = useProvider.toLowerCase();
+      const filtered = providers.filter((p) => p.name.toLowerCase() === target);
+      // If the name matched a known provider, run only that one.
+      // If unknown name, fall through to the full chain (safe default).
+      if (filtered.length > 0) providers = filtered;
+    }
+
     const errors = [];
 
     for (const provider of providers) {
