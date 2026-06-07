@@ -2,7 +2,7 @@ import { useState, useRef, useEffect, FormEvent } from "react";
 import { Bot, X, Send, User, Loader2, MessageSquare, Minimize2, Copy, Check, ExternalLink } from "lucide-react";
 
 const CLOUDFLARE_WORKER_URL = import.meta.env.PROD
-  ? "https://netcodeshop-chatbot.myauthtool.workers.dev"
+  ? "https://netcodeshop-chatbot.mymauthtool.workers.dev"
   : "/api/chat";
 
 interface Message {
