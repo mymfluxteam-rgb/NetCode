@@ -18,26 +18,12 @@
 // ---------------------------------------------------------------------------
 // CORS
 // ---------------------------------------------------------------------------
-const ALLOWED_ORIGINS = [
-  "https://netcodeshop.shop",
-  "https://www.netcodeshop.shop",
-];
-
-function corsHeaders(origin) {
-  const allowed =
-    ALLOWED_ORIGINS.includes(origin) ||
-    (origin && origin.endsWith(".replit.app")) ||
-    (origin && origin.endsWith(".replit.dev"))
-      ? origin
-      : ALLOWED_ORIGINS[0];
-
-  return {
-    "Access-Control-Allow-Origin": allowed,
-    "Access-Control-Allow-Methods": "POST, OPTIONS",
-    "Access-Control-Allow-Headers": "Content-Type",
-    "Access-Control-Max-Age": "86400",
-  };
-}
+const corsHeaders = {
+  "Access-Control-Allow-Origin": "*",
+  "Access-Control-Allow-Methods": "GET, HEAD, POST, OPTIONS",
+  "Access-Control-Allow-Headers": "Content-Type, Authorization",
+  "Access-Control-Max-Age": "86400",
+};
 
 // ---------------------------------------------------------------------------
 // System prompt builder
@@ -299,17 +285,14 @@ function shouldFallback(status) {
 // ---------------------------------------------------------------------------
 export default {
   async fetch(request, env) {
-    const origin = request.headers.get("Origin") || "";
-    const cors = corsHeaders(origin);
-
     if (request.method === "OPTIONS") {
-      return new Response(null, { status: 204, headers: cors });
+      return new Response(null, { status: 204, headers: corsHeaders });
     }
 
     if (request.method !== "POST") {
       return new Response(JSON.stringify({ error: "Method not allowed" }), {
         status: 405,
-        headers: { ...cors, "Content-Type": "application/json" },
+        headers: { ...corsHeaders, "Content-Type": "application/json" },
       });
     }
 
@@ -319,7 +302,7 @@ export default {
     } catch {
       return new Response(JSON.stringify({ error: "Invalid JSON body" }), {
         status: 400,
-        headers: { ...cors, "Content-Type": "application/json" },
+        headers: { ...corsHeaders, "Content-Type": "application/json" },
       });
     }
 
@@ -328,7 +311,7 @@ export default {
     if (!message || typeof message !== "string") {
       return new Response(JSON.stringify({ error: "message is required" }), {
         status: 400,
-        headers: { ...cors, "Content-Type": "application/json" },
+        headers: { ...corsHeaders, "Content-Type": "application/json" },
       });
     }
 
@@ -387,7 +370,7 @@ export default {
 
       return new Response(
         JSON.stringify({ success: true, provider: provider.name, answer }),
-        { status: 200, headers: { ...cors, "Content-Type": "application/json" } }
+        { status: 200, headers: { ...corsHeaders, "Content-Type": "application/json" } }
       );
     }
 
@@ -398,7 +381,7 @@ export default {
         error: "All AI providers failed. Please try again later.",
         details: errors,
       }),
-      { status: 503, headers: { ...cors, "Content-Type": "application/json" } }
+      { status: 503, headers: { ...corsHeaders, "Content-Type": "application/json" } }
     );
   },
 };
