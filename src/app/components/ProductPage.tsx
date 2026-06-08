@@ -1,6 +1,6 @@
 import { useParams, useNavigate } from "react-router";
 import { useState, useEffect, useCallback } from "react";
-import { ArrowLeft, Star, Download, CheckCircle2, Tag, X, ZoomIn, ChevronLeft, ChevronRight, PlayCircle, Github } from "lucide-react";
+import { ArrowLeft, Star, Download, CheckCircle2, Tag, X, ZoomIn, ChevronLeft, ChevronRight, PlayCircle, Github, Lock } from "lucide-react";
 import { Button } from "./ui/button";
 import { Badge } from "./ui/badge";
 import { sourceCodeItems } from "./BuySourceCode";
@@ -209,7 +209,14 @@ export function ProductPage() {
 
           {/* Pricing card */}
           <div className="rounded-xl border border-white/10 shadow-lg p-5 bg-slate-900/40 backdrop-blur-md">
-            {product.price === 0 ? (
+            {product.notForSale ? (
+              <>
+                <div className="flex items-center justify-center gap-2 py-4 rounded-lg bg-slate-700/50 border border-slate-600/50 mb-5">
+                  <Lock className="w-5 h-5 text-slate-400" />
+                  <span className="text-base font-semibold text-slate-400">Not Currently For Sale</span>
+                </div>
+              </>
+            ) : product.price === 0 ? (
               <>
                 <div className="flex items-center gap-3 mb-4">
                   <span className="text-4xl font-bold text-green-600">Free</span>
@@ -229,13 +236,16 @@ export function ProductPage() {
               </>
             ) : (
               <>
-                <div className="flex items-center gap-3 mb-1">
-                  <span className="text-4xl font-bold text-white">${product.price}</span>
-                  <Badge className="bg-green-500/20 text-green-400 border-green-500/30 font-semibold">
-                    {product.originalPrice >= 500 ? "15% OFF" : "10% OFF"}
-                  </Badge>
+                <div className="space-y-2 mb-5">
+                  <div className="flex items-center justify-between rounded-lg bg-slate-800/60 px-4 py-3 border border-white/5">
+                    <span className="text-sm font-semibold text-slate-400 uppercase tracking-wide">Non-Exclusive Rights</span>
+                    <span className="text-2xl font-bold text-blue-300">${product.nonExclusivePrice}</span>
+                  </div>
+                  <div className="flex items-center justify-between rounded-lg bg-amber-500/10 px-4 py-3 border border-amber-500/20">
+                    <span className="text-sm font-semibold text-amber-400 uppercase tracking-wide">Exclusive Rights</span>
+                    <span className="text-2xl font-bold text-amber-300">${product.exclusivePrice}</span>
+                  </div>
                 </div>
-                <p className="text-sm text-gray-400 line-through mb-5">${product.originalPrice}</p>
 
             {/* Contact section */}
             <p className="text-sm font-semibold text-slate-300 mb-3">Contact to Purchase</p>

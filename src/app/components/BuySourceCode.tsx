@@ -43,6 +43,8 @@ import miflashNoAuthImage from "../../imports/miflash-noauth.png";
 import authLoaderXiaomiImage from "../../imports/auth-loader-android-xiaomi.png";
 import hwidKeygenImage from "../../imports/hwid-keygen-generator.png";
 import iosA12BypassImage from "../../imports/ios-a12-bypass.png";
+import samsungEdlFrpImage from "../../imports/samsung-edl-frp-tool.png";
+import oplusEdlToolImage from "../../imports/oplus-edl-tool.png";
 
 export interface SourceCodeItem {
   id: number;
@@ -50,6 +52,9 @@ export interface SourceCodeItem {
   description: string;
   price: number;
   originalPrice: number;
+  exclusivePrice?: number;
+  nonExclusivePrice?: number;
+  notForSale?: boolean;
   category: string;
   rating: number;
   downloads: number;
@@ -69,6 +74,8 @@ export const sourceCodeItems: SourceCodeItem[] = [
       description: "Premium Qualcomm EDL service tool with advanced flashing capabilities, one-click operations, Mi Fastboot support, and MTP bypass. Supports 725+ devices with auto-loader detection.",
       price: 510,
       originalPrice: 600,
+      exclusivePrice: 600,
+      nonExclusivePrice: 212.50,
       category: "Desktop Application",
       rating: 4.9,
       downloads: 2850,
@@ -94,6 +101,8 @@ export const sourceCodeItems: SourceCodeItem[] = [
       description: "Professional Xiaomi device unlocking and flashing tool with support for Qualcomm and MediaTek chipsets. Includes user authentication, credit system, and automatic updates.",
       price: 808,
       originalPrice: 950,
+      exclusivePrice: 950,
+      nonExclusivePrice: 255,
       category: "Desktop Application",
       rating: 4.9,
       downloads: 3200,
@@ -119,6 +128,8 @@ export const sourceCodeItems: SourceCodeItem[] = [
       description: "Premium MediaTek smartphone servicing tool with Python integration. Supports FRP erase, MiCloud reset, firmware flashing, and auth bypass across 10+ major brands including Xiaomi, Samsung, Huawei, and more.",
       price: 425,
       originalPrice: 500,
+      exclusivePrice: 500,
+      nonExclusivePrice: 212.50,
       category: "Desktop Application",
       rating: 4.8,
       downloads: 1640,
@@ -154,6 +165,8 @@ export const sourceCodeItems: SourceCodeItem[] = [
       description: "Premium Samsung FRP removal and servicing tool. Supports FRP bypass, factory reset, Knox disable, CSC change, and browser unlock via ADB, AT commands, and APK automation. Integrates with samfw.com API.",
       price: 315,
       originalPrice: 350,
+      exclusivePrice: 350,
+      nonExclusivePrice: 170,
       category: "Desktop Application",
       rating: 4.8,
       downloads: 1920,
@@ -180,6 +193,8 @@ export const sourceCodeItems: SourceCodeItem[] = [
       description: "Premium iOS activation bypass tool supporting MEID and GSM models on iOS 12–17. Detects connected devices, displays full device info, and performs iCloud activation lock bypass using SSH, jailbreak tools, and server-side API communication.",
       price: 360,
       originalPrice: 400,
+      exclusivePrice: 400,
+      nonExclusivePrice: 170,
       category: "Desktop Application",
       rating: 4.7,
       downloads: 1105,
@@ -207,6 +222,8 @@ export const sourceCodeItems: SourceCodeItem[] = [
       description: "Advanced ISP (In-System Programming) tool for direct eMMC/SD card flashing, partition management, FRP removal, and factory reset. Supports Qualcomm and MediaTek chipsets with low-level disk I/O via Windows API.",
       price: 270,
       originalPrice: 300,
+      exclusivePrice: 300,
+      nonExclusivePrice: 212.50,
       category: "Desktop Application",
       rating: 4.8,
       downloads: 980,
@@ -234,6 +251,8 @@ export const sourceCodeItems: SourceCodeItem[] = [
       description: "Full-featured Xiaomi flashing and servicing tool with server authentication, credit system, ADB/Fastboot tools, EDL mode flashing, and MTK support. Connects to xiaomifiretool.in for auth and credit management.",
       price: 680,
       originalPrice: 800,
+      exclusivePrice: 800,
+      nonExclusivePrice: 127.50,
       category: "Desktop Application",
       rating: 4.9,
       downloads: 2430,
@@ -265,6 +284,8 @@ export const sourceCodeItems: SourceCodeItem[] = [
       description: "Lightweight Samsung FRP bypass and ADB enabler tool. Detects Samsung modem ports, sends AT command sequences to enable USB debugging, resets FRP lock via ADB, and reads full device information.",
       price: 90,
       originalPrice: 100,
+      exclusivePrice: 100,
+      nonExclusivePrice: 76.50,
       category: "Desktop Application",
       rating: 4.6,
       downloads: 3180,
@@ -286,6 +307,8 @@ export const sourceCodeItems: SourceCodeItem[] = [
       description: "Multi-brand Android servicing tool with Qualcomm EDL mode support, ADB device info, partition operations, FRP/lock removal, and a hardware-based license activation system. Covers Qualcomm, Samsung, MTK, Meizu, Mi-Oppo and more.",
       price: 180,
       originalPrice: 200,
+      exclusivePrice: 200,
+      nonExclusivePrice: 102,
       category: "Desktop Application",
       rating: 4.8,
       downloads: 1760,
@@ -316,6 +339,8 @@ export const sourceCodeItems: SourceCodeItem[] = [
       description: "Lightweight C# keygen tool that generates 19-character hyphenated license keys from a base input string. Includes clipboard copy, run-count tracking, and a Topup system for distributing keys to end users.",
       price: 63,
       originalPrice: 70,
+      exclusivePrice: 70,
+      nonExclusivePrice: 59.50,
       category: "Desktop Application",
       rating: 4.5,
       downloads: 4210,
@@ -338,6 +363,8 @@ export const sourceCodeItems: SourceCodeItem[] = [
       description: "Universal multi-chip Android servicing tool supporting Qualcomm EDL, MediaTek, eMMC ISP, Samsung, and Fastboot modes. Includes Format Data, FRP erase, Mi Cloud disable, NV backup/restore, bootloader relock, and a built-in security scanner.",
       price: 270,
       originalPrice: 300,
+      exclusivePrice: 300,
+      nonExclusivePrice: 102,
       category: "Desktop Application",
       rating: 4.9,
       downloads: 1580,
@@ -368,6 +395,8 @@ export const sourceCodeItems: SourceCodeItem[] = [
       description: "Multi-brand Qualcomm servicing tool with ADB, Fastboot, EDL (9008), and Sideload modes. Covers Xiaomi Mi Account bypass/reset, FRP removal, Oppo user lock/FRP removal, factory reset, and device info reading across a wide range of models.",
       price: 90,
       originalPrice: 100,
+      exclusivePrice: 100,
+      nonExclusivePrice: 85,
       category: "Desktop Application",
       rating: 4.7,
       downloads: 2890,
@@ -396,6 +425,8 @@ export const sourceCodeItems: SourceCodeItem[] = [
       description: "Comprehensive iOS activation lock bypass tool supporting GSM, MEID, and broken baseband bypass, MDM unlock, passcode bypass, Apple ID removal, and untethered bypass. Uses SSH/libimobiledevice for deep device access on jailbroken iOS.",
       price: 180,
       originalPrice: 200,
+      exclusivePrice: 200,
+      nonExclusivePrice: 102,
       category: "Desktop Application",
       rating: 4.8,
       downloads: 1340,
@@ -427,6 +458,8 @@ export const sourceCodeItems: SourceCodeItem[] = [
       description: "Xiaomi fastboot firmware flashing tool with partition parsing, A/B slot support, Mi Cloud disable patch, and color-coded log output. Supports full firmware flashing from flash_all.bat scripts.",
       price: 90,
       originalPrice: 100,
+      exclusivePrice: 100,
+      nonExclusivePrice: 85,
       category: "Desktop Application",
       rating: 4.8,
       downloads: 980,
@@ -453,6 +486,8 @@ export const sourceCodeItems: SourceCodeItem[] = [
       description: "Multi-mode Xiaomi Mi Account bypass tool supporting ADB, Sideload, Fastboot, and EDL modes. Removes Mi Account, FRP, and user locks across 30+ Xiaomi/Redmi devices without VPN requirements.",
       price: 135,
       originalPrice: 150,
+      exclusivePrice: 150,
+      nonExclusivePrice: 76.50,
       category: "Desktop Application",
       rating: 4.8,
       downloads: 1420,
@@ -480,6 +515,8 @@ export const sourceCodeItems: SourceCodeItem[] = [
       description: "Premium Telegram Web-K client with advanced subscription management, fast message templates, two-way translation, auto-reply engine, and cross-device cloud sync. Built on Supabase with device fingerprinting security.",
       price: 405,
       originalPrice: 450,
+      exclusivePrice: 450,
+      nonExclusivePrice: 170,
       category: "E-Commerce Platform",
       rating: 4.9,
       downloads: 980,
@@ -508,6 +545,8 @@ export const sourceCodeItems: SourceCodeItem[] = [
       description: "Lightweight .NET 4.8 fastboot utility for FRP unlock, SecureBoot unlock, and device reboot via fastboot commands. Includes auto device detection with configurable timeout and a color-coded real-time log window.",
       price: 90,
       originalPrice: 100,
+      exclusivePrice: 100,
+      nonExclusivePrice: 76.50,
       category: "Desktop Application",
       rating: 4.7,
       downloads: 0,
@@ -532,6 +571,8 @@ export const sourceCodeItems: SourceCodeItem[] = [
       description: "Multi-mode Android servicing tool for Xiaomi (Qualcomm/EDL), MediaTek, and Fastboot devices. Covers Mi Account removal, FRP erase, bootloader unlock, firmware flashing, and essential Windows tool installers — all in one tabbed interface.",
       price: 81,
       originalPrice: 90,
+      exclusivePrice: 90,
+      nonExclusivePrice: 76.50,
       category: "Desktop Application",
       rating: 4.7,
       downloads: 0,
@@ -627,6 +668,8 @@ export const sourceCodeItems: SourceCodeItem[] = [
       description: "Dual-component .NET hardware-locked licensing system. A keygen generates MD5-based keys from any ID input, while a registration form reads the machine's Processor ID via WMI, validates a user-supplied key, and persists the registration to disk.",
       price: 45,
       originalPrice: 50,
+      exclusivePrice: 50,
+      nonExclusivePrice: 42.50,
       category: "Desktop Application",
       rating: 4.6,
       downloads: 0,
@@ -648,11 +691,57 @@ export const sourceCodeItems: SourceCodeItem[] = [
       ],
     },
     {
+      id: 30,
+      name: "OplusEdlTool",
+      description: "Open-source EDL flashing tool for OPLUS devices (OPPO, OnePlus, Realme) on Qualcomm chipsets. Supports UFS/eMMC storage, partition read/write/erase, and decryption of OFP and OPS firmware packages using built-in keysets across multiple firmware versions.",
+      price: 0,
+      originalPrice: 0,
+      category: "Desktop Application",
+      rating: 4.8,
+      downloads: 0,
+      tags: ["C#", "Qualcomm", "EDL", "OPPO", "OnePlus", "Realme", "Open Source"],
+      image: oplusEdlToolImage,
+      badge: "new",
+      githubUrl: "https://drive.google.com/file/d/15PIl9gQ2xk4LUI93EXbsMTLvYOMeLej9/view?usp=drive_link",
+      features: [
+        "Supported Ecosystem - OPLUS devices: OPPO, OnePlus, and Realme",
+        "Supported Hardware - Qualcomm chipsets (detects Qualcomm HS-USB QDLoader 9008 EDL port) with UFS or eMMC storage",
+        "Enter Firehose Mode - Load Device Programmer (.mbn), Digest, and Sig files to establish Firehose communication with the device",
+        "Flash Package (ROM) - Select ROM folder or OFP/OPS firmware file; load individual partition images for targeted flashing",
+        "Partition Management - Read, write, and erase individual partitions; searchable partition table with Name, LUN, Start, End, Size, and File Path columns",
+        "Start Flash - One-click full firmware flash with Export XML, Protect LUN5, and Auto reboot after flash options",
+        "OFP Decryption - Built-in keysets for firmware versions V1.4.17/1.4.27, V1.5.13, V1.6.x, V1.7.x, V2.0.3, V2.1.x, V3.0.x, and MTK-1 to MTK-6",
+        "OPS Decryption - Built-in decryption support for OPS firmware packages",
+        "Real-Time Log - Live operation log with 9008 port detection status and timestamped messages",
+        "Bilingual UI - Supports English and Chinese (切换为中文) interface toggle",
+      ],
+    },
+    {
+      id: 29,
+      name: "Samsung EDL FRP Tool V1.0",
+      description: "Open-source Samsung FRP bypass tool for EDL mode. Scans COM ports, loads Firehose Loader (.mbn) files, and erases the Persistent Partition on Samsung phones using emmcdl.exe to reset FRP.",
+      price: 0,
+      originalPrice: 0,
+      category: "Desktop Application",
+      rating: 4.6,
+      downloads: 0,
+      tags: ["C#", "Samsung", "EDL", "FRP", "Open Source"],
+      image: samsungEdlFrpImage,
+      badge: "new",
+      githubUrl: "https://github.com/akadriu98/Samsung-EDL-FRP.git",
+      features: [
+        "COM Port Scanning - Scans and lists available COM ports for communication with Samsung devices connected to the computer",
+        "Loader File Management - Loads and manages Firehose Loader files with .mbn extension from the Loaders directory",
+        "FRP Bypass - Erases the Persistent Partition of Samsung phones in EDL Mode by running emmcdl.exe in the background",
+      ],
+    },
+    {
       id: 28,
       name: "iOS A12+ Bypass",
       description: "Complete iCloud activation lock bypass tool for A12–A17 Pro iPhones (XS through iPhone 15 Pro Max). Orchestrates an end-to-end bypass pipeline with device detection, pairing, payload deployment, and post-deploy verification — all via a clean WinForms interface.",
       price: 425,
       originalPrice: 500,
+      notForSale: true,
       category: "Desktop Application",
       rating: 4.8,
       downloads: 0,
@@ -839,52 +928,55 @@ export function BuySourceCode() {
                 </div>
               )}
             </CardContent>
-            <CardFooter className="flex items-center justify-between">
-              <div className="flex flex-col">
-                <div className="flex items-center gap-2">
-                  <span className="text-3xl font-bold text-white">
-                    {item.price === 0 ? "Free" : `$${item.price}`}
-                  </span>
-                  {item.price > 0 && (
-                    <Badge className="bg-green-500/20 text-green-400 border-green-500/30 text-xs font-semibold">
-                      {item.originalPrice >= 500 ? "15% OFF" : "10% OFF"}
-                    </Badge>
-                  )}
+            <CardFooter className="flex flex-col gap-3">
+              {item.notForSale ? (
+                <div className="w-full flex items-center justify-center gap-2 py-2 rounded-lg bg-slate-700/50 border border-slate-600/50">
+                  <Lock className="w-4 h-4 text-slate-400" />
+                  <span className="text-sm font-semibold text-slate-400">Not Currently For Sale</span>
                 </div>
-                {item.price > 0 && (
-                  <span className="text-sm text-gray-400 line-through">${item.originalPrice}</span>
-                )}
-                {item.demoVideo && (
-                  <a
-                    href={`https://www.youtube.com/watch?v=${item.demoVideo}`}
-                    target="_blank"
-                    rel="noopener noreferrer"
-                    className="flex items-center gap-1 text-xs text-red-500 hover:text-red-400 mt-1.5 font-medium transition-colors"
-                  >
-                    <PlayCircle className="w-3 h-3" />
-                    Watch Demo
+              ) : item.price === 0 ? (
+                <div className="w-full flex items-center justify-between">
+                  <span className="text-2xl font-bold text-emerald-400">Free</span>
+                  <a href={item.githubUrl} target="_blank" rel="noopener noreferrer">
+                    <Button className="bg-emerald-600 hover:bg-emerald-700">
+                      <ExternalLink className="w-4 h-4 mr-2" />
+                      Download Free
+                    </Button>
                   </a>
-                )}
-              </div>
-              {item.price === 0 ? (
-                <a
-                  href={item.githubUrl}
-                  target="_blank"
-                  rel="noopener noreferrer"
-                >
-                  <Button className="bg-emerald-600 hover:bg-emerald-700">
-                    <ExternalLink className="w-4 h-4 mr-2" />
-                    Download Free
-                  </Button>
-                </a>
+                </div>
               ) : (
-                <Button
-                  className="bg-blue-600 hover:bg-blue-700"
-                  onClick={() => navigate(`/product/${item.id}`)}
-                >
-                  <ShoppingCart className="w-4 h-4 mr-2" />
-                  Buy Now
-                </Button>
+                <>
+                  <div className="w-full space-y-1.5">
+                    <div className="flex items-center justify-between rounded-lg bg-slate-800/60 px-3 py-2 border border-white/5">
+                      <span className="text-xs font-semibold text-slate-400 uppercase tracking-wide">Non-Exclusive Rights</span>
+                      <span className="text-lg font-bold text-blue-300">${item.nonExclusivePrice}</span>
+                    </div>
+                    <div className="flex items-center justify-between rounded-lg bg-amber-500/10 px-3 py-2 border border-amber-500/20">
+                      <span className="text-xs font-semibold text-amber-400 uppercase tracking-wide">Exclusive Rights</span>
+                      <span className="text-lg font-bold text-amber-300">${item.exclusivePrice}</span>
+                    </div>
+                  </div>
+                  <div className="w-full flex items-center justify-between">
+                    {item.demoVideo && (
+                      <a
+                        href={`https://www.youtube.com/watch?v=${item.demoVideo}`}
+                        target="_blank"
+                        rel="noopener noreferrer"
+                        className="flex items-center gap-1 text-xs text-red-500 hover:text-red-400 font-medium transition-colors"
+                      >
+                        <PlayCircle className="w-3 h-3" />
+                        Watch Demo
+                      </a>
+                    )}
+                    <Button
+                      className="bg-blue-600 hover:bg-blue-700 ml-auto"
+                      onClick={() => navigate(`/product/${item.id}`)}
+                    >
+                      <ShoppingCart className="w-4 h-4 mr-2" />
+                      Buy Now
+                    </Button>
+                  </div>
+                </>
               )}
             </CardFooter>
           </Card>
@@ -1005,14 +1097,42 @@ export function BuySourceCode() {
                   </div>
                 )}
 
-                <div className="flex items-center justify-between pt-4 border-t">
-                  <div>
-                    <span className="text-4xl text-gray-900">${selectedProduct.price}</span>
-                  </div>
-                  <Button size="lg" className="bg-blue-600 hover:bg-blue-700">
-                    <ShoppingCart className="w-5 h-5 mr-2" />
-                    Buy Now
-                  </Button>
+                <div className="pt-4 border-t space-y-3">
+                  {selectedProduct.notForSale ? (
+                    <div className="flex items-center justify-center gap-2 py-3 rounded-lg bg-slate-700/50 border border-slate-600/50">
+                      <Lock className="w-4 h-4 text-slate-400" />
+                      <span className="text-sm font-semibold text-slate-400">Not Currently For Sale</span>
+                    </div>
+                  ) : selectedProduct.price === 0 ? (
+                    <div className="flex items-center justify-between">
+                      <span className="text-3xl font-bold text-emerald-400">Free</span>
+                      <a href={selectedProduct.githubUrl} target="_blank" rel="noopener noreferrer">
+                        <Button size="lg" className="bg-emerald-600 hover:bg-emerald-700">
+                          <ExternalLink className="w-5 h-5 mr-2" />
+                          Download Free
+                        </Button>
+                      </a>
+                    </div>
+                  ) : (
+                    <>
+                      <div className="space-y-2">
+                        <div className="flex items-center justify-between rounded-lg bg-slate-800/60 px-4 py-3 border border-white/5">
+                          <span className="text-sm font-semibold text-slate-400 uppercase tracking-wide">Non-Exclusive Rights</span>
+                          <span className="text-2xl font-bold text-blue-300">${selectedProduct.nonExclusivePrice}</span>
+                        </div>
+                        <div className="flex items-center justify-between rounded-lg bg-amber-500/10 px-4 py-3 border border-amber-500/20">
+                          <span className="text-sm font-semibold text-amber-400 uppercase tracking-wide">Exclusive Rights</span>
+                          <span className="text-2xl font-bold text-amber-300">${selectedProduct.exclusivePrice}</span>
+                        </div>
+                      </div>
+                      <div className="flex justify-end">
+                        <Button size="lg" className="bg-blue-600 hover:bg-blue-700" onClick={() => { setSelectedProduct(null); navigate(`/product/${selectedProduct.id}`); }}>
+                          <ShoppingCart className="w-5 h-5 mr-2" />
+                          Buy Now
+                        </Button>
+                      </div>
+                    </>
+                  )}
                 </div>
               </div>
             </>
