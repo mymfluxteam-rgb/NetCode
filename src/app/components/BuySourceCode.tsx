@@ -1077,7 +1077,7 @@ export function BuySourceCode() {
                 )}
 
                 <div className="flex flex-wrap gap-2">
-                  <p className="w-full text-sm text-slate-400 mb-1">Technologies:</p>
+                  <p className="w-full text-sm text-slate-200 mb-1 font-semibold">Technologies:</p>
                   {selectedProduct.tags.map((tag) => (
                     <Badge key={tag} variant="outline" className="text-slate-300 border-slate-500">
                       {tag}

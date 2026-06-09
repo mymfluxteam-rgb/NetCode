@@ -1,12 +1,15 @@
 /**
  * NetCodeShop — Cloudflare Worker
- * Multi-stage AI fallback chatbot with history trimming.
+ * Multi-stage AI fallback chatbot with history trimming + KV cache-first.
  *
  * Priority chain: Gemini → Groq → OpenRouter → Mistral → DeepSeek → Cohere → xAI → Anyscale
  *
- * SECRETS (set via Cloudflare Dashboard → Workers → Settings → Variables & Secrets):
+ * SECRETS (Cloudflare Dashboard → Workers → Settings → Variables & Secrets):
  *   GEMINI_API_KEY, GROQ_API_KEY, OPENROUTER_API_KEY, MISTRAL_API_KEY,
  *   DEEPSEEK_API_KEY, COHERE_API_KEY, XAI_API_KEY, ANYSCALE_API_KEY
+ *
+ * KV NAMESPACE (wrangler.toml → [[kv_namespaces]]):
+ *   binding = "AI_CACHE"  — see wrangler.toml for setup instructions
  */
 
 // ---------------------------------------------------------------------------
@@ -20,8 +23,86 @@ const corsHeaders = {
 };
 
 // ---------------------------------------------------------------------------
+// Cache config
+// ---------------------------------------------------------------------------
+const CACHE_TTL_SECONDS = 60 * 60 * 24 * 7; // 7 days
+// Stop words stripped before bag-of-words fingerprinting
+const STOP_WORDS = new Set([
+  "a","an","the","is","are","was","were","be","been","being",
+  "have","has","had","do","does","did","will","would","could",
+  "should","may","might","can","to","of","in","on","at","for",
+  "and","or","but","so","if","i","my","me","you","your","we",
+  "what","how","why","when","where","which","who","please",
+  "help","tell","show","give","need","want","know",
+]);
+
+// ---------------------------------------------------------------------------
+// Cache helpers
+// ---------------------------------------------------------------------------
+
+/**
+ * Produces a stable, lowercase, punctuation-stripped key from raw text.
+ * Used for exact-match lookups.
+ */
+function normalizeKey(text) {
+  return "q:" + text
+    .toLowerCase()
+    .trim()
+    .replace(/[?!.,;:'"()[\]{}<>\/\\]/g, "")
+    .replace(/\s+/g, " ")
+    .slice(0, 480); // KV keys max 512 bytes; leave room for prefix
+}
+
+/**
+ * Produces a key from the *sorted* set of meaningful words.
+ * "MiFix Pro price?" and "price of MiFix Pro" both map to the same key.
+ */
+function bagKey(text) {
+  const words = text
+    .toLowerCase()
+    .replace(/[^a-z0-9\s]/g, "")
+    .split(/\s+/)
+    .filter((w) => w.length > 1 && !STOP_WORDS.has(w))
+    .sort();
+  return "bag:" + [...new Set(words)].join("_").slice(0, 480);
+}
+
+/**
+ * Check KV for a cached answer.
+ * Tries the exact-normalized key first, then the bag-of-words key.
+ * Returns { answer, cacheKey } on hit, or null on miss.
+ */
+async function checkCache(kv, message) {
+  if (!kv) return null;
+
+  const nk = normalizeKey(message);
+  const hit = await kv.get(nk);
+  if (hit) return { answer: hit, cacheKey: nk };
+
+  const bk = bagKey(message);
+  if (bk === "bag:") return null; // no meaningful words after stop-word removal
+  const hit2 = await kv.get(bk);
+  if (hit2) return { answer: hit2, cacheKey: bk };
+
+  return null;
+}
+
+/**
+ * Write both the exact and bag keys to KV.
+ * Called via ctx.waitUntil() so it never delays the response.
+ */
+async function writeCache(kv, message, answer) {
+  if (!kv || !answer) return;
+  const opts = { expirationTtl: CACHE_TTL_SECONDS };
+  const nk = normalizeKey(message);
+  const bk = bagKey(message);
+  const writes = [kv.put(nk, answer, opts)];
+  if (bk !== "bag:") writes.push(kv.put(bk, answer, opts));
+  await Promise.all(writes);
+}
+
+// ---------------------------------------------------------------------------
 // How many past messages to keep (prevents oversized payloads).
-// 6 = 3 user turns + 3 bot turns, which is plenty of context.
 // ---------------------------------------------------------------------------
 const HISTORY_LIMIT = 6;
 
@@ -67,8 +148,6 @@ NetCodeShop (netcodeshop.shop) သည် premium source code marketplace တစ�
  * by the frontend before sending.
  */
 function trimHistory(rawHistory, currentMessage) {
-  // Remove trailing entry if it's the same text as the new user message
-  // (prevents double-sending the same prompt)
   let hist = Array.isArray(rawHistory) ? rawHistory : [];
   if (hist.length > 0) {
     const last = hist[hist.length - 1];
@@ -76,13 +155,11 @@ function trimHistory(rawHistory, currentMessage) {
       hist = hist.slice(0, -1);
     }
   }
-  // Keep only the most recent HISTORY_LIMIT messages
   return hist.slice(-HISTORY_LIMIT);
 }
 
 /**
  * Build an OpenAI-compatible messages array.
- * System prompt goes first, then history, then the new user message.
  */
 function buildOaiMessages(history, message) {
   return [
@@ -101,18 +178,15 @@ function buildOaiMessages(history, message) {
  * user ↔ model. We drop any leading model messages to satisfy this.
  */
 function buildGeminiContents(history, message) {
-  // Map history to Gemini roles
   let contents = history.map((h) => ({
     role: h.role === "model" ? "model" : "user",
     parts: [{ text: h.text }],
   }));
 
-  // Drop leading model turns — Gemini rejects model-first arrays
   while (contents.length > 0 && contents[0].role === "model") {
     contents.shift();
   }
 
-  // Append the new user message
   contents.push({ role: "user", parts: [{ text: message }] });
 
   return contents;
@@ -321,7 +395,7 @@ function shouldFallback(status) {
 // Main handler
 // ---------------------------------------------------------------------------
 export default {
-  async fetch(request, env) {
+  async fetch(request, env, ctx) {
     // CORS preflight — must be first
     if (request.method === "OPTIONS") {
       return new Response(null, { status: 204, headers: corsHeaders });
@@ -354,24 +428,40 @@ export default {
       });
     }
 
-    // Trim history — deduplicate + limit to HISTORY_LIMIT entries
+    // ── Cache-First Check ────────────────────────────────────────────────────
+    // Only cache single-turn questions (no active conversation history).
+    // Cached answers are context-free, so we skip cache when history is present
+    // to avoid giving an out-of-context reply mid-conversation.
     const history = trimHistory(rawHistory, message);
+    const kv = env.AI_CACHE || null;
+
+    if (history.length === 0 && kv) {
+      const cached = await checkCache(kv, message);
+      if (cached) {
+        return new Response(
+          JSON.stringify({
+            success: true,
+            provider: "cache",
+            answer: cached.answer,
+            cached: true,
+          }),
+          { status: 200, headers: { ...corsHeaders, "Content-Type": "application/json" } }
+        );
+      }
+    }
+    // ────────────────────────────────────────────────────────────────────────
 
     // Build the full chain, then optionally filter to a single provider
-    // when the frontend explicitly requests one via `useProvider`.
     let providers = buildProviders(env, history, message);
     if (useProvider && typeof useProvider === "string") {
       const target = useProvider.toLowerCase();
       const filtered = providers.filter((p) => p.name.toLowerCase() === target);
-      // If the name matched a known provider, run only that one.
-      // If unknown name, fall through to the full chain (safe default).
       if (filtered.length > 0) providers = filtered;
     }
 
     const errors = [];
 
     for (const provider of providers) {
-      // Skip if API key not configured
       if (!provider.key) {
         errors.push({ provider: provider.name, reason: "API key not configured" });
         continue;
@@ -385,12 +475,10 @@ export default {
         continue;
       }
 
-      // Fallback on rate limit, auth errors, or server errors
       if (!res.ok) {
         const errText = await res.text().catch(() => String(res.status));
         errors.push({ provider: provider.name, status: res.status, reason: errText.slice(0, 200) });
         if (shouldFallback(res.status)) continue;
-        // Non-retryable client error — still continue (try next provider)
         continue;
       }
 
@@ -415,9 +503,15 @@ export default {
         continue;
       }
 
-      // Success — return immediately
+      // ── Save to cache in the background (never delays the response) ─────────
+      // Only cache single-turn questions (no conversation history).
+      if (history.length === 0 && kv) {
+        ctx.waitUntil(writeCache(kv, message, answer));
+      }
+      // ────────────────────────────────────────────────────────────────────────
+
       return new Response(
-        JSON.stringify({ success: true, provider: provider.name, answer }),
+        JSON.stringify({ success: true, provider: provider.name, answer, cached: false }),
         { status: 200, headers: { ...corsHeaders, "Content-Type": "application/json" } }
       );
     }

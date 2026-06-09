@@ -1,9 +1,10 @@
 # Cloudflare Workers configuration
 # Deploy with: wrangler deploy cloudflare-worker.js
 #
-# Set all API key secrets before deploying:
-#   wrangler secret put GROQ_API_KEY
+# ── API KEY SECRETS (set before deploying) ──────────────────────────────────
+# Run each command in your terminal (only set keys for providers you want):
 #   wrangler secret put GEMINI_API_KEY
+#   wrangler secret put GROQ_API_KEY
 #   wrangler secret put DEEPSEEK_API_KEY
 #   wrangler secret put OPENROUTER_API_KEY
 #   wrangler secret put MISTRAL_API_KEY
@@ -11,9 +12,26 @@
 #   wrangler secret put XAI_API_KEY
 #   wrangler secret put ANYSCALE_API_KEY
 #
-# You only need to set the keys for providers you want active.
-# Providers with missing keys are automatically skipped.
+# ── KV CACHE SETUP (one-time, before deploying) ──────────────────────────────
+# 1. Create the KV namespace:
+#      wrangler kv:namespace create AI_CACHE
+#    Copy the printed `id` value into the field below.
+#
+# 2. (Optional) Create a preview namespace for local `wrangler dev`:
+#      wrangler kv:namespace create AI_CACHE --preview
+#    Copy the printed `id` into `preview_id` below.
+#
+# 3. Replace the placeholder IDs below with your real values, then deploy.
+#
+# To clear the cache at any time:
+#   wrangler kv:key list --binding=AI_CACHE          # list all keys
+#   wrangler kv:namespace delete --namespace-id=<id> # nuclear clear
+# ─────────────────────────────────────────────────────────────────────────────
 
 name = "netcodeshop-chatbot"
 main = "cloudflare-worker.js"
 compatibility_date = "2024-01-01"
+
+[[kv_namespaces]]
+binding = "AI_CACHE"
+id      = "f95dec745d3540aaade9eed8ec8cfe9d"

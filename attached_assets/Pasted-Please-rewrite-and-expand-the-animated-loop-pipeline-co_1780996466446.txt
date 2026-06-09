@@ -1,0 +1,25 @@
+Please rewrite and expand the animated loop pipeline component into a 5-stage automated product journey. The animation must update automatically every 3 seconds (Total loop: 15 seconds). 
+
+Please implement the following exact stages, syncing both the left timeline dashboard and the right interactive 3D/2D animation canvas:
+
+1. Step 1 (0s - 3s): Coding & Modification
+   - Sidebar Text: "01. Source Code Modification" / "Writing, optimizing, and customizing specific unlock logic and brand layouts."
+   - Visual Animation: Show an abstract floating IDE code editor window with glowing neon syntax lines streaming and typing out rapidly.
+
+2. Step 2 (3s - 6s): Compiling & Build
+   - Sidebar Text: "02. Project Compilation & Build" / "Bundling safe partitions and compiling error-free binary outputs."
+   - Visual Animation: The code editor transforms into a central rotating gear or geometric compiling block with a loading ring that pops a glowing "BUILD SUCCESS" badge.
+
+3. Step 3 (6s - 9s): Production & Deployment
+   - Sidebar Text: "03. Live Tool Integration" / "Deploying the compiled build as a premium, ready-to-use professional flashing and unlocking tool."
+   - Visual Animation: The build cube opens up to reveal a detailed 3D/2D smartphone model. A USB cable plugs in automatically, and the phone's screen flashes to show the active tool menu.
+
+4. Step 4 (9s - 12s): Global Market Scale
+   - Sidebar Text: "04. Worldwide Availability" / "Distributing to independent developers, repair networks, and tech shops globally."
+   - Visual Animation: The smartphone scales down into a stunning interactive 3D/2D Holographic World Map. Arc lines and neon pulse dots radiate from Myanmar out to global regions (Asia, Europe, America, Africa) to show global scaling.
+
+5. Step 5 (12s - 15s): NetCodeShop Marketplace
+   - Sidebar Text: "05. Available at NetCodeShop" / "Secure your high-quality premium source code license instantly with multiple payment options."
+   - Visual Animation: The world map smoothly fades into a glowing digital shopping cart or store storefront badge featuring the "NetCodeShop" branding with floating verified review stars orbiting it.
+
+Timeline & Badge Sync: Ensure that all step cards, numeric badges (01 to 05), active glow colors (matching the purple/cyan brand theme), and progress loader bars match this new 15-second sequence perfectly.

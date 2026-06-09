@@ -1,6 +1,7 @@
 import { createHashRouter } from "react-router";
 import { Root } from "./components/Root";
 import { Home } from "./components/Home";
+import { Menu } from "./components/Menu";
 import { BuySourceCode } from "./components/BuySourceCode";
 import { Privacy } from "./components/Privacy";
 import { About } from "./components/About";
@@ -14,6 +15,7 @@ export const router = createHashRouter([
     Component: Root,
     children: [
       { index: true, Component: Home },
+      { path: "menu", Component: Menu },
       { path: "buy-source-code", Component: BuySourceCode },
       { path: "product/:id", Component: ProductPage },
       { path: "privacy", Component: Privacy },

@@ -13,3 +13,47 @@
   opacity: 0;
   animation: fadeInUp 0.35s ease forwards;
 }
+
+/* ── Logo float ── */
+@keyframes logo-float {
+  0%   { transform: translateY(0px); }
+  50%  { transform: translateY(-6px); }
+  100% { transform: translateY(0px); }
+}
+
+.logo-float {
+  animation: logo-float 3.2s ease-in-out infinite;
+  will-change: transform;
+}
+
+/* ── Testimonial card shimmer sweep ── */
+@keyframes shimmer-sweep {
+  0%   { top: -120%; }
+  100% { top: 120%; }
+}
+
+.shimmer-card {
+  position: relative;
+  overflow: hidden;
+}
+
+.shimmer-card::after {
+  content: '';
+  position: absolute;
+  left: -30%;
+  top: -120%;
+  width: 160%;
+  height: 60px;
+  background: linear-gradient(
+    to bottom,
+    transparent 0%,
+    rgba(150, 230, 255, 0.13) 40%,
+    rgba(200, 245, 255, 0.22) 50%,
+    rgba(150, 230, 255, 0.13) 60%,
+    transparent 100%
+  );
+  transform: skewY(-8deg);
+  animation: shimmer-sweep 3.6s linear infinite;
+  pointer-events: none;
+  z-index: 1;
+}

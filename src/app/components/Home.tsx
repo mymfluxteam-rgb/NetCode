@@ -3,6 +3,7 @@ import { Code2, ShoppingCart, Shield, Star, Zap, BadgeCheck } from "lucide-react
 import { Button } from "./ui/button";
 import { Card, CardContent, CardDescription, CardHeader, CardTitle } from "./ui/card";
 import { ImageWithFallback } from "./figma/ImageWithFallback";
+import { FlashingProcessSection } from "./FlashingProcessSection";
 
 const testimonials = [
   {
@@ -128,6 +129,9 @@ export function Home() {
         </div>
       </section>
 
+      {/* Mobile Flashing Process Section */}
+      <FlashingProcessSection />
+
       {/* Testimonials Section */}
       <section className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-16 md:py-24">
         <div className="text-center mb-12">
@@ -138,7 +142,7 @@ export function Home() {
         </div>
         <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-6">
           {testimonials.map((t, i) => (
-            <Card key={i} className="flex flex-col">
+            <Card key={i} className="flex flex-col shimmer-card">
               <CardHeader className="pb-2">
                 <div className="flex items-center gap-1 mb-3">
                   {Array.from({ length: t.stars }).map((_, s) => (

@@ -350,7 +350,7 @@ export function ProductPage() {
             </div>
             <div className="flex flex-wrap gap-2">
               {product.tags.map((tag) => (
-                <Badge key={tag} variant="outline" className="text-sm px-3 py-1">
+                <Badge key={tag} variant="outline" className="text-sm px-3 py-1 text-slate-200 border-slate-500">
                   {tag}
                 </Badge>
               ))}

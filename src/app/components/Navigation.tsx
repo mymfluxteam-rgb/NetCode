@@ -8,7 +8,7 @@ export function Navigation() {
   const [mobileMenuOpen, setMobileMenuOpen] = useState(false);
 
   const navItems = [
-    { path: "/", label: "Menu" },
+    { path: "/menu", label: "Menu" },
     { path: "/buy-source-code", label: "Buy Source Code" },
     { path: "/privacy", label: "Docs" },
     { path: "/about", label: "About" },
@@ -26,10 +26,10 @@ export function Navigation() {
   return (
     <nav className="bg-slate-900/80 backdrop-blur-md border-b border-white/10 sticky top-0 z-50">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-        <div className="flex justify-between items-center h-16">
+        <div className="flex justify-between items-center h-20">
           {/* Logo */}
           <Link to="/" className="flex items-center">
-            <img src={logo} alt="NetCodeShop" className="h-10 w-auto" />
+            <img src={logo} alt="NetCodeShop" className="h-14 w-auto logo-float" />
           </Link>
 
           {/* Desktop Navigation */}
