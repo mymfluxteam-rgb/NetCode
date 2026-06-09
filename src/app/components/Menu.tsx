@@ -1,9 +1,5 @@
-import { FlashingProcessSection } from "./FlashingProcessSection";
+import { Home } from "./Home";
 
 export function Menu() {
-  return (
-    <div className="min-h-screen bg-slate-950 text-white">
-      <FlashingProcessSection />
-    </div>
-  );
+  return <Home />;
 }

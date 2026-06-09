@@ -3,18 +3,6 @@ import tailwindcss from '@tailwindcss/vite'
 import react from '@vitejs/plugin-react'
 import type { IncomingMessage, ServerResponse } from 'node:http'
 
-function figmaAssetResolver() {
-  return {
-    name: 'figma-asset-resolver',
-    resolveId(id: string) {
-      if (id.startsWith('figma:asset/')) {
-        const filename = id.replace('figma:asset/', '')
-        return new URL(`./src/assets/${filename}`, import.meta.url).pathname
-      }
-    },
-  }
-}
-
 function chatApiPlugin() {
   return {
     name: 'chat-api',
@@ -74,7 +62,6 @@ function chatApiPlugin() {
 export default defineConfig({
   base: '/',
   plugins: [
-    figmaAssetResolver(),
     chatApiPlugin(),
     react(),
     tailwindcss(),

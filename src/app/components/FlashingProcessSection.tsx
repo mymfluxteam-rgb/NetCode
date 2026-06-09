@@ -237,7 +237,7 @@ function drawPhone(ctx: CanvasRenderingContext2D, W: number, H: number, t: numbe
   // Header bar
   ctx.fillStyle = col+"22"; ctx.fillRect(-sW/2,-sH/2,sW,sH*0.14);
   ctx.fillStyle = col; ctx.font = `bold ${sH*0.06}px monospace`; ctx.textAlign = "center";
-  ctx.fillText("MiFix Pro v2.1", 0, -sH/2+sH*0.095);
+  ctx.fillText("Custom Tool", 0, -sH/2+sH*0.095);
   // Menu items
   const items = ["Flash Firmware","Auth Bypass","Read Info","Factory Reset"];
   items.forEach((txt,i)=>{

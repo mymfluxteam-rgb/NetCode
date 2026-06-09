@@ -160,24 +160,11 @@ export function FloatingChat() {
       text: m.text,
     }));
 
-    // Frontend fallback chain — tries each provider in order.
-    const providerChain = ["gemini", "groq", "deepseek", "xai", "mistral", "anyscale"];
-    let answer: string | null = null;
-    let lastError = "All providers failed. Please try again later.";
-
-    for (const provider of providerChain) {
-      try {
-        answer = await callWorker(text, history, provider);
-        break; // success — stop trying
-      } catch (err: unknown) {
-        lastError = err instanceof Error ? err.message : `${provider} failed`;
-      }
-    }
-
-    if (answer) {
-      setMessages((prev) => [...prev, { role: "model", text: answer as string }]);
-    } else {
-      setError(lastError);
+    try {
+      const answer = await callWorker(text, history, "");
+      setMessages((prev) => [...prev, { role: "model", text: answer }]);
+    } catch (err: unknown) {
+      setError(err instanceof Error ? err.message : "All providers failed. Please try again later.");
     }
 
     setLoading(false);
