@@ -1,11 +1,26 @@
-import { Link, useLocation } from "react-router";
+import { Link, useLocation, useNavigate } from "react-router";
 import { Menu, X, Sparkles } from "lucide-react";
 import { useState } from "react";
 import logo from "/logo.png";
 
 export function Navigation() {
   const location = useLocation();
+  const navigate = useNavigate();
   const [mobileMenuOpen, setMobileMenuOpen] = useState(false);
+
+  const scrollToProof = (e: React.MouseEvent) => {
+    e.preventDefault();
+    const doScroll = () => {
+      const el = document.getElementById("proof-section");
+      if (el) el.scrollIntoView({ behavior: "smooth" });
+    };
+    if (location.pathname === "/") {
+      doScroll();
+    } else {
+      navigate("/");
+      setTimeout(doScroll, 150);
+    }
+  };
 
   const navItems = [
     { path: "/menu", label: "Menu" },
@@ -62,6 +77,12 @@ export function Navigation() {
                 </Link>
               )
             )}
+            <button
+              onClick={scrollToProof}
+              className="flex items-center gap-1.5 px-3 py-1.5 rounded-full border border-emerald-500/40 text-emerald-400 hover:bg-emerald-600/20 hover:border-emerald-500 transition-all text-sm font-medium"
+            >
+              🇮🇩 Proof of Transaction
+            </button>
           </div>
 
           {/* Mobile Menu Button */}
@@ -94,6 +115,12 @@ export function Navigation() {
                 {item.label}
               </Link>
             ))}
+            <button
+              onClick={(e) => { setMobileMenuOpen(false); scrollToProof(e); }}
+              className="block w-full text-left px-4 py-2 rounded-lg text-emerald-400 hover:bg-emerald-500/10 transition-colors font-medium"
+            >
+              🇮🇩 Proof of Transaction
+            </button>
           </div>
         )}
       </div>

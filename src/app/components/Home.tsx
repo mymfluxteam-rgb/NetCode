@@ -4,6 +4,8 @@ import { Button } from "./ui/button";
 import { Card, CardContent, CardDescription, CardHeader, CardTitle } from "./ui/card";
 import { ImageWithFallback } from "./figma/ImageWithFallback";
 import { FlashingProcessSection } from "./FlashingProcessSection";
+import { TrustProofIndonesia } from "./TrustProofIndonesia";
+import { TechSupportSection } from "./TechSupportSection";
 
 const testimonials = [
   {
@@ -131,6 +133,12 @@ export function Home() {
 
       {/* Mobile Flashing Process Section */}
       <FlashingProcessSection />
+
+      {/* Trust & Proof of Delivery — Indonesian Client */}
+      <TrustProofIndonesia />
+
+      {/* 24/7 Tech Support Section */}
+      <TechSupportSection />
 
       {/* Testimonials Section */}
       <section className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-16 md:py-24">
