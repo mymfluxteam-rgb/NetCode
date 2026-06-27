@@ -45,7 +45,6 @@ import hwidKeygenImage from "../../imports/hwid-keygen-generator.png";
 import samsungEdlFrpImage from "../../imports/samsung-edl-frp-tool.png";
 import oplusEdlToolImage from "../../imports/oplus-edl-tool.png";
 import iSparkToolImage from "../../imports/isparktool.png";
-import kirinToolImage from "../../imports/kirin-tool.png";
 
 export interface SourceCodeItem {
   id: number;
@@ -734,42 +733,6 @@ export const sourceCodeItems: SourceCodeItem[] = [
         "COM Port Scanning - Scans and lists available COM ports for communication with Samsung devices connected to the computer",
         "Loader File Management - Loads and manages Firehose Loader files with .mbn extension from the Loaders directory",
         "FRP Bypass - Erases the Persistent Partition of Samsung phones in EDL Mode by running emmcdl.exe in the background",
-      ],
-    },
-    {
-      id: 32,
-      name: "Kirin-Tool",
-      description: "Professional Huawei/HiSilicon Kirin servicing tool (v2.4.1) with WPF UI. Covers full OTA & single-partition flashing, VCOM unlock, FRP bypass, OEMInfo editing, partition dump, and device info — supporting Kirin 620 through Kirin 990 5G.",
-      price: 300,
-      originalPrice: 750,
-      exclusivePrice: 750,
-      nonExclusivePrice: 300,
-      category: "Desktop Application",
-      rating: 4.8,
-      downloads: 0,
-      tags: ["C#", "WPF", "Huawei", "Kirin", "Fastboot"],
-      image: kirinToolImage,
-      badge: "new",
-      features: [
-        "Supported Chipsets — Kirin 620, 620c, 65x_a, 65x_b, 710, 710a, 810, 820, 925, 935, 950, 955, 960, 970, 980, 985, 990 5G, K3v2",
-        "Device Information — Read FB Lock, User Lock, model, vendor/country, build number, base/custom/preload versions; reboot device",
-        "VCOM Unlock Fastboot — Unlock Fastboot directly from VCOM (USB COM 1.0) mode without physical test point",
-        "Software Testpoint — Enter VCOM mode without hardware disassembly (requires firmware before Feb 2021 security patch)",
-        "Exit Software Testpoint — Cleanly exit Software Testpoint mode after operations",
-        "Full OTA Flash — Flash Base, Cust, and Preload PTABLE plus UPDATE.APP files via Fastboot/USB Update Mode",
-        "Single Partition Flash — Flash individual partitions using an XML config for targeted operations",
-        "Dump Partitions — Read and save device partitions to local storage; auto-generates flash.xml for convenient re-flashing",
-        "Partition Editor — Select and edit which partitions to include when flashing from UPDATE.APP files",
-        "FRP Bypass — Remove Factory Reset Protection lock (requires unlocked fastboot)",
-        "Enable Downgrade — Allows flashing older firmware versions on the device",
-        "OEMInfo Read/Edit/Write — Read, modify, and write back OEMInfo data to the device",
-        "OEMInfo Format Converter — Convert OEMInfo between supported formats",
-        "NVMe Tools — Dedicated NVMe tools page in the UI",
-        "Sparse Image Handling — Processes sparse images automatically before flashing",
-        "Super Partition Merging — Merges super partition components during flash operations",
-        "CRC Checks — Validates firmware integrity via CRC before writing to device",
-        "Bundled Loaders — Includes fastboot.exe and dedicated loaders for all supported Kirin chipsets",
-        "Technologies — WPF (.NET 8.0) with WPF UI component library for a modern Windows interface",
       ],
     },
     {
