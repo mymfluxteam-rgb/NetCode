@@ -1,10 +1,11 @@
 import { useParams, useNavigate } from "react-router";
-import { useState, useEffect, useCallback } from "react";
+import { useState, useEffect, useCallback, type ReactNode } from "react";
 import { ArrowLeft, Star, Download, CheckCircle2, Tag, X, ZoomIn, ChevronLeft, ChevronRight, PlayCircle, Github, Lock } from "lucide-react";
 import { Button } from "./ui/button";
 import { Badge } from "./ui/badge";
 import { sourceCodeItems } from "./BuySourceCode";
 import whatsappQr from "../../imports/whatsapp-qr.png";
+import secondAdminWhatsappQr from "../../imports/second-admin-whatsapp-qr.png";
 
 function FacebookIcon() {
   return (
@@ -30,10 +31,119 @@ function WhatsAppIcon() {
   );
 }
 
+type ContactLink = {
+  icon: ReactNode;
+  iconColor: string;
+  hoverClasses: string;
+  label: string;
+  sublabel: string;
+  href: string;
+};
+
+type AdminContact = {
+  key: "founder" | "second-admin";
+  tabLabel: string;
+  links: ContactLink[];
+  qr?: { src: string; alt: string };
+};
+
+function ContactLinkRow({ link }: { link: ContactLink }) {
+  return (
+    <a
+      href={link.href}
+      target="_blank"
+      rel="noopener noreferrer"
+      className={`flex items-center gap-3 p-3 rounded-lg border border-white/10 transition-all group ${link.hoverClasses}`}
+    >
+      <span className={`${link.iconColor} group-hover:scale-110 transition-transform`}>{link.icon}</span>
+      <div>
+        <p className="text-sm font-semibold text-white">{link.label}</p>
+        <p className="text-xs text-slate-400">{link.sublabel}</p>
+      </div>
+    </a>
+  );
+}
+
 export function ProductPage() {
   const { id } = useParams<{ id: string }>();
   const navigate = useNavigate();
   const product = sourceCodeItems.find((item) => item.id === Number(id));
+
+  const adminContacts: AdminContact[] = [
+    {
+      key: "founder",
+      tabLabel: "Founder",
+      links: [
+        {
+          icon: <FacebookIcon />,
+          iconColor: "text-[#1877F2]",
+          hoverClasses: "hover:border-blue-400/50 hover:bg-blue-500/10",
+          label: "Facebook",
+          sublabel: "Message us on Facebook",
+          href: "https://www.facebook.com/share/1B8BRnNqhr/",
+        },
+        {
+          icon: <TelegramIcon />,
+          iconColor: "text-[#229ED9]",
+          hoverClasses: "hover:border-sky-400/50 hover:bg-sky-500/10",
+          label: "Telegram",
+          sublabel: "@NetCodeShop",
+          href: "https://t.me/NetCodeShop",
+        },
+        {
+          icon: <TelegramIcon />,
+          iconColor: "text-[#229ED9]",
+          hoverClasses: "hover:border-sky-400/50 hover:bg-sky-500/10",
+          label: "Telegram Channel",
+          sublabel: "@NetCodeSolutions",
+          href: "https://t.me/NetCodeSolutions",
+        },
+      ],
+      qr: { src: whatsappQr, alt: "Founder WhatsApp QR Code" },
+    },
+    {
+      key: "second-admin",
+      tabLabel: "Second Admin",
+      links: [
+        {
+          icon: <FacebookIcon />,
+          iconColor: "text-[#1877F2]",
+          hoverClasses: "hover:border-blue-400/50 hover:bg-blue-500/10",
+          label: "Facebook",
+          sublabel: "Message the second admin",
+          href: "https://www.facebook.com/share/17jU3MNjhq/",
+        },
+        {
+          icon: <TelegramIcon />,
+          iconColor: "text-[#229ED9]",
+          hoverClasses: "hover:border-sky-400/50 hover:bg-sky-500/10",
+          label: "Telegram",
+          sublabel: "@amirreda1",
+          href: "https://t.me/amirreda1",
+        },
+        {
+          icon: <TelegramIcon />,
+          iconColor: "text-[#229ED9]",
+          hoverClasses: "hover:border-sky-400/50 hover:bg-sky-500/10",
+          label: "Telegram Channel",
+          sublabel: "sourcecode18",
+          href: "https://telegram.me/sourcecode18",
+        },
+        {
+          icon: <WhatsAppIcon />,
+          iconColor: "text-[#25D366]",
+          hoverClasses: "hover:border-green-400/50 hover:bg-green-500/10",
+          label: "WhatsApp",
+          sublabel: "Chat on WhatsApp",
+          href: "https://wa.me/201151808019",
+        },
+      ],
+      qr: { src: secondAdminWhatsappQr, alt: "Second Admin WhatsApp QR Code" },
+    },
+  ];
+
+  const [activeAdmin, setActiveAdmin] = useState<AdminContact["key"]>("founder");
+  const activeContact = adminContacts.find((c) => c.key === activeAdmin)!;
 
   const allImages = product
     ? product.images && product.images.length > 0
@@ -249,74 +359,53 @@ export function ProductPage() {
 
             {/* Contact section */}
             <p className="text-sm font-semibold text-slate-300 mb-3">Contact to Purchase</p>
+
+            {/* Admin tabs */}
+            <div className="flex gap-2 p-1 mb-4 rounded-xl bg-slate-800/60 border border-white/10">
+              {adminContacts.map((admin) => {
+                const isActive = admin.key === activeAdmin;
+                return (
+                  <button
+                    key={admin.key}
+                    onClick={() => setActiveAdmin(admin.key)}
+                    className={`flex-1 text-sm font-semibold py-2 px-3 rounded-lg transition-all duration-200 ${
+                      isActive
+                        ? "bg-gradient-to-r from-purple-600 to-blue-600 text-white shadow-[0_0_16px_rgba(147,51,234,0.5)] border border-purple-400/50"
+                        : "text-slate-400 bg-transparent border border-transparent opacity-60 hover:opacity-100 hover:text-slate-200"
+                    }`}
+                  >
+                    {admin.tabLabel}
+                  </button>
+                );
+              })}
+            </div>
+
             <div className="space-y-3">
-              {/* Facebook */}
-              <a
-                href="https://www.facebook.com/share/1B8BRnNqhr/"
-                target="_blank"
-                rel="noopener noreferrer"
-                className="flex items-center gap-3 p-3 rounded-lg border border-white/10 hover:border-blue-400/50 hover:bg-blue-500/10 transition-all group"
-              >
-                <span className="text-[#1877F2] group-hover:scale-110 transition-transform">
-                  <FacebookIcon />
-                </span>
-                <div>
-                  <p className="text-sm font-semibold text-white">Facebook</p>
-                  <p className="text-xs text-slate-400">Message us on Facebook</p>
-                </div>
-              </a>
+              {activeContact.links.map((link) => (
+                <ContactLinkRow key={link.label} link={link} />
+              ))}
 
-              {/* Telegram */}
-              <a
-                href="https://t.me/NetCodeShop"
-                target="_blank"
-                rel="noopener noreferrer"
-                className="flex items-center gap-3 p-3 rounded-lg border border-white/10 hover:border-sky-400/50 hover:bg-sky-500/10 transition-all group"
-              >
-                <span className="text-[#229ED9] group-hover:scale-110 transition-transform">
-                  <TelegramIcon />
-                </span>
-                <div>
-                  <p className="text-sm font-semibold text-white">Telegram</p>
-                  <p className="text-xs text-slate-400">@NetCodeShop</p>
-                </div>
-              </a>
-
-              {/* Telegram Channel */}
-              <a
-                href="https://t.me/NetCodeSolutions"
-                target="_blank"
-                rel="noopener noreferrer"
-                className="flex items-center gap-3 p-3 rounded-lg border border-white/10 hover:border-sky-400/50 hover:bg-sky-500/10 transition-all group"
-              >
-                <span className="text-[#229ED9] group-hover:scale-110 transition-transform">
-                  <TelegramIcon />
-                </span>
-                <div>
-                  <p className="text-sm font-semibold text-white">Telegram Channel</p>
-                  <p className="text-xs text-slate-400">@NetCodeSolutions</p>
-                </div>
-              </a>
-
-              {/* WhatsApp */}
-              <div className="p-3 rounded-lg border border-white/10 bg-green-500/5">
-                <div className="flex items-center gap-3 mb-3">
-                  <span className="text-[#25D366]">
-                    <WhatsAppIcon />
-                  </span>
-                  <div>
-                    <p className="text-sm font-semibold text-white">WhatsApp</p>
-                    <p className="text-xs text-slate-400">Scan QR to chat</p>
+              {/* WhatsApp QR (Founder only, if available) */}
+              {activeContact.qr && (
+                <div className="p-3 rounded-lg border border-white/10 bg-green-500/5">
+                  <div className="flex items-center gap-3 mb-3">
+                    <span className="text-[#25D366]">
+                      <WhatsAppIcon />
+                    </span>
+                    <div>
+                      <p className="text-sm font-semibold text-white">WhatsApp</p>
+                      <p className="text-xs text-slate-400">Scan QR to chat</p>
+                    </div>
+                  </div>
+                  <div className="rounded-lg overflow-hidden border border-white/10">
+                    <img
+                      src={activeContact.qr.src}
+                      alt={activeContact.qr.alt}
+                      className="w-full h-auto object-contain"
+                    />
                   </div>
                 </div>
-                <div className="rounded-lg overflow-hidden border border-white/10">
-                  <img
-                    src={whatsappQr}
-                    alt="WhatsApp QR Code"
-                    className="w-full h-auto object-contain"
-                  />
-                </div>
-              </div>
+              )}
             </div>
               </>
             )}

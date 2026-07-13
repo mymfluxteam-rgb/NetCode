@@ -1,0 +1,1 @@
+- [NetCodeShop import setup](netcodeshop-setup.md) — imported Vite/React site with multi-provider chat API; run via `npm run dev`, no secrets set yet.
