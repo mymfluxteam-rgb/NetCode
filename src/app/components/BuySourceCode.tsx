@@ -45,6 +45,18 @@ import hwidKeygenImage from "../../imports/hwid-keygen-generator.png";
 import samsungEdlFrpImage from "../../imports/samsung-edl-frp-tool.png";
 import oplusEdlToolImage from "../../imports/oplus-edl-tool.png";
 import iSparkToolImage from "../../imports/isparktool.png";
+import idmWinrarKeygenImage from "../../imports/idm-winrar-keygen.png";
+import idmWinrarClientImage from "../../imports/idm-winrar-client.png";
+import idmWinrarActivatedImage from "../../imports/idm-winrar-activated.png";
+import sharpEdlMainImage from "../../imports/sharpedl-main.png";
+import sharpEdlDeviceSelectImage from "../../imports/sharpedl-device-select.png";
+import sharpEdlLoaderImage from "../../imports/sharpedl-loader.png";
+import colokToolMainImage from "../../imports/coloktool-main.png";
+import colokToolBrandsImage from "../../imports/coloktool-brands.png";
+import colokToolDeviceListImage from "../../imports/coloktool-device-list.png";
+import colokToolSamsungImage from "../../imports/coloktool-samsung.png";
+import colokToolSamsung2Image from "../../imports/coloktool-samsung2.png";
+import colokToolKirinImage from "../../imports/coloktool-kirin.png";
 
 export interface SourceCodeItem {
   id: number;
@@ -774,6 +786,98 @@ export const sourceCodeItems: SourceCodeItem[] = [
         "Version Check & Auto-Update — Checks for latest version and prompts for download automatically",
         "Download Manager — Built-in downloader with progress tracking",
         "Technologies — C# WinForms + Guna UI2, LibMobileDevice, SSH.NET, Bouncy Castle, Costura.Fody, AltoHttp, Newtonsoft.Json, plist-cil, log4net",
+      ],
+    },
+    {
+      id: 32,
+      name: "Colok Tool Pro",
+      description: "Professional multi-chipset Android servicing tool supporting MediaTek, Qualcomm, Samsung, Kirin, Unisoc, and direct eMMC operations. Features IMEI repair, FRP/MiCloud reset, bootloader unlock, RPMB/EFS operations, and a license-based credit system with HWID binding.",
+      price: 300,
+      originalPrice: 700,
+      exclusivePrice: 700,
+      nonExclusivePrice: 300,
+      category: "Desktop Application",
+      rating: 4.8,
+      downloads: 0,
+      tags: ["VB.NET", "MediaTek", "Qualcomm", "Samsung", "DevExpress", "LibUsbDotNet"],
+      image: colokToolMainImage,
+      images: [colokToolMainImage, colokToolBrandsImage, colokToolDeviceListImage, colokToolSamsungImage, colokToolSamsung2Image, colokToolKirinImage],
+      badge: "new",
+      features: [
+        "MediaTek (MTK) — Read Info, Format Data, Reset FRP, Reset MiCloud, Safe Format, Remove Demo, Fix DL Image Error, Flash Eng Preloader, Remove Payjoy, Remove Security Plugin, Reset Oppo ID, Reset Huawei ID, Write IMEI, Backup/Format/Replace EFS, Unlock/Lock Bootloader, Read/Format/Write RPMB, Fix Red State, Fix DM Verity",
+        "MTK Modes — Preloader Mode, BROM Mode, Meta Mode, AT Mode; Filesystem: Ext4 & EROFS support",
+        "Qualcomm (QC) — Read Info, Format Data, Reset FRP, Remove/Disable MiCloud, Enable MiCloud Account, Format EFS, Read GPT, Flash Firmware, Read/Write Partitions, Write IMEI, QCN Backup/Restore",
+        "QC Modes & Protocols — EDL (Emergency Download), Fastboot, Diag, MTP Mode; Sahara Protocol & Firehose Loader support",
+        "Samsung (Exynos/Qualcomm) — Device-specific operations including flashing via Odin-style interface; Download Mode & MTP Mode",
+        "Kirin (Huawei) — Device-specific operations for Huawei Kirin chipsets",
+        "Unisoc (Spreadtrum) — Full support for Unisoc chipset devices",
+        "eMMC Plus — Direct EMMC operations for advanced hardware-level repairs",
+        "IMEI Repair — Dual IMEI write support across MTK and QC platforms",
+        "EFS / RPMB Operations — Read, write, format, and backup EFS/RPMB partitions",
+        "Bootloader Operations — Unlock/Lock bootloader, FRP bypass across chipsets",
+        "Partition Management — GPT reading and full partition operations",
+        "Fastboot / ADB Integration — Direct access to bootloader and Android debug interfaces",
+        "User Authentication — License-based system with HWID (Hardware ID) binding",
+        "Credit System — Server-side paid operations with multi-language support",
+        "Firmware Flashing — Scatter-based flashing for MTK, XML-based for Qualcomm",
+        "Device Detection — USB device detection and management across 30+ brands (Alcatel, ASUS, Coolpad, Huawei, Infinix, Lenovo, Motorola, Nokia, OnePlus, Oppo, Realme, Samsung, Tecno, Vivo, Xiaomi, ZTE, and more)",
+        "Technologies — VB.NET WinForms, DevExpress UI, LibUsbDotNet, Ionic.Zip, K4os.Compression.LZ4, Costura.Fody, XML-based API integration",
+      ],
+    },
+    {
+      id: 33,
+      name: "SharpEDL Client",
+      description: "Open-source Qualcomm EDL client built in C#. Auto-detects EDL devices, loads firehose programmers for 32/64-bit targets, supports eMMC & UFS storage, and covers full firmware flashing, partition operations, EFS backup/restore, Mi Account erase, and FRP reset.",
+      price: 250,
+      originalPrice: 600,
+      exclusivePrice: 600,
+      nonExclusivePrice: 250,
+      category: "Desktop Application",
+      rating: 4.7,
+      downloads: 0,
+      tags: ["C#", "Qualcomm", "EDL", "Firehose", "WinForms"],
+      image: sharpEdlMainImage,
+      images: [sharpEdlMainImage, sharpEdlDeviceSelectImage, sharpEdlLoaderImage],
+      badge: "new",
+      features: [
+        "Device Connection & Initialization — Auto-detects Qualcomm EDL devices via USB; reads SoC, OEM, Model, Serial Number, and PK Hash; supports both 32-bit and 64-bit firehose loaders",
+        "Firehose Programmer Management — Auto-loads firehose programmers by HWID/PK hash or manual selection; includes a large pre-built loader collection for Xiaomi, Samsung, LG, OnePlus, Oppo, Vivo, and more",
+        "Storage Support — Compatible with both eMMC and UFS storage types",
+        "Firmware Flashing — Flashes firmware partitions, supports sparse image files, applies patches, and includes auto-reboot option after flashing",
+        "Partition Operations — Reads GPT partition tables, reads and saves individual partitions as .img files, generates rawprogram XML files, and erases partitions (userdata, FRP, persistent, etc.)",
+        "EFS Operations — Backs up EFS partitions (modemst1, modemst2, fsg) to ZIP; restores EFS from backup; erases EFS with auto-backup protection",
+        "Mi Account Erase — Resets Mi Cloud data by writing to the persistent partition and wiping relevant partitions",
+        "FRP Reset — Wipes FRP, persistent, and config partitions in one operation",
+        "Wipe Storage — Erases userdata, persistent, and FRP partitions",
+        "Device Reboot — Remote reboot command from the tool interface",
+        "Core Architecture — Main.cs (UI & orchestration), Protocol.cs (EDL/Sahara/Firehose protocol), usb.cs & USBApi.cs (USB communication), Firehose.cs (command generation), FileTransfer.cs (sparse file handling), GPT files (partition table parsing)",
+        "Technologies — C# WinForms, LibUsbDotNet, Firehose/Sahara protocol implementation",
+      ],
+    },
+    {
+      id: 34,
+      name: "IDM & WinRAR Activation Suite",
+      description: "Python-based license system for activating Internet Download Manager and WinRAR. Includes an Admin Key Generator with flexible durations (1 day to Lifetime) and a client app with one-click activation, HWID binding, and a live process log.",
+      price: 150,
+      originalPrice: 300,
+      exclusivePrice: 300,
+      nonExclusivePrice: 150,
+      category: "Desktop Application",
+      rating: 4.7,
+      downloads: 0,
+      tags: ["Python", "IDM", "WinRAR", "License", "HWID", "Activation"],
+      image: idmWinrarClientImage,
+      images: [idmWinrarClientImage, idmWinrarKeygenImage, idmWinrarActivatedImage],
+      badge: "new",
+      features: [
+        "Admin Key Generator — Generate license keys for any duration: 1 Day, 3 Days, 1 Month, 3 Months, 6 Months, 12 Months, or Lifetime",
+        "HWID Binding — Keys are tied to the client's Hardware ID (HWID) to prevent sharing and unauthorized use",
+        "One-Click IDM Activation — Initializes IDM Professional Activation, cleans background processes, applies registry fix, and blocks update prompts in one click",
+        "One-Click WinRAR Activation — Instant WinRAR license activation through the same clean interface",
+        "License Status Display — Shows current activation status (ACTIVE/INACTIVE) and expiry date in real time",
+        "Process Log Area — Live scrolling terminal log showing each activation step with color-coded output",
+        "Lifetime License Support — Full lifetime activation verified and reflected inside IDM's registration dialog",
+        "Technologies — Python, Windows Registry manipulation, HWID detection",
       ],
     },
 ];
