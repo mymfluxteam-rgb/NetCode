@@ -1,0 +1,35 @@
+Act as an expert Frontend Developer. Build a complete, responsive, modern, and premium source code marketplace landing page named 'NetCodeShop' using React and Tailwind CSS.
+
+Design System & Vibe:
+
+Strictly use a clean, solid dark mode background (e.g., bg-slate-900 or bg-[#0a0a0a]). DO NOT use any starry, space, or distracting background images.
+
+Use 'Inter' font for all typography.
+
+The aesthetic should be highly professional, sleek, and premium, similar to Vercel or Stripe's dark mode. Use a vibrant accent color (like neon purple or electric blue) for primary actions.
+
+Please build the page with the following sections in order:
+
+1. Navbar: Clean layout with a logo (NetCodeShop) on the left, navigation links in the center, and a 'Connect/Login' button on the right.
+
+2. Hero Section: A bold, eye-catching headline, a short compelling description, Primary and Secondary CTA buttons, and a modern code snippet mockup or tech illustration on the right side.
+
+3. Source Code Marketplace (Product Grid):
+
+Include a search input bar and category filter pills at the top.
+
+A responsive grid of Product Cards.
+
+Card Design: Each card must have a dark background (bg-slate-800), a subtle lighter border (border-slate-700), rounded-xl corners, and a soft glow/shadow effect on hover. Inside the card, include: a 'Featured' tag, product title, short description text (text-slate-400), 2-3 key features as bullet points, a star rating, and a 'View Details' or 'Watch Demo' button.
+
+4. How to Purchase (Documentation):
+
+Do not use plain text lists. Instead, build a sleek vertical timeline or modern step-by-step components.
+
+Each step should have a circular number badge with a vibrant primary color background, followed by the step title and a brief description. Ensure generous vertical spacing (gap) for readability.
+
+5. About Us & Stats: Include a section with 3-4 glassmorphism or minimalist cards displaying statistics (e.g., '20+ Premium Projects', '10,000+ Happy Customers', '98% Satisfaction').
+
+6. Footer: A clean footer with social media icons, contact business hours, and simple links.
+
+Ensure the code is clean, modular, and fully responsive across mobile and desktop screens. Use Tailwind's best practices for hover states, transitions, and glassmorphism effects where appropriate.

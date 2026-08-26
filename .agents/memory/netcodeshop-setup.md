@@ -8,3 +8,9 @@ The chat widget (server/chat-handler.js, mounted via vite.config.ts middleware a
 **Why:** None were configured at import time; the rest of the site works without any of them, so don't block basic setup on getting a key.
 
 **How to apply:** If asked to make the chatbot work, check which of these secrets exist before assuming none are set (a prior session or the user may have added one since).
+
+The imported Replit workspace may not have `node_modules` populated even when `package.json` and lockfiles are present; the Vite workflow then fails with `vite: not found` until dependencies are installed.
+
+**Why:** The initial workflow failure was an environment setup issue, not an application-code issue.
+
+**How to apply:** When the imported app fails before Vite starts, check for the local dependency tree and install the declared Node packages before changing app or workflow code.

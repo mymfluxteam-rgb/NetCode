@@ -31,8 +31,8 @@ export function Privacy() {
       {/* Header */}
       <div className="text-center mb-10">
         <BookOpen className="w-16 h-16 text-blue-600 mx-auto mb-4" />
-        <h1 className="text-4xl mb-4 text-white">Documentation</h1>
-        <p className="text-xl text-gray-300">
+        <h1 className="text-4xl mb-4 text-slate-900">Documentation</h1>
+        <p className="text-xl text-slate-600">
           Everything you need to know about purchasing source code from NetCodeShop
         </p>
       </div>
@@ -43,7 +43,7 @@ export function Privacy() {
           <a
             key={s.id}
             href={`#${s.id}`}
-            className="px-3 py-1.5 rounded-full text-sm font-medium bg-slate-800/60 text-slate-300 border border-white/10 hover:bg-blue-500/20 hover:text-blue-300 hover:border-blue-500/30 transition-colors backdrop-blur-sm"
+            className="px-3 py-1.5 rounded-full text-sm font-medium bg-white text-slate-600 border border-slate-200 hover:bg-indigo-50 hover:text-indigo-700 hover:border-indigo-200 transition-colors shadow-sm"
           >
             {s.label}
           </a>
@@ -60,7 +60,7 @@ export function Privacy() {
               <CardTitle>How to Purchase</CardTitle>
             </div>
           </CardHeader>
-          <CardContent className="space-y-4 text-slate-300">
+          <CardContent className="space-y-4 text-slate-600">
             <p>Buying source code from NetCodeShop is simple and straightforward. Follow these steps:</p>
             <ol className="space-y-3">
               {[
@@ -89,7 +89,7 @@ export function Privacy() {
               <CardTitle>Payment Channels</CardTitle>
             </div>
           </CardHeader>
-          <CardContent className="space-y-6 text-slate-300">
+          <CardContent className="space-y-6 text-slate-600">
             <p>
               All purchases are handled personally through our official channels below. We accept payments via
               bank transfer, e-wallet, or cryptocurrency — details are confirmed during your chat.
@@ -166,7 +166,7 @@ export function Privacy() {
               <CardTitle>What You Get After Purchase</CardTitle>
             </div>
           </CardHeader>
-          <CardContent className="space-y-3 text-slate-300">
+          <CardContent className="space-y-3 text-slate-600">
             {[
               { icon: <CheckCircle className="w-5 h-5 text-green-500 flex-shrink-0" />, text: "Full source code — complete, uncommented, and ready to compile" },
               { icon: <CheckCircle className="w-5 h-5 text-green-500 flex-shrink-0" />, text: "All required libraries and dependencies included" },

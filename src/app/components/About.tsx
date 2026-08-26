@@ -36,11 +36,11 @@ export function About() {
   return (
     <div>
       {/* Hero Section */}
-      <section className="text-white">
+      <section className="text-slate-900">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-20">
           <div className="text-center">
-            <h1 className="text-4xl md:text-5xl mb-6">About NetCodeShop</h1>
-            <p className="text-xl text-gray-300 max-w-3xl mx-auto">
+            <h1 className="text-4xl md:text-5xl mb-6 text-slate-900">About NetCodeShop</h1>
+            <p className="text-xl text-slate-600 max-w-3xl mx-auto">
               We are a premium marketplace for high-quality source code, helping developers 
               and businesses accelerate their projects with ready-to-use solutions.
             </p>
@@ -55,7 +55,7 @@ export function About() {
             <Card key={index} className="text-center">
               <CardContent className="pt-6">
                 <div className="text-4xl mb-2 text-blue-400">{stat.value}</div>
-                <div className="text-gray-300">{stat.label}</div>
+                <div className="text-slate-600">{stat.label}</div>
               </CardContent>
             </Card>
           ))}
@@ -66,8 +66,8 @@ export function About() {
       <section className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-16 md:py-24">
         <div className="grid md:grid-cols-2 gap-12 items-center">
           <div>
-            <h2 className="text-3xl md:text-4xl mb-6 text-white">Our Story</h2>
-            <div className="space-y-4 text-gray-300">
+            <h2 className="text-3xl md:text-4xl mb-6 text-slate-900">Our Story</h2>
+            <div className="space-y-4 text-slate-600">
               <p>
                 NetCodeShop was founded in 2020 with a simple mission: to provide developers 
                 with access to high-quality, well-documented source code that saves time and 
@@ -97,11 +97,11 @@ export function About() {
       </section>
 
       {/* Values Section */}
-      <section className="bg-slate-800/40 backdrop-blur-sm border-y border-white/10">
+      <section className="border-y border-slate-200 bg-white">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-16 md:py-24">
           <div className="text-center mb-12">
-            <h2 className="text-3xl md:text-4xl mb-4 text-white">Our Values</h2>
-            <p className="text-xl text-gray-300 max-w-2xl mx-auto">
+            <h2 className="text-3xl md:text-4xl mb-4 text-slate-900">Our Values</h2>
+            <p className="text-xl text-slate-600 max-w-2xl mx-auto">
               The principles that guide our work and define who we are.
             </p>
           </div>
@@ -114,7 +114,7 @@ export function About() {
                   <CardTitle>{value.title}</CardTitle>
                 </CardHeader>
                 <CardContent>
-                  <p className="text-gray-300">{value.description}</p>
+                  <p className="text-slate-600">{value.description}</p>
                 </CardContent>
               </Card>
             ))}
@@ -125,8 +125,8 @@ export function About() {
       {/* Mission Section */}
       <section className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-16 md:py-24">
         <div className="max-w-3xl mx-auto text-center">
-          <h2 className="text-3xl md:text-4xl mb-6 text-white">Our Mission</h2>
-          <p className="text-xl text-gray-300 leading-relaxed">
+          <h2 className="text-3xl md:text-4xl mb-6 text-slate-900">Our Mission</h2>
+          <p className="text-xl text-slate-600 leading-relaxed">
             To empower developers and businesses worldwide by providing access to premium, 
             well-crafted source code solutions that accelerate development, reduce costs, 
             and enable the creation of outstanding software products.

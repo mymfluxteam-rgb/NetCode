@@ -913,8 +913,8 @@ export function BuySourceCode() {
     <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-12">
       {/* Header */}
       <div className="mb-8">
-        <h1 className="text-4xl mb-4 text-white">Buy Source Code</h1>
-        <p className="text-xl text-gray-300 mb-8">
+        <h1 className="text-4xl mb-4 text-slate-900">Buy Source Code</h1>
+        <p className="text-xl text-slate-600 mb-8">
           Browse our collection of premium, ready-to-use source code for your projects.
         </p>
 
@@ -939,7 +939,7 @@ export function BuySourceCode() {
               className={`px-4 py-1.5 rounded-full text-sm font-medium border transition-all ${
                 selectedCategory === cat
                   ? "bg-blue-600 text-white border-blue-600 shadow-sm"
-                  : "bg-slate-800/60 text-slate-300 border-white/10 hover:border-blue-400 hover:text-blue-300 backdrop-blur-sm"
+                  : "bg-white text-slate-600 border-slate-200 hover:border-indigo-400 hover:text-indigo-700"
               }`}
             >
               {cat}
@@ -964,7 +964,7 @@ export function BuySourceCode() {
           <Card key={item.id} className="flex flex-col overflow-hidden">
             {item.image && (
               <div
-                className="w-full h-48 bg-slate-800/60 overflow-hidden cursor-pointer hover:opacity-90 transition-opacity relative"
+                    className="w-full h-48 bg-slate-100 overflow-hidden cursor-pointer hover:opacity-90 transition-opacity relative"
                 onClick={() => setSelectedProduct(item)}
               >
                 <ImageWithFallback
@@ -1001,7 +1001,7 @@ export function BuySourceCode() {
                 <Badge variant="secondary">{item.category}</Badge>
                 <div className="flex items-center gap-1">
                   <Star className="w-4 h-4 text-yellow-400 fill-yellow-400" />
-                  <span className="text-sm text-slate-200">{item.rating}</span>
+                    <span className="text-sm text-slate-700">{item.rating}</span>
                 </div>
               </div>
               <CardTitle className="text-xl">{item.name}</CardTitle>
@@ -1010,8 +1010,8 @@ export function BuySourceCode() {
             <CardContent className="flex-grow">
               {item.features && item.features.length > 0 && (
                 <div className="mb-4">
-                  <p className="text-sm mb-2 text-slate-300 font-medium">Key Features:</p>
-                  <ul className="text-xs text-slate-400 space-y-1 list-disc list-inside">
+                  <p className="text-sm mb-2 text-slate-700 font-medium">Key Features:</p>
+                  <ul className="text-xs text-slate-600 space-y-1 list-disc list-inside">
                     {item.features.slice(0, 3).map((feature, idx) => (
                       <li key={idx}>{feature.split(' - ')[0]}</li>
                     ))}
@@ -1028,7 +1028,7 @@ export function BuySourceCode() {
               )}
               <div className="flex flex-wrap gap-2 mb-4">
                 {item.tags.map((tag) => (
-                  <Badge key={tag} variant="outline" className="text-xs text-slate-300 border-slate-500">
+                  <Badge key={tag} variant="outline" className="text-xs text-slate-600 border-slate-300">
                     {tag}
                   </Badge>
                 ))}

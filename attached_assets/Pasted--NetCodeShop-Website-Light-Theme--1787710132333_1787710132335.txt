@@ -1,0 +1,43 @@
+"NetCodeShop" Website ကို Light Theme (အလင်းရောင်) ဘက်ပြောင်းပြီး ဆွဲချင်တယ်ဆိုရင်တော့ အရင်ကပေးထားတဲ့ Dark Theme (အမှောင်) နေရာမှာ အဖြူရောင်၊ မီးခိုးနုရောင် (Gray-50, White) နဲ့ သပ်ရပ်တဲ့ Shadow တွေ (အရိပ်လေးတွေ) ထည့်သုံးဖို့ Replit AI ကို ပြောင်းလဲ ညွှန်ကြားရပါမယ်။
+
+အရင် Vercel, Stripe တို့ရဲ့ Dark mode အစား အခု Stripe ရဲ့ Light mode လို ရှင်းလင်းပြီး သပ်ရပ်တဲ့ ပုံစံမျိုးထွက်လာအောင် အောက်ပါ Master Prompt ကို ကူးယူပြီး Replit AI မှာ အသုံးပြုနိုင်ပါတယ်-
+
+Copy ကူးယူရန် Light Theme Master Prompt:
+
+"Act as an expert Frontend Developer. Build a complete, responsive, modern, and premium source code marketplace landing page named 'NetCodeShop' using React and Tailwind CSS.
+
+Design System & Vibe:
+
+Strictly use a clean, solid Light Mode background (e.g., bg-slate-50 or bg-gray-50). DO NOT use any starry, space, or dark backgrounds.
+
+Use 'Inter' font for all typography.
+
+The aesthetic should be highly professional, sleek, clean, and airy, similar to Stripe's light mode design. Use a professional primary color (like deep indigo bg-indigo-600 or vibrant purple) for primary actions and accents.
+
+Text colors should be dark for readability (e.g., text-slate-900 for headings, text-slate-600 for paragraphs).
+
+Please build the page with the following sections in order:
+
+1. Navbar: Clean white background (bg-white) with a subtle bottom border (border-gray-200). Logo on the left, dark text navigation links in the center, and a primary CTA button on the right.
+
+2. Hero Section: A bold, eye-catching dark headline, a short compelling description (text-slate-600), Primary and Secondary CTA buttons, and a modern code snippet mockup or tech illustration on the right side.
+
+3. Source Code Marketplace (Product Grid):
+
+Include a search input bar (white background, gray border) and category filter pills at the top.
+
+A responsive grid of Product Cards.
+
+Card Design: Each card must have a pure white background (bg-white), a subtle border (border-gray-200), rounded-xl corners, and a nice soft drop shadow (shadow-md, and shadow-lg on hover). Inside the card, include: a 'Featured' tag, product title (text-slate-900), short description text (text-slate-500), 2-3 key features as bullet points, a star rating, and a 'View Details' or 'Watch Demo' button.
+
+4. How to Purchase (Documentation):
+
+Do not use plain text lists. Instead, build a sleek vertical timeline or modern step-by-step components.
+
+Each step should have a circular number badge with the vibrant primary color background, followed by a dark step title and a brief gray description. Ensure generous vertical spacing (gap) for readability.
+
+5. About Us & Stats: Include a section with 3-4 clean, white cards (bg-white, shadow-sm) displaying statistics (e.g., '20+ Premium Projects', '10,000+ Happy Customers', '98% Satisfaction'). The stat numbers should be large, bold, and in the primary color.
+
+6. Footer: A clean light footer (bg-gray-100) with dark gray social media icons, contact business hours, and simple text links.
+
+Ensure the code is clean, modular, and fully responsive across mobile and desktop screens. Use Tailwind's best practices for hover states and modern light-theme shadows."

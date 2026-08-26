@@ -40,8 +40,8 @@ export function Contact() {
     <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-12">
       {/* Header */}
       <div className="text-center mb-12">
-        <h1 className="text-4xl mb-4 text-white">Contact Us</h1>
-        <p className="text-xl text-gray-300 max-w-2xl mx-auto">
+        <h1 className="text-4xl mb-4 text-slate-900">Contact Us</h1>
+        <p className="text-xl text-slate-600 max-w-2xl mx-auto">
           Have a question or need help? We're here to assist you. Reach out to us 
           and we'll get back to you as soon as possible.
         </p>
@@ -66,7 +66,7 @@ export function Contact() {
                 target="_blank"
                 rel="noopener noreferrer"
                 title={info.title}
-                className="bg-slate-800/60 border border-slate-700 hover:border-blue-500/60 hover:bg-slate-700/60 transition-all p-4 rounded-xl flex items-center justify-center"
+                className="bg-white border border-slate-200 hover:border-indigo-300 hover:bg-indigo-50 transition-all p-4 rounded-xl flex items-center justify-center shadow-sm"
               >
                 {info.icon}
               </a>
@@ -76,11 +76,11 @@ export function Contact() {
 
         {/* Business Hours */}
         <div>
-          <Card className="bg-slate-800/60 border-blue-500/30">
+          <Card className="border-indigo-200">
             <CardHeader>
-              <CardTitle className="text-blue-300">Business Hours</CardTitle>
+              <CardTitle className="text-slate-900">Business Hours</CardTitle>
             </CardHeader>
-            <CardContent className="text-gray-300">
+            <CardContent className="text-slate-600">
               <div className="space-y-2">
                 <div className="flex justify-between">
                   <span>Monday - Friday:</span>

@@ -77,8 +77,8 @@ Users currently can't keep track of recipes they like. A favorites collection is
 - Favorites persist across sessions
 
 ## Relevant files
-- \`src/pages/recipes/[id].tsx\`
-- \`src/components/RecipeCard.tsx\``
+- src/pages/recipes/[id].tsx
+- src/components/RecipeCard.tsx`
         },
         {
             title: "Save recipes permanently so they aren't lost on refresh",
@@ -93,11 +93,11 @@ Recipe data is hardcoded in a static file. Users who add or edit recipes will lo
 - Users can add, edit, and delete recipes without losing data
 
 ## Relevant files
-- \`src/data/recipes.ts\``
+- src/data/recipes.ts`
         }
     ]
 });
-console.log(followUps.map(t => ({ taskRef: t.taskRef, title: t.title })));
+for (const t of followUps) console.log(t.taskRef, t.title);
 
 // Assigned-task sessions can remove an obsolete follow-up
 await markFollowUpTaskObsolete({ taskRef: "#12" });

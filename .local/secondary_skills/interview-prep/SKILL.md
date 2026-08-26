@@ -282,7 +282,6 @@ Each stage shows: number badge, label, active/complete/upcoming state, and a con
 - Use `cn()`from`@/lib/utils` for all dynamic classNames — avoid template literals in JSX className props (known design-subagent bug pattern)
 
 - SSE parsing: `fetch`+`ReadableStream`reader; split chunks on`\n`, parse`data: {...}` lines
-- Use `react-markdown`+`remark-gfm` for rendering AI responses
 
 ### Styling
 
