@@ -1,11 +1,11 @@
 import { useState, useCallback, useEffect } from "react";
-import { useNavigate } from "react-router";
 import { ShoppingCart, Star, Download, Search, X, ZoomIn, PlayCircle, Lock, CheckCircle, ExternalLink } from "lucide-react";
 import { Button } from "./ui/button";
 import { Card, CardContent, CardDescription, CardFooter, CardHeader, CardTitle } from "./ui/card";
 import { Input } from "./ui/input";
 import { Badge } from "./ui/badge";
 import { ImageWithFallback } from "./figma/ImageWithFallback";
+import { CryptoPaymentDialog } from "./CryptoPaymentDialog";
 import {
   Dialog,
   DialogContent,
@@ -886,8 +886,8 @@ export function BuySourceCode() {
   const [searchQuery, setSearchQuery] = useState("");
   const [selectedCategory, setSelectedCategory] = useState<string>("All");
   const [selectedProduct, setSelectedProduct] = useState<SourceCodeItem | null>(null);
+  const [paymentProduct, setPaymentProduct] = useState<SourceCodeItem | null>(null);
   const [zoomedImage, setZoomedImage] = useState<string | null>(null);
-  const navigate = useNavigate();
 
   const closeZoom = useCallback(() => setZoomedImage(null), []);
 
@@ -1087,7 +1087,7 @@ export function BuySourceCode() {
                     )}
                     <Button
                       className="bg-blue-600 hover:bg-blue-700 ml-auto"
-                      onClick={() => navigate(`/product/${item.id}`)}
+                      onClick={() => setPaymentProduct(item)}
                     >
                       <ShoppingCart className="w-4 h-4 mr-2" />
                       Buy Now
@@ -1243,7 +1243,7 @@ export function BuySourceCode() {
                         </div>
                       </div>
                       <div className="flex justify-end">
-                        <Button size="lg" className="bg-blue-600 hover:bg-blue-700" onClick={() => { setSelectedProduct(null); navigate(`/product/${selectedProduct.id}`); }}>
+                        <Button size="lg" className="bg-blue-600 hover:bg-blue-700" onClick={() => { setSelectedProduct(null); setPaymentProduct(selectedProduct); }}>
                           <ShoppingCart className="w-5 h-5 mr-2" />
                           Buy Now
                         </Button>
@@ -1256,6 +1256,14 @@ export function BuySourceCode() {
           )}
         </DialogContent>
       </Dialog>
+
+      <CryptoPaymentDialog
+        product={paymentProduct}
+        open={!!paymentProduct}
+        onOpenChange={(open) => {
+          if (!open) setPaymentProduct(null);
+        }}
+      />
     </div>
   );
 }
