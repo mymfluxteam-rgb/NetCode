@@ -1,6 +1,5 @@
 import { Outlet } from "react-router";
 import { Navigation } from "./Navigation";
-import { FloatingChat } from "./FloatingChat";
 import { Facebook, Github, Send, Clock3, ArrowUpRight } from "lucide-react";
 import { Link } from "react-router";
 
@@ -12,7 +11,6 @@ export function Root() {
         <main className="flex-1">
           <Outlet />
         </main>
-        <FloatingChat />
         <footer className="border-t border-slate-200 bg-gray-100">
           <div className="mx-auto max-w-7xl px-5 py-14 sm:px-8 lg:px-10">
             <div className="grid gap-12 md:grid-cols-[1.5fr_1fr_1fr_1.2fr]">
@@ -40,7 +38,6 @@ export function Root() {
                 <h3 className="text-xs font-semibold uppercase tracking-[0.16em] text-slate-500">Company</h3>
                 <div className="mt-5 space-y-3 text-sm text-slate-600">
                   <Link to="/contact" className="block transition hover:text-indigo-700">Contact support</Link>
-                  <Link to="/ai-assistant" className="block transition hover:text-indigo-700">AI assistant</Link>
                   <Link to="/about" className="block transition hover:text-indigo-700">Our numbers</Link>
                 </div>
               </div>

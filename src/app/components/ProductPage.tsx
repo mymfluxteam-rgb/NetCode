@@ -189,7 +189,7 @@ export function ProductPage() {
   if (!product) {
     return (
       <div className="max-w-4xl mx-auto px-4 py-24 text-center">
-        <h1 className="text-3xl text-white mb-4">Product Not Found</h1>
+        <h1 className="text-3xl text-slate-900 mb-4">Product Not Found</h1>
         <Button onClick={() => navigate("/buy-source-code")} variant="outline">
           <ArrowLeft className="w-4 h-4 mr-2" /> Back to Store
         </Button>
@@ -202,7 +202,7 @@ export function ProductPage() {
       {/* Back button */}
       <button
         onClick={() => navigate("/buy-source-code")}
-        className="flex items-center gap-2 text-slate-400 hover:text-white mb-8 transition-colors"
+        className="flex items-center gap-2 text-slate-700 hover:text-slate-900 mb-8 transition-colors"
       >
         <ArrowLeft className="w-4 h-4" />
         <span className="text-sm">Back to Store</span>
@@ -238,7 +238,7 @@ export function ProductPage() {
               </div>
 
               {/* Disclaimer */}
-              <p className="text-xs text-gray-400 text-center italic px-1 pt-1">
+              <p className="text-xs text-slate-600 text-center italic px-1 pt-1">
                 These images were purchased from NetCodeShop and are freely created with their own trademarks. You can view the images currently in use and purchase with confidence.
               </p>
 
@@ -422,24 +422,24 @@ export function ProductPage() {
                 <Star className="w-4 h-4 text-yellow-400 fill-yellow-400" />
                 <span className="text-sm font-medium">{product.rating}</span>
               </div>
-              <div className="flex items-center gap-1 text-slate-400 text-sm">
+              <div className="flex items-center gap-1 text-slate-600 text-sm">
                 <Download className="w-4 h-4" />
                 <span>{product.downloads.toLocaleString()} downloads</span>
               </div>
             </div>
-            <h1 className="text-3xl font-bold text-white mb-3">{product.name}</h1>
-            <p className="text-slate-300 text-base leading-relaxed">{product.description}</p>
+            <h1 className="text-3xl font-bold text-slate-900 mb-3">{product.name}</h1>
+            <p className="text-slate-600 text-base leading-relaxed">{product.description}</p>
           </div>
 
           {/* Technologies */}
           <div>
             <div className="flex items-center gap-2 mb-3">
-              <Tag className="w-4 h-4 text-slate-400" />
-              <p className="text-sm font-semibold text-slate-300 uppercase tracking-wide">Technologies</p>
+              <Tag className="w-4 h-4 text-slate-500" />
+              <p className="text-sm font-semibold text-slate-700 uppercase tracking-wide">Technologies</p>
             </div>
             <div className="flex flex-wrap gap-2">
               {product.tags.map((tag) => (
-                <Badge key={tag} variant="outline" className="text-sm px-3 py-1 text-slate-200 border-slate-500">
+                <Badge key={tag} variant="outline" className="text-sm px-3 py-1 text-slate-700 border-slate-400">
                   {tag}
                 </Badge>
               ))}
@@ -449,7 +449,7 @@ export function ProductPage() {
           {/* Full Feature List */}
           {product.features && product.features.length > 0 && (
             <div>
-              <p className="text-sm font-semibold text-slate-300 uppercase tracking-wide mb-4">
+              <p className="text-sm font-semibold text-slate-700 uppercase tracking-wide mb-4">
                 Complete Feature List
               </p>
               <ul className="space-y-4">
@@ -459,9 +459,9 @@ export function ProductPage() {
                     <li key={idx} className="flex gap-3">
                       <CheckCircle2 className="w-5 h-5 text-blue-500 mt-0.5 shrink-0" />
                       <div>
-                        <p className="text-white font-medium">{title}</p>
+                        <p className="text-slate-800 font-medium">{title}</p>
                         {description && (
-                          <p className="text-sm text-slate-400 mt-0.5">{description}</p>
+                          <p className="text-sm text-slate-600 mt-0.5">{description}</p>
                         )}
                       </div>
                     </li>
@@ -476,7 +476,7 @@ export function ProductPage() {
             <div>
               <div className="flex items-center gap-2 mb-3">
                 <PlayCircle className="w-4 h-4 text-red-500" />
-                <p className="text-sm font-semibold text-slate-300 uppercase tracking-wide">Demo Video</p>
+                <p className="text-sm font-semibold text-slate-700 uppercase tracking-wide">Demo Video</p>
               </div>
               <div className="rounded-xl overflow-hidden border border-white/10 shadow-sm aspect-video">
                 <iframe

@@ -1,5 +1,5 @@
 import { Link, useLocation, useNavigate } from "react-router";
-import { Menu, X, Sparkles, ArrowUpRight, UserRound } from "lucide-react";
+import { Menu, X, ArrowUpRight, UserRound } from "lucide-react";
 import { useState } from "react";
 import logo from "/logo.png";
 
@@ -47,10 +47,6 @@ export function Navigation() {
           </div>
 
           <div className="hidden items-center gap-3 md:flex">
-            <Link to="/ai-assistant" className="inline-flex items-center gap-1.5 rounded-lg px-3 py-2 text-sm font-medium text-slate-600 transition hover:bg-indigo-50 hover:text-indigo-700">
-              <Sparkles className="h-3.5 w-3.5 text-indigo-600" />
-              AI assistant
-            </Link>
             <Link to="/contact" className="inline-flex items-center gap-2 rounded-lg bg-indigo-600 px-3.5 py-2 text-sm font-semibold text-white transition hover:bg-indigo-700">
               <UserRound className="h-3.5 w-3.5" />
               Connect / Login
@@ -76,7 +72,6 @@ export function Navigation() {
                 <Link key={item.href} to={item.href} onClick={() => setMobileMenuOpen(false)} className="block rounded-lg px-3 py-3 text-sm text-slate-700 transition hover:bg-indigo-50 hover:text-indigo-700">{item.label}</Link>
               )
             ))}
-            <Link to="/ai-assistant" onClick={() => setMobileMenuOpen(false)} className="mt-2 flex items-center gap-2 rounded-lg px-3 py-3 text-sm text-indigo-700 transition hover:bg-indigo-50"><Sparkles className="h-4 w-4" /> AI assistant</Link>
             <Link to="/contact" onClick={() => setMobileMenuOpen(false)} className="mt-2 flex items-center justify-center gap-2 rounded-lg bg-indigo-600 px-4 py-3 text-sm font-semibold text-white"><UserRound className="h-4 w-4" /> Connect / Login</Link>
           </div>
         )}
